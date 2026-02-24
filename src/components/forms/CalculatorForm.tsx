@@ -69,8 +69,21 @@ export function CalculatorForm({ basePrice, serviceSlug, onLeadCapture }: Calcul
           setError(res.error || "Произошла ошибка при отправке");
         }
       } else {
-        // Fallback simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 800));
+        // Default API Call to Next.js route handler
+        const req = await fetch("/api/leads", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await req.json();
+
+        if (!data.success) {
+          throw new Error(data.error);
+        }
+
         setSuccess(true);
       }
     } catch (err) {
