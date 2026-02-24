@@ -1,0 +1,19 @@
+{
+  "task_type": "T3",
+  "complexity": "C4",
+  "path": "swarm",
+  "ralph_loop": {
+    "enabled": true,
+    "suggested_iterations": 3,
+    "models_rotation": ["$AGENT_MODEL_RALPH_1", "$AGENT_MODEL_RALPH_2", "$AGENT_MODEL_RALPH_3"]
+  },
+  "recommended_models": [
+    "$AGENT_MODEL_BUILDER_A",
+    "$AGENT_MODEL_BUILDER_B",
+    "$AGENT_MODEL_REVIEWER"
+  ],
+  "mcp_profile": "core",
+  "active_ki_context": [],
+  "active_skills_required": ["ui-premium"],
+  "notes": "Задача охватывает Fullstack (Next.js, UI, API, Data), содержит 10 файлов компонентов и требует написания тестов. Это полностью соответствует критериям C4 (Swarm Path)."
+}

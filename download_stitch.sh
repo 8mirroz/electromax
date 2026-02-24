@@ -1,0 +1,16 @@
+#!/bin/bash
+cd /Users/user/projects/electromax/docs/genesis/v1
+
+echo "Downloading Screen 1"
+curl -s -L "https://lh3.googleusercontent.com/aida/AOfcidWu3fVr3hjsuswQEtUkqK_M97w2_MDzx0RUKApqhTsty_Xpco70bmmv6vwWCRhk_L5Cw67yHcMlsTG5cZK6yNAtkaytOE-VWTdVT9fDNuVz9XsnfSBmG6BWnHXHywPgLVz7hcloC94UgoatnH4HD36HmrXA9jRH_i4fPzobbMSir0Md3PIOjb4VYRcNtGYseCtpVTSZaXGwifcdMYjXoI6CNMIoSYNn5cnOuog61UU8xuIvE1VI3mtvVbQ" -o "screen_1_a7173e56.png"
+curl -s -L "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzllMmQ3MmNmMjAzMjRmZmViNjg0NDI5NGI1YTYwOTNiEgsSBxCe4fvr7wsYAZIBIwoKcHJvamVjdF9pZBIVQhMxOTIyNzk0MDM3NTI0Mjg4MTQy&filename=&opi=89354086" -o "screen_1_a7173e56.html"
+
+echo "Downloading Screen 2"
+curl -s -L "https://lh3.googleusercontent.com/aida/AOfcidX1epAsdZqj0biDtgEVhiaFfFlCPeB0GrUQ-4YBElhzMbh3-oA2I1297_7Z4F2YOk8S8zZ5fLOCM_WGsQKI77qwyKc_2IUb09KsfL_P4Za5Z_2eBbek6lUJpMiAGrI69IGKJTwXgDGmX4z0PQyyJVi40WP9y6aPFZdcfdeBUbYqKf2NPa7GRQP86HKqPFzwYWPmqtBybM_bkAx3EJVUvL15S2Q5seHfdU89QNis0xvm1Dp9EpRHM9alA5w" -o "screen_2_2b50d477.png"
+curl -s -L "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzJhZTEwZTM5MTg3NTRhMmJhYTFiZDU2MThkZjcxZGJmEgsSBxCe4fvr7wsYAZIBIwoKcHJvamVjdF9pZBIVQhMxOTIyNzk0MDM3NTI0Mjg4MTQy&filename=&opi=89354086" -o "screen_2_2b50d477.html"
+
+echo "Downloading Screen 3"
+curl -s -L "https://lh3.googleusercontent.com/aida/AOfcidUmDGj8jlNLyRIhtQnS3niWu3Z3PgwyakryjjO01vv3t61LBtjl0CMZQG3dwA8apPObccOTnqn1gjiJfTfxRLeKRfRywWU70SHLddLMsSgAC6DE9sWUzkmHOE6wisuskFPzJZOiNjHTiagd_Z11VE9xaXiELjScOQos4vbBskkTKLbYK8K44v-NbVO_vyCnCc_cNRSjHJcg6zHJId8ElhVMk_SMvXcVxaCah4igzp002vR6lneiz4aCfDI" -o "screen_3_e7b471f9.png"
+curl -s -L "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzQ0ZDE2Y2RmZDMxZTQxZDVhZWVlMDFhYTRlYWU3MjZkEgsSBxCe4fvr7wsYAZIBIwoKcHJvamVjdF9pZBIVQhMxOTIyNzk0MDM3NTI0Mjg4MTQy&filename=&opi=89354086" -o "screen_3_e7b471f9.html"
+
+echo "Done"

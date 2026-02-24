@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Technical Project Cost Calculator - Security Integrator</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/tailwindcss">
+      :root {
+        --industrial-blue: #1f3c88;
+        --industrial-blue-dark: #162a61;
+        --deep-graphite: #111418;
+        --signal-amber: #ffb300;
+        --surface-gray: #f8fafc;
+        --border-color: #e2e8f0;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--surface-gray);
+        color: var(--deep-graphite);
+      }
+      .step-active {
+        border-color: var(--industrial-blue);
+        color: var(--industrial-blue);
+      }
+      .step-completed {
+        background-color: var(--industrial-blue);
+        color: white;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <nav
+      class="w-full py-4 px-6 md:px-12 flex justify-between items-center bg-white border-b border-[var(--border-color)] relative z-20"
+    >
+      <div class="flex items-center gap-2">
+        <div
+          class="w-8 h-8 bg-[var(--industrial-blue)] rounded flex items-center justify-center text-white"
+        >
+          <span class="material-symbols-outlined text-xl">shield</span>
+        </div>
+        <span class="font-bold text-lg tracking-tight">SecurityIntegrator</span>
+      </div>
+      <div class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
+        <a class="hover:text-[var(--industrial-blue)] transition" href="#">Services</a>
+        <a class="hover:text-[var(--industrial-blue)] transition" href="#">Projects</a>
+        <a class="hover:text-[var(--industrial-blue)] transition" href="#">Documentation</a>
+      </div>
+      <div class="flex items-center gap-6">
+        <span class="hidden md:block font-medium text-sm text-gray-500"
+          >Project Support: 8 (800) 000-00-00</span
+        >
+        <button
+          class="bg-[var(--industrial-blue)] hover:bg-[var(--industrial-blue-dark)] text-white px-5 py-2 rounded text-sm font-semibold transition"
+        >
+          Client Portal
+        </button>
+      </div>
+    </nav>
+    <main class="max-w-7xl mx-auto px-6 md:px-12 py-10">
+      <div class="mb-10">
+        <h1 class="text-3xl font-extrabold tracking-tight mb-2">
+          Technical Project Cost Calculator
+        </h1>
+        <p class="text-gray-500 max-w-2xl text-sm">
+          Configure your engineering security system parameters to receive a preliminary technical
+          specification and budget estimation.
+        </p>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-8 items-start">
+        <div class="lg:col-span-2 space-y-8">
+          <div class="bg-white p-6 rounded-lg border border-[var(--border-color)]">
+            <div class="flex items-center justify-between">
+              <div class="flex flex-col items-center gap-2 group cursor-pointer">
+                <div
+                  class="w-10 h-10 rounded-full flex items-center justify-center border-2 border-[var(--industrial-blue)] text-[var(--industrial-blue)] font-bold"
+                >
+                  1
+                </div>
+                <span
+                  class="text-[10px] font-bold uppercase tracking-wider text-[var(--industrial-blue)]"
+                  >Facility Type</span
+                >
+              </div>
+              <div class="h-[2px] flex-1 bg-[var(--industrial-blue)] mx-4 opacity-20"></div>
+              <div class="flex flex-col items-center gap-2 group opacity-50">
+                <div
+                  class="w-10 h-10 rounded-full flex items-center justify-center border-2 border-gray-300 text-gray-400 font-bold"
+                >
+                  2
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500"
+                  >Systems</span
+                >
+              </div>
+              <div class="h-[2px] flex-1 bg-gray-200 mx-4"></div>
+              <div class="flex flex-col items-center gap-2 group opacity-50">
+                <div
+                  class="w-10 h-10 rounded-full flex items-center justify-center border-2 border-gray-300 text-gray-400 font-bold"
+                >
+                  3
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500"
+                  >Scale</span
+                >
+              </div>
+              <div class="h-[2px] flex-1 bg-gray-200 mx-4"></div>
+              <div class="flex flex-col items-center gap-2 group opacity-50">
+                <div
+                  class="w-10 h-10 rounded-full flex items-center justify-center border-2 border-gray-300 text-gray-400 font-bold"
+                >
+                  4
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500"
+                  >Summary</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-8 rounded-lg border border-[var(--border-color)] shadow-sm">
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[var(--industrial-blue)]">factory</span>
+              Step 1: Facility Classification
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+              <label
+                class="relative flex flex-col p-4 border-2 border-[var(--industrial-blue)] rounded-lg cursor-pointer bg-blue-50/30"
+              >
+                <input
+                  checked=""
+                  class="absolute top-4 right-4 text-[var(--industrial-blue)] focus:ring-[var(--industrial-blue)]"
+                  name="facility"
+                  type="radio"
+                />
+                <span class="material-symbols-outlined text-3xl mb-2 text-[var(--industrial-blue)]"
+                  >warehouse</span
+                >
+                <span class="font-bold text-sm">Industrial / Warehouse</span>
+                <span class="text-xs text-gray-500 mt-1"
+                  >High-ceiling complexes, logistics hubs, production plants.</span
+                >
+              </label>
+              <label
+                class="relative flex flex-col p-4 border-2 border-gray-100 rounded-lg cursor-pointer hover:border-gray-300 transition"
+              >
+                <input
+                  class="absolute top-4 right-4 text-[var(--industrial-blue)] focus:ring-[var(--industrial-blue)]"
+                  name="facility"
+                  type="radio"
+                />
+                <span class="material-symbols-outlined text-3xl mb-2 text-gray-400"
+                  >corporate_fare</span
+                >
+                <span class="font-bold text-sm">Commercial Office</span>
+                <span class="text-xs text-gray-500 mt-1"
+                  >Business centers, headquarters, administrative buildings.</span
+                >
+              </label>
+              <label
+                class="relative flex flex-col p-4 border-2 border-gray-100 rounded-lg cursor-pointer hover:border-gray-300 transition"
+              >
+                <input
+                  class="absolute top-4 right-4 text-[var(--industrial-blue)] focus:ring-[var(--industrial-blue)]"
+                  name="facility"
+                  type="radio"
+                />
+                <span class="material-symbols-outlined text-3xl mb-2 text-gray-400"
+                  >shopping_cart</span
+                >
+                <span class="font-bold text-sm">Retail / Mall</span>
+                <span class="text-xs text-gray-500 mt-1"
+                  >Shopping centers, department stores, retail chains.</span
+                >
+              </label>
+              <label
+                class="relative flex flex-col p-4 border-2 border-gray-100 rounded-lg cursor-pointer hover:border-gray-300 transition"
+              >
+                <input
+                  class="absolute top-4 right-4 text-[var(--industrial-blue)] focus:ring-[var(--industrial-blue)]"
+                  name="facility"
+                  type="radio"
+                />
+                <span class="material-symbols-outlined text-3xl mb-2 text-gray-400">apartment</span>
+                <span class="font-bold text-sm">Residential Complex</span>
+                <span class="text-xs text-gray-500 mt-1"
+                  >High-rise housing, gated communities, mixed-use.</span
+                >
+              </label>
+            </div>
+            <div class="mt-8 flex items-center justify-between">
+              <div
+                class="flex items-center gap-2 text-[var(--signal-amber)] bg-amber-50 px-4 py-2 rounded text-xs font-semibold border border-[var(--signal-amber)]/20"
+              >
+                <span class="material-symbols-outlined text-sm">warning</span>
+                Technical Audit may be required for Class A facilities.
+              </div>
+              <button
+                class="bg-[var(--industrial-blue)] text-white px-8 py-2.5 rounded font-bold flex items-center gap-2 hover:bg-[var(--industrial-blue-dark)] transition"
+              >
+                Next Step
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="lg:sticky lg:top-8 space-y-4">
+          <div class="bg-[#111418] text-white p-6 rounded-lg shadow-xl">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-800">
+              <h3 class="font-bold text-sm uppercase tracking-widest text-gray-400">
+                Live Estimate
+              </h3>
+              <span
+                class="text-[10px] bg-green-500/10 text-green-400 px-2 py-1 rounded border border-green-500/20 uppercase"
+                >Real-time</span
+              >
+            </div>
+            <div class="space-y-4 mb-8">
+              <div>
+                <div class="text-[10px] uppercase text-gray-500 font-bold mb-1">
+                  Estimated Cost Range
+                </div>
+                <div
+                  class="text-3xl font-bold tracking-tight text-[var(--industrial-blue)] bg-white/5 p-3 rounded border border-white/10"
+                >
+                  $4,500 — $8,200
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="text-[10px] uppercase text-gray-500 font-bold">Selected Config</div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-400">Facility Type</span>
+                  <span class="font-medium">Industrial</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-400">System Integration</span>
+                  <span class="font-medium">—</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-400">Coverage Area</span>
+                  <span class="font-medium">—</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-[var(--signal-amber)]/10 border border-[var(--signal-amber)]/30 p-4 rounded mb-6"
+            >
+              <div
+                class="flex items-center gap-2 text-[var(--signal-amber)] text-xs font-bold mb-2 uppercase tracking-wide"
+              >
+                <span class="material-symbols-outlined text-sm">verified</span>
+                Technical Requirements
+              </div>
+              <ul class="text-[11px] text-gray-300 space-y-1.5">
+                <li class="flex items-start gap-2">
+                  <span class="text-[var(--signal-amber)]">•</span>
+                  Compliance with GOST R 53325-2012
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[var(--signal-amber)]">•</span>
+                  Explosion-proof sensor housing required
+                </li>
+              </ul>
+            </div>
+            <button
+              class="w-full bg-[var(--industrial-blue)] hover:bg-[var(--industrial-blue-dark)] text-white font-bold py-4 rounded text-sm transition shadow-lg shadow-blue-900/20"
+            >
+              Download Full Specification
+            </button>
+            <p class="text-[10px] text-gray-500 text-center mt-4">
+              Prices are indicative. Final quote depends on site audit.
+            </p>
+          </div>
+          <div
+            class="bg-white p-4 rounded-lg border border-[var(--border-color)] flex items-center gap-4"
+          >
+            <div
+              class="w-10 h-10 rounded bg-gray-100 flex items-center justify-center text-gray-400"
+            >
+              <span class="material-symbols-outlined">description</span>
+            </div>
+            <div>
+              <h4 class="text-xs font-bold">ISO 9001:2015 Certified</h4>
+              <p class="text-[10px] text-gray-500">
+                Engineering precision &amp; quality standards compliance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="mt-16 grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg">
+          <span class="material-symbols-outlined text-[var(--industrial-blue)] mb-3"
+            >analytics</span
+          >
+          <h4 class="font-bold text-sm mb-2">Cost Optimization</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            Our algorithms calculate the most efficient equipment placement to minimize cabling and
+            hardware costs by up to 15%.
+          </p>
+        </div>
+        <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg">
+          <span class="material-symbols-outlined text-[var(--industrial-blue)] mb-3">security</span>
+          <h4 class="font-bold text-sm mb-2">Full Compliance</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            Estimates include all necessary regulatory documentation and certification fees for fire
+            and industrial safety authorities.
+          </p>
+        </div>
+        <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg">
+          <span class="material-symbols-outlined text-[var(--industrial-blue)] mb-3">support</span>
+          <h4 class="font-bold text-sm mb-2">Expert Review</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            Every calculator submission is reviewed by a senior engineer within 24 hours to ensure
+            technical feasibility.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-[var(--deep-graphite)] text-gray-500 py-10 mt-20 border-t border-gray-800">
+      <div
+        class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6"
+      >
+        <div class="flex items-center gap-2">
+          <div
+            class="w-6 h-6 bg-gray-800 rounded flex items-center justify-center text-white text-xs"
+          >
+            <span class="material-symbols-outlined text-sm">shield</span>
+          </div>
+          <span class="font-bold text-white text-sm">SecurityIntegrator</span>
+        </div>
+        <div class="flex gap-8 text-[10px] uppercase font-bold tracking-widest">
+          <a class="hover:text-white transition" href="#">Privacy Policy</a>
+          <a class="hover:text-white transition" href="#">Terms of Service</a>
+          <a class="hover:text-white transition" href="#">Regulatory Data</a>
+        </div>
+        <div class="text-[11px]">© 2024 Engineering Security Systems Integration Co.</div>
+      </div>
+    </footer>
+  </body>
+</html>

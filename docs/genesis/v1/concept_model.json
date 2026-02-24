@@ -1,0 +1,58 @@
+{
+  "project": "Electromax",
+  "domain": "Engineering Systems Integration & Maintenance (B2B)",
+  "entities": [
+    {
+      "name": "Service",
+      "description": "An engineering service offered (e.g., APS, SOUE, SOT, OS, SKUD, SKS, EOM, EO). Each service has its own dedicated landing page.",
+      "attributes": ["name", "slug", "base_price", "description", "included_steps"]
+    },
+    {
+      "name": "Lead",
+      "description": "A potential customer request.",
+      "attributes": [
+        "name",
+        "phone",
+        "email",
+        "object_type",
+        "area",
+        "service_required",
+        "price_estimate",
+        "utm_source"
+      ]
+    },
+    {
+      "name": "ProjectCase",
+      "description": "A portfolio case study of a completed project.",
+      "attributes": ["title", "object_type", "area", "duration", "cost", "photos"]
+    },
+    {
+      "name": "ServicePackage",
+      "description": "A predefined tier of service (e.g., Basic, Standard, Premium).",
+      "attributes": ["name", "target_audience", "features", "price"]
+    }
+  ],
+  "flows": [
+    {
+      "name": "Cost Estimation & Lead Capture",
+      "steps": [
+        "User opens a Service landing page.",
+        "User inputs object type, area, and complexity into the Mini-Calculator.",
+        "System calculates an estimated price range.",
+        "User submits contact information.",
+        "System sends the Lead data to CRM, Email, and Telegram bot.",
+        "System records analytics events (form_submit, calculator_complete)."
+      ]
+    },
+    {
+      "name": "Information Discovery",
+      "steps": [
+        "User explores problems solved by the service.",
+        "User reviews included equipment and work stages.",
+        "User compares service packages and pricing tables.",
+        "User views past ProjectCases and company licenses.",
+        "User reads FAQ."
+      ]
+    }
+  ]
+}
