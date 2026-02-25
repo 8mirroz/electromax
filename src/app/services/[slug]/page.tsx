@@ -1,129 +1,165 @@
-import { SERVICES_DB } from "@/data/services";
+import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { HeroBanner } from "@/components/sections/HeroBanner";
 import { Footer } from "@/components/sections/Footer";
-import { Pricing } from "@/components/ui/Pricing";
-import { CalculatorForm } from "@/components/forms/CalculatorForm";
-import { AnimatedTabs } from "@/components/ui/Tabs";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/Breadcrumb";
+import { Navbar } from "@/components/layout/Navbar";
+import { defaultOgImage, getSiteUrl } from "@/lib/seo";
+import { getServicePageModel, getServicePageSlugs } from "@/lib/services-content";
+import { ServicePageClient } from "./ServicePageClient";
 
 interface PageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return Object.keys(SERVICES_DB).map((slug) => ({
-    slug,
-  }));
+  return getServicePageSlugs().map((slug) => ({ slug }));
 }
 
-export default function ServicePage({ params }: PageProps) {
-  const service = SERVICES_DB[params.slug];
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const model = getServicePageModel(slug);
 
-  if (!service) {
+  if (!model) {
+    return { title: "Услуга не найдена" };
+  }
+
+  const siteUrl = getSiteUrl();
+  const url = siteUrl ? `${siteUrl}/services/${model.slug}` : undefined;
+
+  return {
+    title: model.title,
+    description: model.description,
+    alternates: url ? { canonical: url } : undefined,
+    openGraph: {
+      title: `${model.title} | Electromax`,
+      description: model.description,
+      type: "website",
+      locale: "ru_RU",
+      url,
+      images: [defaultOgImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${model.title} | Electromax`,
+      description: model.description,
+      images: [defaultOgImage],
+    },
+  };
+}
+
+function getOfferRange(model: NonNullable<ReturnType<typeof getServicePageModel>>) {
+  const pricedItems = model.catalog
+    .flatMap((section) => section.items)
+    .filter((item) => typeof item.priceMin === "number");
+  const low = pricedItems.length
+    ? Math.min(...pricedItems.map((item) => item.priceMin ?? 0))
+    : undefined;
+  const highCandidates = pricedItems
+    .map((item) => item.priceMax ?? item.priceMin ?? 0)
+    .filter(Boolean);
+  const high = highCandidates.length ? Math.max(...highCandidates) : low;
+  return { low, high };
+}
+
+export default async function ServicePage({ params }: PageProps) {
+  const { slug } = await params;
+  const model = getServicePageModel(slug);
+
+  if (!model) {
     notFound();
   }
 
-  const tabsContent = [
-    {
-      id: "overview",
-      label: "Overview",
-      content: (
-        <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500">
-          <h2 className="text-2xl font-bold">О системе</h2>
-          <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-        </div>
-      ),
+  const siteUrl = getSiteUrl();
+  const pageUrl = siteUrl ? `${siteUrl}/services/${model.slug}` : `/services/${model.slug}`;
+  const faqSchemaItems = model.faq.filter((item) => item.schemaInclude);
+  const offer = getOfferRange(model);
+
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: model.title,
+    serviceType: model.title,
+    description: model.description,
+    areaServed: model.seo.serviceArea || "Москва и Московская область",
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Electromax",
+      areaServed: "Москва и Московская область",
     },
-    {
-      id: "process",
-      label: "Process",
-      content: (
-        <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
-          <h2 className="text-2xl font-bold">Этапы работы</h2>
-          <div className="grid gap-4">
-            {service.includedSteps.map((step, idx) => (
-              <div key={idx} className="flex gap-4 p-4 border rounded-xl bg-card">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold shrink-0">
-                  {idx + 1}
-                </div>
-                <div>
-                  <h4 className="font-semibold">{step.title}</h4>
-                  <p className="text-sm text-muted-foreground">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      ),
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "RUB",
+      lowPrice: offer.low,
+      highPrice: offer.high,
+      offerCount: model.catalog.reduce((sum, section) => sum + section.items.length, 0),
     },
-  ];
+    url: pageUrl,
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqSchemaItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Главная", item: siteUrl ? `${siteUrl}/` : "/" },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Услуги",
+        item: siteUrl ? `${siteUrl}/services` : "/services",
+      },
+      { "@type": "ListItem", position: 3, name: model.shortName, item: pageUrl },
+    ],
+  };
 
   return (
-    <main className="min-h-screen bg-background">
-      {/* Dynamic SEO Meta title managed in layout or metadata export, keeping simple here */}
+    <main className="min-h-screen bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
-      <div className="absolute top-0 w-full z-50 pt-6">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Главная</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/services">Услуги</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>{service.title}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+      <Navbar />
+      <div className="border-b border-border bg-muted/20 py-3">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <nav
+            aria-label="breadcrumb"
+            className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground/60"
+          >
+            <Link href="/" className="hover:text-primary transition-colors">
+              Главная
+            </Link>
+            <span>/</span>
+            <Link href="/services" className="hover:text-primary transition-colors">
+              Услуги
+            </Link>
+            <span>/</span>
+            <span className="text-foreground">{model.shortName}</span>
+          </nav>
         </div>
       </div>
 
-      <HeroBanner title={service.title} subtitle={service.description}>
-        <a
-          href="#calculator"
-          className="px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium"
-        >
-          Рассчитать стоимость
-        </a>
-      </HeroBanner>
-
-      <section className="py-20 container mx-auto px-6 max-w-6xl grid lg:grid-cols-2 gap-16">
-        <div>
-          <AnimatedTabs tabs={tabsContent} />
-        </div>
-
-        <div id="calculator" className="scroll-mt-24">
-          <CalculatorForm basePrice={service.basePricePerSqm} serviceSlug={service.id} />
-        </div>
-      </section>
-
-      <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Тарифы и цены</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Мы предлагаем прозрачное ценообразование на установку систем {service.title} с
-              гарантией 1 год.
-            </p>
-          </div>
-          <Pricing packages={service.packages} />
-        </div>
-      </section>
-
+      <ServicePageClient model={model} />
       <Footer />
     </main>
   );
