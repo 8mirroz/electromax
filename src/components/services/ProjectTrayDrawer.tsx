@@ -86,13 +86,12 @@ export function ProjectTrayDrawer(props: Props) {
         aria-hidden={!props.isOpen}
         disabled={!props.isOpen}
         tabIndex={props.isOpen ? 0 : -1}
-        className={`fixed inset-0 z-50 bg-[#0b1020]/40 transition md:hidden ${props.isOpen ? "opacity-100" : "pointer-events-none opacity-0"}`}
+        className={`fixed inset-0 z-50 bg-foreground/40 transition md:hidden ${props.isOpen ? "opacity-100" : "pointer-events-none opacity-0"}`}
       />
       <aside
         data-testid="project-tray-drawer"
         aria-hidden={!props.isOpen}
-        // @ts-expect-error inert is supported by modern browsers, but not yet typed in React.
-        inert={!props.isOpen ? "" : undefined}
+        inert={!props.isOpen ? true : undefined}
         className={`fixed bottom-0 left-0 right-0 z-[60] max-h-[88vh] rounded-t-3xl border border-border bg-white shadow-2xl transition-transform md:bottom-auto md:left-auto md:right-0 md:top-0 md:h-full md:max-h-none md:w-[420px] md:rounded-none md:border-l ${props.isOpen ? "translate-y-0 md:translate-x-0" : "translate-y-full md:translate-y-0 md:translate-x-full"}`}
       >
         <div className="flex h-full flex-col">

@@ -1,0 +1,17 @@
+{
+  "neo": {
+    "enabled": true,
+    "objective": "Restore row-based (accordion table) price list view for services with premium styling",
+    "research_tracks": ["architecture", "ui_design", "delivery"],
+    "council_judge_model": "$AGENT_MODEL_COUNCIL_PRIMARY",
+    "orchestrator_model": "$AGENT_MODEL_ORCHESTRATOR_PRIMARY",
+    "worker_pool": ["Builder A (Logic)", "Builder B (UI)", "Reviewer"],
+    "ralph_loop_policy": {
+      "enabled_for": ["C3"],
+      "min_iterations": 3,
+      "max_iterations": 5,
+      "min_acceptable_score": 0.8,
+      "min_score_delta": 0.05
+    }
+  }
+}

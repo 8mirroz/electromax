@@ -12,13 +12,21 @@
     "test:unit": "vitest",
     "test:e2e": "playwright test",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "content:sync": "npx tsx scripts/content/import-services-xlsx.ts"
   },
   "dependencies": {
+    "@marsidev/react-turnstile": "^1.4.2",
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "focus-trap-react": "^12.0.0",
     "framer-motion": "^12.34.3",
+    "gsap": "^3.14.2",
     "lucide-react": "^0.575.0",
+    "motion": "^12.34.3",
     "next": "16.1.6",
+    "nodemailer": "^8.0.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "tailwind-merge": "^3.5.0"
@@ -29,7 +37,8 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "@types/node": "^20",
+    "@types/node": "^20.19.33",
+    "@types/nodemailer": "^7.0.11",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^5.1.4",
@@ -41,8 +50,12 @@
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.1",
     "tailwindcss": "^4",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.21.0",
     "typescript": "^5",
-    "vitest": "^4.0.18"
+    "vitest": "^4.0.18",
+    "xlsx": "^0.18.5",
+    "zod": "^4.3.6"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

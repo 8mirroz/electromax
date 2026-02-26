@@ -1,0 +1,4039 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-02-24T21:22:14.746Z",
+  "services": [
+    {
+      "id": "aps",
+      "slug": "aps",
+      "title": "Автоматическая пожарная сигнализация",
+      "shortName": "APS",
+      "themeColor": "#2563eb",
+      "isActive": true,
+      "sortOrder": 0,
+      "updatedAt": "2026-02-24T21:22:14.738Z",
+      "hero": {
+        "title": "Автоматическая пожарная сигнализация под ключ. Сдача с первого раза.",
+        "subtitle": "Комплексные решения для промышленных объектов, офисов и складов. Гарантия прохождения проверок.",
+        "trustFactors": [
+          "500+ объектов сдано",
+          "Лицензия МЧС Class A",
+          "12 лет опыта",
+          "24/7 техподдержка"
+        ],
+        "disclaimer": "Цена ориентировочная, точная после аудита"
+      },
+      "stats": [
+        {
+          "label": "объектов сдано",
+          "value": "500+",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "Class A",
+          "value": "Лицензия МЧС",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "опыта",
+          "value": "12 лет",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "техподдержка",
+          "value": "24/7",
+          "subValue": "",
+          "isMarketing": true
+        }
+      ],
+      "solutionKits": [
+        {
+          "kitId": "aps-kit-audit",
+          "kitName": "Стартовый аудит",
+          "useCase": "Подготовка к запуску работ / проверке",
+          "targetObject": "офис, магазин, склад",
+          "includedItemCodes": ["APS-AUDIT"],
+          "budgetMin": 25000,
+          "budgetMax": 60000,
+          "durationText": "1-3 дня",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "aps-kit-modernization",
+          "kitName": "Модернизация участка",
+          "useCase": "Замена критичных узлов без полной остановки",
+          "targetObject": "действующий объект",
+          "includedItemCodes": ["APS-PROJ", "APS-INSTALL"],
+          "budgetMin": 28000,
+          "budgetMax": 84000,
+          "durationText": "3-10 дней",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "aps-kit-scale",
+          "kitName": "Расширение и интеграция",
+          "useCase": "Добавление зон, точек, сценариев",
+          "targetObject": "склад / производство",
+          "includedItemCodes": ["APS-PNR", "APS-TO"],
+          "budgetMin": 42000,
+          "budgetMax": 126000,
+          "durationText": "1-4 недели",
+          "ctaLabel": "Добавить в проект"
+        }
+      ],
+      "catalogItems": [
+        {
+          "itemCode": "APS-AUDIT",
+          "itemName": "Аудит объекта",
+          "category": "Этапы проекта",
+          "unit": "выезд",
+          "priceType": "from",
+          "priceMin": 12000,
+          "currency": "RUB",
+          "includes": [
+            "Акт обследования и перечень замечаний",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-PROJ",
+          "itemName": "Проектирование / ТЗ",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 25000,
+          "currency": "RUB",
+          "includes": ["Подготовка проектных решений", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-INSTALL",
+          "itemName": "Монтаж / внедрение",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 45000,
+          "currency": "RUB",
+          "includes": [
+            "Исполнение по согласованному объему",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-PNR",
+          "itemName": "Пусконаладка / тестирование",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 18000,
+          "currency": "RUB",
+          "includes": ["Проверка сценариев и сдача", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-DOC",
+          "itemName": "Исполнительная документация",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 10000,
+          "currency": "RUB",
+          "includes": ["Комплект актов и схем", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-TO",
+          "itemName": "Техническое обслуживание",
+          "category": "Этапы проекта",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 5000,
+          "currency": "RUB",
+          "includes": [
+            "Регламентные работы по графику",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-PKG-1",
+          "itemName": "Проектная документация",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 15000,
+          "currency": "RUB",
+          "includes": ["Разработка стадии П и Р"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-PKG-2",
+          "itemName": "Монтаж системы",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 45000,
+          "currency": "RUB",
+          "includes": ["Для типовых коммерческих объектов"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-PKG-3",
+          "itemName": "Обслуживание (ТО)",
+          "category": "Готовые работы",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 5000,
+          "currency": "RUB",
+          "includes": ["Ежемесячные регламентные работы"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-SUP-1",
+          "itemName": "Поставка: Оптико-электронные датчики дыма [A-Class]",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-SUP-2",
+          "itemName": "Поставка: Адресные тепловые извещатели",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-SUP-3",
+          "itemName": "Поставка: Приемно-контрольные приборы [Pro-Series]",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-SUP-4",
+          "itemName": "Поставка: Огнестойкие кабельные линии [LRLS]",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "APS-SUP-5",
+          "itemName": "Поставка: Блоки питания с резервированием 24ч",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        }
+      ],
+      "processSteps": [
+        {
+          "stepId": "aps-step-1",
+          "title": "Аудит",
+          "clientAction": "Согласует время доступа на объект и контактное лицо",
+          "contractorAction": "Бесплатный аудит и обследование объекта",
+          "artifact": "Акт обследования",
+          "leadTime": "1-2 дня"
+        },
+        {
+          "stepId": "aps-step-2",
+          "title": "Проектирование",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Разработка и согласование проекта",
+          "artifact": "КП и договор",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "aps-step-3",
+          "title": "Поставка",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Поставка сертифицированного оборудования",
+          "artifact": "График работ",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "aps-step-4",
+          "title": "Монтаж",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Монтажные работы",
+          "artifact": "Акт ПНР / тесты",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "aps-step-5",
+          "title": "Сдача",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Пусконаладка и сдача в МЧС",
+          "artifact": "Журнал ТО / рекомендации",
+          "leadTime": "1-3 дня"
+        }
+      ],
+      "aiRules": [
+        {
+          "ruleId": "aps-rule-open",
+          "triggerType": "tray_empty",
+          "messageText": "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
+          "priority": 100
+        },
+        {
+          "ruleId": "aps-rule-stage",
+          "triggerType": "missing_category",
+          "triggerValue": "Этапы проекта",
+          "messageText": "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
+          "priority": 90
+        },
+        {
+          "ruleId": "aps-rule-related-soue",
+          "triggerType": "service_open",
+          "triggerValue": "soue",
+          "messageText": "Проверьте связанную услугу: SOUE. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 70
+        },
+        {
+          "ruleId": "aps-rule-related-to",
+          "triggerType": "service_open",
+          "triggerValue": "to",
+          "messageText": "Проверьте связанную услугу: TO. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 69
+        }
+      ],
+      "seoBlock": {
+        "title": "Автоматическая пожарная сигнализация в Москве | Electromax",
+        "description": "Комплексные решения для промышленных объектов, офисов и складов. Гарантия прохождения проверок.",
+        "textBlock": "Автоматическая пожарная сигнализация под ключ. Сдача с первого раза. Комплексные решения для промышленных объектов, офисов и складов. Гарантия прохождения проверок. Полный цикл: аудит, проектирование, монтаж, обслуживание.",
+        "faq": [
+          {
+            "question": "Какие лицензии нужны для монтажа АПС?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как часто нужно техническое обслуживание?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что будет при проверке МЧС?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько стоит обслуживание АПС?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Какие датчики лучше: дымовые или тепловые?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли интегрировать АПС с СКУД?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Какой срок службы системы?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что делать при ложных срабатываниях?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужен ли проект АПС?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько времени занимает монтаж?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое адресно-аналоговая система?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Какие гарантии вы даёте?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          }
+        ]
+      }
+    },
+    {
+      "id": "asuz",
+      "slug": "asuz",
+      "title": "Автоматизация",
+      "shortName": "ASUZ",
+      "themeColor": "#2563eb",
+      "isActive": true,
+      "sortOrder": 1,
+      "updatedAt": "2026-02-24T21:22:14.740Z",
+      "hero": {
+        "title": "Интеграция всех инженерных систем в единый центр управления",
+        "subtitle": "Объединяем ОПС, СКУД, видеонаблюдение, инженерию в одну платформу",
+        "trustFactors": [
+          "50+ интегрированных систем",
+          "BMS сертифицировано Показатель",
+          "30% экономия ресурсов",
+          "24/7 диспетчеризация"
+        ],
+        "disclaimer": "Цена ориентировочная, точная после аудита"
+      },
+      "stats": [
+        {
+          "label": "интегрированных систем",
+          "value": "50+",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "Показатель",
+          "value": "BMS сертифицировано",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "экономия ресурсов",
+          "value": "30%",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "диспетчеризация",
+          "value": "24/7",
+          "subValue": "",
+          "isMarketing": true
+        }
+      ],
+      "solutionKits": [
+        {
+          "kitId": "asuz-kit-audit",
+          "kitName": "Стартовый аудит",
+          "useCase": "Подготовка к запуску работ / проверке",
+          "targetObject": "офис, магазин, склад",
+          "includedItemCodes": ["ASUZ-AUDIT"],
+          "budgetMin": 48000,
+          "budgetMax": 144000,
+          "durationText": "1-3 дня",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "asuz-kit-modernization",
+          "kitName": "Модернизация участка",
+          "useCase": "Замена критичных узлов без полной остановки",
+          "targetObject": "действующий объект",
+          "includedItemCodes": ["ASUZ-PROJ", "ASUZ-INSTALL"],
+          "budgetMin": 96000,
+          "budgetMax": 288000,
+          "durationText": "3-10 дней",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "asuz-kit-scale",
+          "kitName": "Расширение и интеграция",
+          "useCase": "Добавление зон, точек, сценариев",
+          "targetObject": "склад / производство",
+          "includedItemCodes": ["ASUZ-PNR", "ASUZ-TO"],
+          "budgetMin": 144000,
+          "budgetMax": 432000,
+          "durationText": "1-4 недели",
+          "ctaLabel": "Добавить в проект"
+        }
+      ],
+      "catalogItems": [
+        {
+          "itemCode": "ASUZ-AUDIT",
+          "itemName": "Аудит объекта",
+          "category": "Этапы проекта",
+          "unit": "выезд",
+          "priceType": "from",
+          "priceMin": 24000,
+          "currency": "RUB",
+          "includes": [
+            "Акт обследования и перечень замечаний",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-PROJ",
+          "itemName": "Проектирование / ТЗ",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 72000,
+          "currency": "RUB",
+          "includes": ["Подготовка проектных решений", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-INSTALL",
+          "itemName": "Монтаж / внедрение",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 120000,
+          "currency": "RUB",
+          "includes": [
+            "Исполнение по согласованному объему",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-PNR",
+          "itemName": "Пусконаладка / тестирование",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 42000,
+          "currency": "RUB",
+          "includes": ["Проверка сценариев и сдача", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-DOC",
+          "itemName": "Исполнительная документация",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 24000,
+          "currency": "RUB",
+          "includes": ["Комплект актов и схем", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-TO",
+          "itemName": "Техническое обслуживание",
+          "category": "Этапы проекта",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 12000,
+          "currency": "RUB",
+          "includes": [
+            "Регламентные работы по графику",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-PKG-1",
+          "itemName": "Аудит и карта интеграций",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 45000,
+          "currency": "RUB",
+          "includes": ["Инвентаризация контуров и протоколов"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-PKG-2",
+          "itemName": "Сценарии и диспетчеризация",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 180000,
+          "currency": "RUB",
+          "includes": ["Настройка логики", "алертов и панелей"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-PKG-3",
+          "itemName": "Сопровождение",
+          "category": "Готовые работы",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 15000,
+          "currency": "RUB",
+          "includes": ["Регламентное обслуживание и корректировки"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-SUP-1",
+          "itemName": "Поставка: Контроллеры автоматизации",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-SUP-2",
+          "itemName": "Поставка: I/O модули и шлюзы протоколов",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-SUP-3",
+          "itemName": "Поставка: Диспетчерские панели",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-SUP-4",
+          "itemName": "Поставка: Сервер/ПО визуализации",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "ASUZ-SUP-5",
+          "itemName": "Поставка: Датчики и исполнительные устройства",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        }
+      ],
+      "processSteps": [
+        {
+          "stepId": "asuz-step-1",
+          "title": "Аудит",
+          "clientAction": "Согласует время доступа на объект и контактное лицо",
+          "contractorAction": "Сбор текущей схемы, протоколов и зависимостей",
+          "artifact": "Акт обследования",
+          "leadTime": "1-2 дня"
+        },
+        {
+          "stepId": "asuz-step-2",
+          "title": "Проект",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Проектирование интеграционной архитектуры",
+          "artifact": "КП и договор",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "asuz-step-3",
+          "title": "Реализация",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Монтаж/подключение контроллеров и шлюзов",
+          "artifact": "График работ",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "asuz-step-4",
+          "title": "ПНР",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Настройка сценариев, журналов и уведомлений",
+          "artifact": "Акт ПНР / тесты",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "asuz-step-5",
+          "title": "Сопровождение",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Поддержка и оптимизация логики",
+          "artifact": "Журнал ТО / рекомендации",
+          "leadTime": "1-3 дня"
+        }
+      ],
+      "aiRules": [
+        {
+          "ruleId": "asuz-rule-open",
+          "triggerType": "tray_empty",
+          "messageText": "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
+          "priority": 100
+        },
+        {
+          "ruleId": "asuz-rule-stage",
+          "triggerType": "missing_category",
+          "triggerValue": "Этапы проекта",
+          "messageText": "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
+          "priority": 90
+        },
+        {
+          "ruleId": "asuz-rule-related-eom",
+          "triggerType": "service_open",
+          "triggerValue": "eom",
+          "messageText": "Проверьте связанную услугу: EOM. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 70
+        },
+        {
+          "ruleId": "asuz-rule-related-eo",
+          "triggerType": "service_open",
+          "triggerValue": "eo",
+          "messageText": "Проверьте связанную услугу: EO. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 69
+        }
+      ],
+      "seoBlock": {
+        "title": "Автоматизация в Москве | Electromax",
+        "description": "Объединяем ОПС, СКУД, видеонаблюдение, инженерию в одну платформу",
+        "textBlock": "Интеграция всех инженерных систем в единый центр управления Объединяем ОПС, СКУД, видеонаблюдение, инженерию в одну платформу Полный цикл: аудит, проектирование, монтаж, обслуживание.",
+        "faq": [
+          {
+            "question": "Какие системы можно объединить?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое BMS?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько стоит интеграция?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как работает диспетчеризация?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли управлять со смартфона?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Какие протоколы используются?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужен ли отдельный сервер?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как быстро окупается автоматизация?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое SCADA?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли добавить систему позже?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как обучить персонал?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Есть ли гарантия на интеграцию?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eo",
+      "slug": "eo",
+      "title": "Освещение",
+      "shortName": "EO",
+      "themeColor": "#2563eb",
+      "isActive": true,
+      "sortOrder": 2,
+      "updatedAt": "2026-02-24T21:22:14.742Z",
+      "hero": {
+        "title": "Энергосберегающее освещение с экономией до 40%",
+        "subtitle": "LED светильники + автоматика. Снижение затрат на электроэнергию",
+        "trustFactors": [
+          "40% экономия энергии",
+          "DIALux расчёт",
+          "5 лет гарантия",
+          "DALI/KNX сертифицировано"
+        ],
+        "disclaimer": "Цена ориентировочная, точная после аудита"
+      },
+      "stats": [
+        {
+          "label": "экономия энергии",
+          "value": "40%",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "расчёт",
+          "value": "DIALux",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "гарантия",
+          "value": "5 лет",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "сертифицировано",
+          "value": "DALI/KNX",
+          "subValue": "",
+          "isMarketing": true
+        }
+      ],
+      "solutionKits": [
+        {
+          "kitId": "eo-kit-audit",
+          "kitName": "Стартовый аудит",
+          "useCase": "Подготовка к запуску работ / проверке",
+          "targetObject": "офис, магазин, склад",
+          "includedItemCodes": ["EO-AUDIT"],
+          "budgetMin": 36000,
+          "budgetMax": 108000,
+          "durationText": "1-3 дня",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "eo-kit-modernization",
+          "kitName": "Модернизация участка",
+          "useCase": "Замена критичных узлов без полной остановки",
+          "targetObject": "действующий объект",
+          "includedItemCodes": ["EO-PROJ", "EO-INSTALL"],
+          "budgetMin": 72000,
+          "budgetMax": 216000,
+          "durationText": "3-10 дней",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "eo-kit-scale",
+          "kitName": "Расширение и интеграция",
+          "useCase": "Добавление зон, точек, сценариев",
+          "targetObject": "склад / производство",
+          "includedItemCodes": ["EO-PNR", "EO-TO"],
+          "budgetMin": 108000,
+          "budgetMax": 324000,
+          "durationText": "1-4 недели",
+          "ctaLabel": "Добавить в проект"
+        }
+      ],
+      "catalogItems": [
+        {
+          "itemCode": "EO-AUDIT",
+          "itemName": "Аудит объекта",
+          "category": "Этапы проекта",
+          "unit": "выезд",
+          "priceType": "from",
+          "priceMin": 18000,
+          "currency": "RUB",
+          "includes": [
+            "Акт обследования и перечень замечаний",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-PROJ",
+          "itemName": "Проектирование / ТЗ",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 54000,
+          "currency": "RUB",
+          "includes": ["Подготовка проектных решений", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-INSTALL",
+          "itemName": "Монтаж / внедрение",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 90000,
+          "currency": "RUB",
+          "includes": [
+            "Исполнение по согласованному объему",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-PNR",
+          "itemName": "Пусконаладка / тестирование",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 31500,
+          "currency": "RUB",
+          "includes": ["Проверка сценариев и сдача", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-DOC",
+          "itemName": "Исполнительная документация",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 18000,
+          "currency": "RUB",
+          "includes": ["Комплект актов и схем", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-TO",
+          "itemName": "Техническое обслуживание",
+          "category": "Этапы проекта",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 9000,
+          "currency": "RUB",
+          "includes": [
+            "Регламентные работы по графику",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-PKG-1",
+          "itemName": "Офисное освещение",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 90000,
+          "currency": "RUB",
+          "includes": ["Нормы СНиП для рабочих мест"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-PKG-2",
+          "itemName": "Складское освещение",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 120000,
+          "currency": "RUB",
+          "includes": ["Высокомощные LED для стеллажей"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-SUP-1",
+          "itemName": "Поставка: Светодиодные светильники",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-SUP-2",
+          "itemName": "Поставка: Трековые системы и шинопроводы",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-SUP-3",
+          "itemName": "Поставка: Промышленные светильники IP65",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-SUP-4",
+          "itemName": "Поставка: Аварийные светильники с АКБ",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EO-SUP-5",
+          "itemName": "Поставка: Датчики освещенности и присутствия",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        }
+      ],
+      "processSteps": [
+        {
+          "stepId": "eo-step-1",
+          "title": "Аудит",
+          "clientAction": "Согласует время доступа на объект и контактное лицо",
+          "contractorAction": "Аудит объекта и светотехнический расчет в DIALux",
+          "artifact": "Акт обследования",
+          "leadTime": "1-2 дня"
+        },
+        {
+          "stepId": "eo-step-2",
+          "title": "Подбор",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Подбор светильников (цветовая температура)",
+          "artifact": "КП и договор",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "eo-step-3",
+          "title": "Установка",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Прокладка сетей и установка шинопроводов",
+          "artifact": "График работ",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "eo-step-4",
+          "title": "Монтаж",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Монтаж и пусконаладка светильников",
+          "artifact": "Акт ПНР / тесты",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "eo-step-5",
+          "title": "Автоматика",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Интеграция датчиков движения и DALI",
+          "artifact": "Журнал ТО / рекомендации",
+          "leadTime": "1-3 дня"
+        }
+      ],
+      "aiRules": [
+        {
+          "ruleId": "eo-rule-open",
+          "triggerType": "tray_empty",
+          "messageText": "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
+          "priority": 100
+        },
+        {
+          "ruleId": "eo-rule-stage",
+          "triggerType": "missing_category",
+          "triggerValue": "Этапы проекта",
+          "messageText": "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
+          "priority": 90
+        },
+        {
+          "ruleId": "eo-rule-related-eom",
+          "triggerType": "service_open",
+          "triggerValue": "eom",
+          "messageText": "Проверьте связанную услугу: EOM. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 70
+        },
+        {
+          "ruleId": "eo-rule-related-asuz",
+          "triggerType": "service_open",
+          "triggerValue": "asuz",
+          "messageText": "Проверьте связанную услугу: ASUZ. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 69
+        }
+      ],
+      "seoBlock": {
+        "title": "Освещение в Москве | Electromax",
+        "description": "LED светильники + автоматика. Снижение затрат на электроэнергию",
+        "textBlock": "Энергосберегающее освещение с экономией до 40% LED светильники + автоматика. Снижение затрат на электроэнергию Полный цикл: аудит, проектирование, монтаж, обслуживание.",
+        "faq": [
+          {
+            "question": "Какой свет лучше для офиса?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое DALI?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько экономит LED освещение?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужен ли светотехнический проект?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Какие нормы освещённости?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое аварийное освещение?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как подобрать цветовую температуру?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько служат светодиодные светильники?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое KNX?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли управлять со смартфона?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужны ли датчики движения?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как рассчитать количество светильников?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eom",
+      "slug": "eom",
+      "title": "Электроснабжение",
+      "shortName": "EOM",
+      "themeColor": "#2563eb",
+      "isActive": true,
+      "sortOrder": 3,
+      "updatedAt": "2026-02-24T21:22:14.743Z",
+      "hero": {
+        "title": "Силовые сети любой сложности. Проект + монтаж + ЭТЛ",
+        "subtitle": "Проектирование, монтаж, пусконаладка. Проверка электролабораторией",
+        "trustFactors": [
+          "СРО допуск Показатель",
+          "ЭТЛ лаборатория Показатель",
+          "100% защита от КЗ",
+          "5 лет гарантия"
+        ],
+        "disclaimer": "Цена ориентировочная, точная после аудита"
+      },
+      "stats": [
+        {
+          "label": "Показатель",
+          "value": "СРО допуск",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "Показатель",
+          "value": "ЭТЛ лаборатория",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "защита от КЗ",
+          "value": "100%",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "гарантия",
+          "value": "5 лет",
+          "subValue": "",
+          "isMarketing": true
+        }
+      ],
+      "solutionKits": [
+        {
+          "kitId": "eom-kit-audit",
+          "kitName": "Стартовый аудит",
+          "useCase": "Подготовка к запуску работ / проверке",
+          "targetObject": "офис, магазин, склад",
+          "includedItemCodes": ["EOM-AUDIT"],
+          "budgetMin": 60000,
+          "budgetMax": 180000,
+          "durationText": "1-3 дня",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "eom-kit-modernization",
+          "kitName": "Модернизация участка",
+          "useCase": "Замена критичных узлов без полной остановки",
+          "targetObject": "действующий объект",
+          "includedItemCodes": ["EOM-PROJ", "EOM-INSTALL"],
+          "budgetMin": 120000,
+          "budgetMax": 360000,
+          "durationText": "3-10 дней",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "eom-kit-scale",
+          "kitName": "Расширение и интеграция",
+          "useCase": "Добавление зон, точек, сценариев",
+          "targetObject": "склад / производство",
+          "includedItemCodes": ["EOM-PNR", "EOM-TO"],
+          "budgetMin": 180000,
+          "budgetMax": 540000,
+          "durationText": "1-4 недели",
+          "ctaLabel": "Добавить в проект"
+        }
+      ],
+      "catalogItems": [
+        {
+          "itemCode": "EOM-AUDIT",
+          "itemName": "Аудит объекта",
+          "category": "Этапы проекта",
+          "unit": "выезд",
+          "priceType": "from",
+          "priceMin": 30000,
+          "currency": "RUB",
+          "includes": [
+            "Акт обследования и перечень замечаний",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-PROJ",
+          "itemName": "Проектирование / ТЗ",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 90000,
+          "currency": "RUB",
+          "includes": ["Подготовка проектных решений", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-INSTALL",
+          "itemName": "Монтаж / внедрение",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 150000,
+          "currency": "RUB",
+          "includes": [
+            "Исполнение по согласованному объему",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-PNR",
+          "itemName": "Пусконаладка / тестирование",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 52500,
+          "currency": "RUB",
+          "includes": ["Проверка сценариев и сдача", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-DOC",
+          "itemName": "Исполнительная документация",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 30000,
+          "currency": "RUB",
+          "includes": ["Комплект актов и схем", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-TO",
+          "itemName": "Техническое обслуживание",
+          "category": "Этапы проекта",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 15000,
+          "currency": "RUB",
+          "includes": [
+            "Регламентные работы по графику",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-PKG-1",
+          "itemName": "Черновой электромонтаж",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 150000,
+          "currency": "RUB",
+          "includes": ["Прокладка сетей без оконечки"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-PKG-2",
+          "itemName": "Сборка электрощита",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 50000,
+          "currency": "RUB",
+          "includes": ["Комплектация и сборка по ГОСТ"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-SUP-1",
+          "itemName": "Поставка: Главные распределительные щиты (ГРЩ)",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-SUP-2",
+          "itemName": "Поставка: УЗО, Дифавтоматы и выключатели",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-SUP-3",
+          "itemName": "Поставка: Кабельно-проводниковая продукция",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-SUP-4",
+          "itemName": "Поставка: Системы заземления и молниезащиты",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "EOM-SUP-5",
+          "itemName": "Поставка: Кабеленесущие системы (КНС: лотки, трубы)",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        }
+      ],
+      "processSteps": [
+        {
+          "stepId": "eom-step-1",
+          "title": "Сбор",
+          "clientAction": "Согласует время доступа на объект и контактное лицо",
+          "contractorAction": "Сбор нагрузок и разработка проекта электроснабжения",
+          "artifact": "Акт обследования",
+          "leadTime": "1-2 дня"
+        },
+        {
+          "stepId": "eom-step-2",
+          "title": "Трассы",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Штробление стен и прокладка лотков/кабельных трасс",
+          "artifact": "КП и договор",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "eom-step-3",
+          "title": "Щиты",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Установка распределительных щитов (ВРУ, ГРЩ, ЩР)",
+          "artifact": "График работ",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "eom-step-4",
+          "title": "Подключение",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Подключение силовых и розеточных групп",
+          "artifact": "Акт ПНР / тесты",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "eom-step-5",
+          "title": "Проверка",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Проверка электротехнической лабораторией (ЭТЛ)",
+          "artifact": "Журнал ТО / рекомендации",
+          "leadTime": "1-3 дня"
+        }
+      ],
+      "aiRules": [
+        {
+          "ruleId": "eom-rule-open",
+          "triggerType": "tray_empty",
+          "messageText": "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
+          "priority": 100
+        },
+        {
+          "ruleId": "eom-rule-stage",
+          "triggerType": "missing_category",
+          "triggerValue": "Этапы проекта",
+          "messageText": "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
+          "priority": 90
+        },
+        {
+          "ruleId": "eom-rule-related-eo",
+          "triggerType": "service_open",
+          "triggerValue": "eo",
+          "messageText": "Проверьте связанную услугу: EO. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 70
+        },
+        {
+          "ruleId": "eom-rule-related-asuz",
+          "triggerType": "service_open",
+          "triggerValue": "asuz",
+          "messageText": "Проверьте связанную услугу: ASUZ. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 69
+        }
+      ],
+      "seoBlock": {
+        "title": "Электроснабжение в Москве | Electromax",
+        "description": "Проектирование, монтаж, пусконаладка. Проверка электролабораторией",
+        "textBlock": "Силовые сети любой сложности. Проект + монтаж + ЭТЛ Проектирование, монтаж, пусконаладка. Проверка электролабораторией Полный цикл: аудит, проектирование, монтаж, обслуживание.",
+        "faq": [
+          {
+            "question": "Нужен ли проект электроснабжения?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое ЭТЛ?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько стоит подключение мощности?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Какой кабель выбрать?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое ВРУ и ГРЩ?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как рассчитать нагрузку?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужно ли заземление?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как часто проверка электросетей?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое ПУЭ?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли модернизировать без остановки?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько времени занимает монтаж?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Какие гарантии на работы?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          }
+        ]
+      }
+    },
+    {
+      "id": "os",
+      "slug": "os",
+      "title": "Охранная сигнализация",
+      "shortName": "OS",
+      "themeColor": "#2563eb",
+      "isActive": true,
+      "sortOrder": 4,
+      "updatedAt": "2026-02-24T21:22:14.743Z",
+      "hero": {
+        "title": "Защита периметра и помещений. Подключение к ПЦН",
+        "subtitle": "Периметральная защита, объёмные датчики, СКУД. Интеграция",
+        "trustFactors": [
+          "Лицензия на охрану",
+          "ПЦН партнёры",
+          "Мгновенное оповещение",
+          "24/7 мониторинг"
+        ],
+        "disclaimer": "Цена ориентировочная, точная после аудита"
+      },
+      "stats": [
+        {
+          "label": "на охрану",
+          "value": "Лицензия",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "партнёры",
+          "value": "ПЦН",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "оповещение",
+          "value": "Мгновенное",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "мониторинг",
+          "value": "24/7",
+          "subValue": "",
+          "isMarketing": true
+        }
+      ],
+      "solutionKits": [
+        {
+          "kitId": "os-kit-audit",
+          "kitName": "Стартовый аудит",
+          "useCase": "Подготовка к запуску работ / проверке",
+          "targetObject": "офис, магазин, склад",
+          "includedItemCodes": ["OS-AUDIT"],
+          "budgetMin": 25000,
+          "budgetMax": 60000,
+          "durationText": "1-3 дня",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "os-kit-modernization",
+          "kitName": "Модернизация участка",
+          "useCase": "Замена критичных узлов без полной остановки",
+          "targetObject": "действующий объект",
+          "includedItemCodes": ["OS-PROJ", "OS-INSTALL"],
+          "budgetMin": 28000,
+          "budgetMax": 84000,
+          "durationText": "3-10 дней",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "os-kit-scale",
+          "kitName": "Расширение и интеграция",
+          "useCase": "Добавление зон, точек, сценариев",
+          "targetObject": "склад / производство",
+          "includedItemCodes": ["OS-PNR", "OS-TO"],
+          "budgetMin": 42000,
+          "budgetMax": 126000,
+          "durationText": "1-4 недели",
+          "ctaLabel": "Добавить в проект"
+        }
+      ],
+      "catalogItems": [
+        {
+          "itemCode": "OS-AUDIT",
+          "itemName": "Аудит объекта",
+          "category": "Этапы проекта",
+          "unit": "выезд",
+          "priceType": "from",
+          "priceMin": 12000,
+          "currency": "RUB",
+          "includes": [
+            "Акт обследования и перечень замечаний",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-PROJ",
+          "itemName": "Проектирование / ТЗ",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 25000,
+          "currency": "RUB",
+          "includes": ["Подготовка проектных решений", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-INSTALL",
+          "itemName": "Монтаж / внедрение",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 45000,
+          "currency": "RUB",
+          "includes": [
+            "Исполнение по согласованному объему",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-PNR",
+          "itemName": "Пусконаладка / тестирование",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 18000,
+          "currency": "RUB",
+          "includes": ["Проверка сценариев и сдача", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-DOC",
+          "itemName": "Исполнительная документация",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 10000,
+          "currency": "RUB",
+          "includes": ["Комплект актов и схем", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-TO",
+          "itemName": "Техническое обслуживание",
+          "category": "Этапы проекта",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 5000,
+          "currency": "RUB",
+          "includes": [
+            "Регламентные работы по графику",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-PKG-1",
+          "itemName": "Беспроводной GSM-комплект",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 25000,
+          "currency": "RUB",
+          "includes": ["Быстрый монтаж без проводов"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-PKG-2",
+          "itemName": "Рубежи охраны",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 350000,
+          "currency": "RUB",
+          "includes": ["Проводная система для средних объектов"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-SUP-1",
+          "itemName": "Поставка: Инфракрасные извещатели движения",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-SUP-2",
+          "itemName": "Поставка: Магнитоконтактные датчики (на открытие)",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-SUP-3",
+          "itemName": "Поставка: Датчики разбития стекла",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-SUP-4",
+          "itemName": "Поставка: Вибрационные датчики периметра",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "OS-SUP-5",
+          "itemName": "Поставка: GSM/Ethernet коммуникаторы",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        }
+      ],
+      "processSteps": [
+        {
+          "stepId": "os-step-1",
+          "title": "Оценка",
+          "clientAction": "Согласует время доступа на объект и контактное лицо",
+          "contractorAction": "Оценка уязвимости объекта",
+          "artifact": "Акт обследования",
+          "leadTime": "1-2 дня"
+        },
+        {
+          "stepId": "os-step-2",
+          "title": "Проектирование",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Проектирование рубежей охраны",
+          "artifact": "КП и договор",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "os-step-3",
+          "title": "Установка",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Установка извещателей и контрольных панелей",
+          "artifact": "График работ",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "os-step-4",
+          "title": "Интеграция",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Интеграция с системой видеонаблюдения (СОТ)",
+          "artifact": "Акт ПНР / тесты",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "os-step-5",
+          "title": "Сдача",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Сдача на пульт централизованной охраны (ПЦО)",
+          "artifact": "Журнал ТО / рекомендации",
+          "leadTime": "1-3 дня"
+        }
+      ],
+      "aiRules": [
+        {
+          "ruleId": "os-rule-open",
+          "triggerType": "tray_empty",
+          "messageText": "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
+          "priority": 100
+        },
+        {
+          "ruleId": "os-rule-stage",
+          "triggerType": "missing_category",
+          "triggerValue": "Этапы проекта",
+          "messageText": "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
+          "priority": 90
+        },
+        {
+          "ruleId": "os-rule-related-sot",
+          "triggerType": "service_open",
+          "triggerValue": "sot",
+          "messageText": "Проверьте связанную услугу: SOT. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 70
+        },
+        {
+          "ruleId": "os-rule-related-skud",
+          "triggerType": "service_open",
+          "triggerValue": "skud",
+          "messageText": "Проверьте связанную услугу: SKUD. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 69
+        }
+      ],
+      "seoBlock": {
+        "title": "Охранная сигнализация в Москве | Electromax",
+        "description": "Периметральная защита, объёмные датчики, СКУД. Интеграция",
+        "textBlock": "Защита периметра и помещений. Подключение к ПЦН Периметральная защита, объёмные датчики, СКУД. Интеграция Полный цикл: аудит, проектирование, монтаж, обслуживание.",
+        "faq": [
+          {
+            "question": "Что такое ПЦН?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как работает охрана периметра?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Какие датчики лучше?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли без проводов?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как защитить от ложных срабатываний?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужна ли лицензия?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько стоит подключение к пульту?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что делать при срабатывании?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли управлять со смартфона?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как интегрировать с видеонаблюдением?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что при отключении электричества?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужно ли ТО?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sks",
+      "slug": "sks",
+      "title": "Структурированные кабельные системы",
+      "shortName": "SKS",
+      "themeColor": "#2563eb",
+      "isActive": true,
+      "sortOrder": 5,
+      "updatedAt": "2026-02-24T21:22:14.744Z",
+      "hero": {
+        "title": "СКС под ключ. Гарантия 25 лет. Тестирование Fluke",
+        "subtitle": "Витая пара, оптоволокно, серверные шкафы. Маркировка",
+        "trustFactors": [
+          "25 лет гарантия",
+          "Fluke тестирование",
+          "Cat.6A сертификация",
+          "800+ портов"
+        ],
+        "disclaimer": "Цена ориентировочная, точная после аудита"
+      },
+      "stats": [
+        {
+          "label": "гарантия",
+          "value": "25 лет",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "тестирование",
+          "value": "Fluke",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "сертификация",
+          "value": "Cat.6A",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "портов",
+          "value": "800+",
+          "subValue": "",
+          "isMarketing": true
+        }
+      ],
+      "solutionKits": [
+        {
+          "kitId": "sks-kit-audit",
+          "kitName": "Стартовый аудит",
+          "useCase": "Подготовка к запуску работ / проверке",
+          "targetObject": "офис, магазин, склад",
+          "includedItemCodes": ["SKS-AUDIT"],
+          "budgetMin": 120000,
+          "budgetMax": 360000,
+          "durationText": "1-3 дня",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "sks-kit-modernization",
+          "kitName": "Модернизация участка",
+          "useCase": "Замена критичных узлов без полной остановки",
+          "targetObject": "действующий объект",
+          "includedItemCodes": ["SKS-PROJ", "SKS-INSTALL"],
+          "budgetMin": 240000,
+          "budgetMax": 720000,
+          "durationText": "3-10 дней",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "sks-kit-scale",
+          "kitName": "Расширение и интеграция",
+          "useCase": "Добавление зон, точек, сценариев",
+          "targetObject": "склад / производство",
+          "includedItemCodes": ["SKS-PNR", "SKS-TO"],
+          "budgetMin": 360000,
+          "budgetMax": 1080000,
+          "durationText": "1-4 недели",
+          "ctaLabel": "Добавить в проект"
+        }
+      ],
+      "catalogItems": [
+        {
+          "itemCode": "SKS-AUDIT",
+          "itemName": "Аудит объекта",
+          "category": "Этапы проекта",
+          "unit": "выезд",
+          "priceType": "from",
+          "priceMin": 60000,
+          "currency": "RUB",
+          "includes": [
+            "Акт обследования и перечень замечаний",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-PROJ",
+          "itemName": "Проектирование / ТЗ",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 180000,
+          "currency": "RUB",
+          "includes": ["Подготовка проектных решений", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-INSTALL",
+          "itemName": "Монтаж / внедрение",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 300000,
+          "currency": "RUB",
+          "includes": [
+            "Исполнение по согласованному объему",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-PNR",
+          "itemName": "Пусконаладка / тестирование",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 105000,
+          "currency": "RUB",
+          "includes": ["Проверка сценариев и сдача", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-DOC",
+          "itemName": "Исполнительная документация",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 60000,
+          "currency": "RUB",
+          "includes": ["Комплект актов и схем", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-TO",
+          "itemName": "Техническое обслуживание",
+          "category": "Этапы проекта",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 30000,
+          "currency": "RUB",
+          "includes": [
+            "Регламентные работы по графику",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-PKG-1",
+          "itemName": "Офис до 20 мест",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 60000,
+          "currency": "RUB",
+          "includes": ["Базовый монтаж рабочих мест"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-PKG-2",
+          "itemName": "Склад Wi-Fi",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 150000,
+          "currency": "RUB",
+          "includes": ["Покрытие склада бесшовным Wi-Fi"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-PKG-3",
+          "itemName": "Сертификация",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 15000,
+          "currency": "RUB",
+          "includes": ["Тестирование профессиональным сканером"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-SUP-1",
+          "itemName": "Поставка: Витая пара (Cat 5e, 6, 6a)",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-SUP-2",
+          "itemName": "Поставка: Оптический кабель под магистрали",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-SUP-3",
+          "itemName": "Поставка: Серверные шкафы",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-SUP-4",
+          "itemName": "Поставка: Патч-панели и органайзеры",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKS-SUP-5",
+          "itemName": "Поставка: Информационные розетки (RJ-45)",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        }
+      ],
+      "processSteps": [
+        {
+          "stepId": "sks-step-1",
+          "title": "Проектирование",
+          "clientAction": "Согласует время доступа на объект и контактное лицо",
+          "contractorAction": "Разработка кабельных журналов и планов",
+          "artifact": "Акт обследования",
+          "leadTime": "1-2 дня"
+        },
+        {
+          "stepId": "sks-step-2",
+          "title": "Трассы",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Прокладка лотков и трубной канализации",
+          "artifact": "КП и договор",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "sks-step-3",
+          "title": "Протяжка",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Протяжка медных и оптических кабелей",
+          "artifact": "График работ",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "sks-step-4",
+          "title": "Расшивка",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Расшивка розеток и патч-панелей в шкафах",
+          "artifact": "Акт ПНР / тесты",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "sks-step-5",
+          "title": "Тестирование",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Тестирование и сертификация сети",
+          "artifact": "Журнал ТО / рекомендации",
+          "leadTime": "1-3 дня"
+        }
+      ],
+      "aiRules": [
+        {
+          "ruleId": "sks-rule-open",
+          "triggerType": "tray_empty",
+          "messageText": "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
+          "priority": 100
+        },
+        {
+          "ruleId": "sks-rule-stage",
+          "triggerType": "missing_category",
+          "triggerValue": "Этапы проекта",
+          "messageText": "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
+          "priority": 90
+        },
+        {
+          "ruleId": "sks-rule-related-sot",
+          "triggerType": "service_open",
+          "triggerValue": "sot",
+          "messageText": "Проверьте связанную услугу: SOT. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 70
+        },
+        {
+          "ruleId": "sks-rule-related-skud",
+          "triggerType": "service_open",
+          "triggerValue": "skud",
+          "messageText": "Проверьте связанную услугу: SKUD. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 69
+        }
+      ],
+      "seoBlock": {
+        "title": "Структурированные кабельные системы в Москве | Electromax",
+        "description": "Витая пара, оптоволокно, серверные шкафы. Маркировка",
+        "textBlock": "СКС под ключ. Гарантия 25 лет. Тестирование Fluke Витая пара, оптоволокно, серверные шкафы. Маркировка Полный цикл: аудит, проектирование, монтаж, обслуживание.",
+        "faq": [
+          {
+            "question": "Что такое СКС?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Cat.5e или Cat.6A?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужен ли проект СКС?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как маркировать кабель?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое кроссовая?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько служит СКС?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как тестировать Fluke?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли модернизировать?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое рабочее место?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько стоит порт?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужен ли серверный шкаф?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как организовать Wi-Fi?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          }
+        ]
+      }
+    },
+    {
+      "id": "skud",
+      "slug": "skud",
+      "title": "Системы контроля доступа",
+      "shortName": "SKUD",
+      "themeColor": "#2563eb",
+      "isActive": true,
+      "sortOrder": 6,
+      "updatedAt": "2026-02-24T21:22:14.744Z",
+      "hero": {
+        "title": "СКУД с Face ID. Интеграция с 1С:ЗУП",
+        "subtitle": "Распознавание лиц, отпечаток, RFID. Антитеррор",
+        "trustFactors": [
+          "Face ID биометрия",
+          "1С:ЗУП интеграция",
+          "5000+ сотрудников",
+          "24/7 контроль"
+        ],
+        "disclaimer": "Цена ориентировочная, точная после аудита"
+      },
+      "stats": [
+        {
+          "label": "биометрия",
+          "value": "Face ID",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "интеграция",
+          "value": "1С:ЗУП",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "сотрудников",
+          "value": "5000+",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "контроль",
+          "value": "24/7",
+          "subValue": "",
+          "isMarketing": true
+        }
+      ],
+      "solutionKits": [
+        {
+          "kitId": "skud-kit-audit",
+          "kitName": "Стартовый аудит",
+          "useCase": "Подготовка к запуску работ / проверке",
+          "targetObject": "офис, магазин, склад",
+          "includedItemCodes": ["SKUD-AUDIT"],
+          "budgetMin": 600000,
+          "budgetMax": 1800000,
+          "durationText": "1-3 дня",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "skud-kit-modernization",
+          "kitName": "Модернизация участка",
+          "useCase": "Замена критичных узлов без полной остановки",
+          "targetObject": "действующий объект",
+          "includedItemCodes": ["SKUD-PROJ", "SKUD-INSTALL"],
+          "budgetMin": 1200000,
+          "budgetMax": 3600000,
+          "durationText": "3-10 дней",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "skud-kit-scale",
+          "kitName": "Расширение и интеграция",
+          "useCase": "Добавление зон, точек, сценариев",
+          "targetObject": "склад / производство",
+          "includedItemCodes": ["SKUD-PNR", "SKUD-TO"],
+          "budgetMin": 1800000,
+          "budgetMax": 5400000,
+          "durationText": "1-4 недели",
+          "ctaLabel": "Добавить в проект"
+        }
+      ],
+      "catalogItems": [
+        {
+          "itemCode": "SKUD-AUDIT",
+          "itemName": "Аудит объекта",
+          "category": "Этапы проекта",
+          "unit": "выезд",
+          "priceType": "from",
+          "priceMin": 300000,
+          "currency": "RUB",
+          "includes": [
+            "Акт обследования и перечень замечаний",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-PROJ",
+          "itemName": "Проектирование / ТЗ",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 900000,
+          "currency": "RUB",
+          "includes": ["Подготовка проектных решений", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-INSTALL",
+          "itemName": "Монтаж / внедрение",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 1500000,
+          "currency": "RUB",
+          "includes": [
+            "Исполнение по согласованному объему",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-PNR",
+          "itemName": "Пусконаладка / тестирование",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 525000,
+          "currency": "RUB",
+          "includes": ["Проверка сценариев и сдача", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-DOC",
+          "itemName": "Исполнительная документация",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 300000,
+          "currency": "RUB",
+          "includes": ["Комплект актов и схем", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-TO",
+          "itemName": "Техническое обслуживание",
+          "category": "Этапы проекта",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 150000,
+          "currency": "RUB",
+          "includes": [
+            "Регламентные работы по графику",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-PKG-1",
+          "itemName": "Одна дверь",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 15000,
+          "currency": "RUB",
+          "includes": ["Контроллер + замок + считыватель"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-PKG-2",
+          "itemName": "Проходная с турникетом",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 70000,
+          "currency": "RUB",
+          "includes": ["Электронная проходная 'под ключ'"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-SUP-1",
+          "itemName": "Поставка: Турникеты (триподы, роторные)",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-SUP-2",
+          "itemName": "Поставка: Электромагнитные и электромеханические замки",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-SUP-3",
+          "itemName": "Поставка: Биометрические терминалы",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-SUP-4",
+          "itemName": "Поставка: Сетевые контроллеры и RFID",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SKUD-SUP-5",
+          "itemName": "Поставка: Программное обеспечение СКУД",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        }
+      ],
+      "processSteps": [
+        {
+          "stepId": "skud-step-1",
+          "title": "Осмотр",
+          "clientAction": "Согласует время доступа на объект и контактное лицо",
+          "contractorAction": "Осмотр точек прохода (двери, проходные)",
+          "artifact": "Акт обследования",
+          "leadTime": "1-2 дня"
+        },
+        {
+          "stepId": "skud-step-2",
+          "title": "Подбор",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Подбор турникетов, считывателей и контроллеров",
+          "artifact": "КП и договор",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "skud-step-3",
+          "title": "Монтаж",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Монтаж оборудования и прокладка кабельных трасс",
+          "artifact": "График работ",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "skud-step-4",
+          "title": "Развертывание",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Развертывание и настройка базы данных сотрудников",
+          "artifact": "Акт ПНР / тесты",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "skud-step-5",
+          "title": "Интеграция",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Интеграция с АПС для разблокировки при пожаре",
+          "artifact": "Журнал ТО / рекомендации",
+          "leadTime": "1-3 дня"
+        }
+      ],
+      "aiRules": [
+        {
+          "ruleId": "skud-rule-open",
+          "triggerType": "tray_empty",
+          "messageText": "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
+          "priority": 100
+        },
+        {
+          "ruleId": "skud-rule-stage",
+          "triggerType": "missing_category",
+          "triggerValue": "Этапы проекта",
+          "messageText": "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
+          "priority": 90
+        },
+        {
+          "ruleId": "skud-rule-related-aps",
+          "triggerType": "service_open",
+          "triggerValue": "aps",
+          "messageText": "Проверьте связанную услугу: APS. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 70
+        },
+        {
+          "ruleId": "skud-rule-related-os",
+          "triggerType": "service_open",
+          "triggerValue": "os",
+          "messageText": "Проверьте связанную услугу: OS. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 69
+        }
+      ],
+      "seoBlock": {
+        "title": "Системы контроля доступа в Москве | Electromax",
+        "description": "Распознавание лиц, отпечаток, RFID. Антитеррор",
+        "textBlock": "СКУД с Face ID. Интеграция с 1С:ЗУП Распознавание лиц, отпечаток, RFID. Антитеррор Полный цикл: аудит, проектирование, монтаж, обслуживание.",
+        "faq": [
+          {
+            "question": "Что лучше: карта или Face ID?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как интегрировать с 1С?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько стоит турникет?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли без проводов?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как учитывать рабочее время?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что при отключении электричества?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как добавить сотрудника?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужен ли сервер?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое антитеррор?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как разблокировать при пожаре?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли удалённо управлять?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько хранить архив?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sot",
+      "slug": "sot",
+      "title": "Видеонаблюдение",
+      "shortName": "SOT",
+      "themeColor": "#2563eb",
+      "isActive": true,
+      "sortOrder": 7,
+      "updatedAt": "2026-02-24T21:22:14.745Z",
+      "hero": {
+        "title": "Видеонаблюдение 4K. AI аналитика. Облако",
+        "subtitle": "Hikvision, Dahua, Trassir. Сертифицированный монтаж",
+        "trustFactors": ["4K разрешение", "AI аналитика", "24/7 доступ", "30+ дней архив"],
+        "disclaimer": "Цена ориентировочная, точная после аудита"
+      },
+      "stats": [
+        {
+          "label": "разрешение",
+          "value": "4K",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "аналитика",
+          "value": "AI",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "доступ",
+          "value": "24/7",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "дней архив",
+          "value": "30+",
+          "subValue": "",
+          "isMarketing": true
+        }
+      ],
+      "solutionKits": [
+        {
+          "kitId": "sot-kit-audit",
+          "kitName": "Стартовый аудит",
+          "useCase": "Подготовка к запуску работ / проверке",
+          "targetObject": "офис, магазин, склад",
+          "includedItemCodes": ["SOT-AUDIT"],
+          "budgetMin": 25000,
+          "budgetMax": 72000,
+          "durationText": "1-3 дня",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "sot-kit-modernization",
+          "kitName": "Модернизация участка",
+          "useCase": "Замена критичных узлов без полной остановки",
+          "targetObject": "действующий объект",
+          "includedItemCodes": ["SOT-PROJ", "SOT-INSTALL"],
+          "budgetMin": 48000,
+          "budgetMax": 144000,
+          "durationText": "3-10 дней",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "sot-kit-scale",
+          "kitName": "Расширение и интеграция",
+          "useCase": "Добавление зон, точек, сценариев",
+          "targetObject": "склад / производство",
+          "includedItemCodes": ["SOT-PNR", "SOT-TO"],
+          "budgetMin": 72000,
+          "budgetMax": 216000,
+          "durationText": "1-4 недели",
+          "ctaLabel": "Добавить в проект"
+        }
+      ],
+      "catalogItems": [
+        {
+          "itemCode": "SOT-AUDIT",
+          "itemName": "Аудит объекта",
+          "category": "Этапы проекта",
+          "unit": "выезд",
+          "priceType": "from",
+          "priceMin": 12000,
+          "currency": "RUB",
+          "includes": [
+            "Акт обследования и перечень замечаний",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-PROJ",
+          "itemName": "Проектирование / ТЗ",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 36000,
+          "currency": "RUB",
+          "includes": ["Подготовка проектных решений", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-INSTALL",
+          "itemName": "Монтаж / внедрение",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 60000,
+          "currency": "RUB",
+          "includes": [
+            "Исполнение по согласованному объему",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-PNR",
+          "itemName": "Пусконаладка / тестирование",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 21000,
+          "currency": "RUB",
+          "includes": ["Проверка сценариев и сдача", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-DOC",
+          "itemName": "Исполнительная документация",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 12000,
+          "currency": "RUB",
+          "includes": ["Комплект актов и схем", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-TO",
+          "itemName": "Техническое обслуживание",
+          "category": "Этапы проекта",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 6000,
+          "currency": "RUB",
+          "includes": [
+            "Регламентные работы по графику",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-PKG-1",
+          "itemName": "Малый офис",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 45000,
+          "currency": "RUB",
+          "includes": ["До 4 камер + регистратор"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-PKG-2",
+          "itemName": "Производство",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 600000,
+          "currency": "RUB",
+          "includes": ["Комплексная система с видеоаналитикой"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-SUP-1",
+          "itemName": "Поставка: Купольные и цилиндрические IP-камеры",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-SUP-2",
+          "itemName": "Поставка: Поворотные скоростные камеры (PTZ)",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-SUP-3",
+          "itemName": "Поставка: Сетевые видеорегистраторы (NVR)",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-SUP-4",
+          "itemName": "Поставка: Жесткие диски для RAID-массивов",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOT-SUP-5",
+          "itemName": "Поставка: PoE-коммутаторы и кабельная система",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        }
+      ],
+      "processSteps": [
+        {
+          "stepId": "sot-step-1",
+          "title": "Осмотр",
+          "clientAction": "Согласует время доступа на объект и контактное лицо",
+          "contractorAction": "Осмотр объекта и определение зон покрытия",
+          "artifact": "Акт обследования",
+          "leadTime": "1-2 дня"
+        },
+        {
+          "stepId": "sot-step-2",
+          "title": "Подбор",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Подбор камер (IP, PTZ) и расчет архива (NVR)",
+          "artifact": "КП и договор",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "sot-step-3",
+          "title": "Монтаж",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Монтаж кабельных трасс и установка камер",
+          "artifact": "График работ",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "sot-step-4",
+          "title": "Настройка",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Настройка серверов и программного обеспечения",
+          "artifact": "Акт ПНР / тесты",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "sot-step-5",
+          "title": "Обучение",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Обучение персонала заказчика",
+          "artifact": "Журнал ТО / рекомендации",
+          "leadTime": "1-3 дня"
+        }
+      ],
+      "aiRules": [
+        {
+          "ruleId": "sot-rule-open",
+          "triggerType": "tray_empty",
+          "messageText": "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
+          "priority": 100
+        },
+        {
+          "ruleId": "sot-rule-stage",
+          "triggerType": "missing_category",
+          "triggerValue": "Этапы проекта",
+          "messageText": "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
+          "priority": 90
+        },
+        {
+          "ruleId": "sot-rule-related-os",
+          "triggerType": "service_open",
+          "triggerValue": "os",
+          "messageText": "Проверьте связанную услугу: OS. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 70
+        },
+        {
+          "ruleId": "sot-rule-related-sks",
+          "triggerType": "service_open",
+          "triggerValue": "sks",
+          "messageText": "Проверьте связанную услугу: SKS. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 69
+        }
+      ],
+      "seoBlock": {
+        "title": "Видеонаблюдение в Москве | Electromax",
+        "description": "Hikvision, Dahua, Trassir. Сертифицированный монтаж",
+        "textBlock": "Видеонаблюдение 4K. AI аналитика. Облако Hikvision, Dahua, Trassir. Сертифицированный монтаж Полный цикл: аудит, проектирование, монтаж, обслуживание.",
+        "faq": [
+          {
+            "question": "IP или аналоговое?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько хранить архив?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое PTZ камера?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как работает распознавание лиц?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли смотреть с телефона?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужен ли сервер?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как защитить от взлома?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько служит камера?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое PoE?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как рассчитать угол обзора?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое ИК подсветка?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужна ли лицензия?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          }
+        ]
+      }
+    },
+    {
+      "id": "soue",
+      "slug": "soue",
+      "title": "Система оповещения",
+      "shortName": "SOUE",
+      "themeColor": "#2563eb",
+      "isActive": true,
+      "sortOrder": 8,
+      "updatedAt": "2026-02-24T21:22:14.745Z",
+      "hero": {
+        "title": "Речевое оповещение 1-5 типа. Акустический расчёт",
+        "subtitle": "Громкоговорители, усилители, блоки управления. Монтаж",
+        "trustFactors": [
+          "ГОСТ соответствие",
+          "МЧС сертификация",
+          "Акустический расчёт",
+          "5 типов СОУЭ"
+        ],
+        "disclaimer": "Цена ориентировочная, точная после аудита"
+      },
+      "stats": [
+        {
+          "label": "соответствие",
+          "value": "ГОСТ",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "сертификация",
+          "value": "МЧС",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "расчёт",
+          "value": "Акустический",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "СОУЭ",
+          "value": "5 типов",
+          "subValue": "",
+          "isMarketing": true
+        }
+      ],
+      "solutionKits": [
+        {
+          "kitId": "soue-kit-audit",
+          "kitName": "Стартовый аудит",
+          "useCase": "Подготовка к запуску работ / проверке",
+          "targetObject": "офис, магазин, склад",
+          "includedItemCodes": ["SOUE-AUDIT"],
+          "budgetMin": 25000,
+          "budgetMax": 60000,
+          "durationText": "1-3 дня",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "soue-kit-modernization",
+          "kitName": "Модернизация участка",
+          "useCase": "Замена критичных узлов без полной остановки",
+          "targetObject": "действующий объект",
+          "includedItemCodes": ["SOUE-PROJ", "SOUE-INSTALL"],
+          "budgetMin": 25000,
+          "budgetMax": 60000,
+          "durationText": "3-10 дней",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "soue-kit-scale",
+          "kitName": "Расширение и интеграция",
+          "useCase": "Добавление зон, точек, сценариев",
+          "targetObject": "склад / производство",
+          "includedItemCodes": ["SOUE-PNR", "SOUE-TO"],
+          "budgetMin": 30000,
+          "budgetMax": 90000,
+          "durationText": "1-4 недели",
+          "ctaLabel": "Добавить в проект"
+        }
+      ],
+      "catalogItems": [
+        {
+          "itemCode": "SOUE-AUDIT",
+          "itemName": "Аудит объекта",
+          "category": "Этапы проекта",
+          "unit": "выезд",
+          "priceType": "from",
+          "priceMin": 12000,
+          "currency": "RUB",
+          "includes": [
+            "Акт обследования и перечень замечаний",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-PROJ",
+          "itemName": "Проектирование / ТЗ",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 25000,
+          "currency": "RUB",
+          "includes": ["Подготовка проектных решений", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-INSTALL",
+          "itemName": "Монтаж / внедрение",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 45000,
+          "currency": "RUB",
+          "includes": [
+            "Исполнение по согласованному объему",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-PNR",
+          "itemName": "Пусконаладка / тестирование",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 18000,
+          "currency": "RUB",
+          "includes": ["Проверка сценариев и сдача", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-DOC",
+          "itemName": "Исполнительная документация",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 10000,
+          "currency": "RUB",
+          "includes": ["Комплект актов и схем", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-TO",
+          "itemName": "Техническое обслуживание",
+          "category": "Этапы проекта",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 5000,
+          "currency": "RUB",
+          "includes": [
+            "Регламентные работы по графику",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-PKG-1",
+          "itemName": "Проектирование",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 20000,
+          "currency": "RUB",
+          "includes": ["Расчет акустики и расстановка оборудования"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-PKG-2",
+          "itemName": "Полный монтаж",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 50000,
+          "currency": "RUB",
+          "includes": ["Под ключ для магазинов и офисов"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-SUP-1",
+          "itemName": "Поставка: Речевые оповещатели",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-SUP-2",
+          "itemName": "Поставка: Звуковые сирены и световые табло",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-SUP-3",
+          "itemName": "Поставка: Усилители мощности и микшеры",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-SUP-4",
+          "itemName": "Поставка: Блоки централизованного управления",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "SOUE-SUP-5",
+          "itemName": "Поставка: Микрофонные консоли диспетчера",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        }
+      ],
+      "processSteps": [
+        {
+          "stepId": "soue-step-1",
+          "title": "Моделирование",
+          "clientAction": "Согласует время доступа на объект и контактное лицо",
+          "contractorAction": "Акустическое моделирование и расчет",
+          "artifact": "Акт обследования",
+          "leadTime": "1-2 дня"
+        },
+        {
+          "stepId": "soue-step-2",
+          "title": "Проектирование",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Подбор оборудования и проектирование",
+          "artifact": "КП и договор",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "soue-step-3",
+          "title": "Монтаж",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Прокладка линий и установка оповещателей",
+          "artifact": "График работ",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "soue-step-4",
+          "title": "Настройка",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Настройка контроллеров и усилителей",
+          "artifact": "Акт ПНР / тесты",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "soue-step-5",
+          "title": "Тестирование",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Тестирование сценариев эвакуации",
+          "artifact": "Журнал ТО / рекомендации",
+          "leadTime": "1-3 дня"
+        }
+      ],
+      "aiRules": [
+        {
+          "ruleId": "soue-rule-open",
+          "triggerType": "tray_empty",
+          "messageText": "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
+          "priority": 100
+        },
+        {
+          "ruleId": "soue-rule-stage",
+          "triggerType": "missing_category",
+          "triggerValue": "Этапы проекта",
+          "messageText": "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
+          "priority": 90
+        },
+        {
+          "ruleId": "soue-rule-related-aps",
+          "triggerType": "service_open",
+          "triggerValue": "aps",
+          "messageText": "Проверьте связанную услугу: APS. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 70
+        },
+        {
+          "ruleId": "soue-rule-related-to",
+          "triggerType": "service_open",
+          "triggerValue": "to",
+          "messageText": "Проверьте связанную услугу: TO. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 69
+        }
+      ],
+      "seoBlock": {
+        "title": "Система оповещения в Москве | Electromax",
+        "description": "Громкоговорители, усилители, блоки управления. Монтаж",
+        "textBlock": "Речевое оповещение 1-5 типа. Акустический расчёт Громкоговорители, усилители, блоки управления. Монтаж Полный цикл: аудит, проектирование, монтаж, обслуживание.",
+        "faq": [
+          {
+            "question": "Какой тип СОУЭ нужен?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое речевое оповещение?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужен ли акустический расчёт?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как зонировать оповещение?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что при пожаре?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как интегрировать с АПС?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько громкоговорителей?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужно ли ТО?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое световое табло?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как проверить систему?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли без проекта?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько стоит обслуживание?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          }
+        ]
+      }
+    },
+    {
+      "id": "to",
+      "slug": "to",
+      "title": "Техническое обслуживание",
+      "shortName": "TO",
+      "themeColor": "#2563eb",
+      "isActive": true,
+      "sortOrder": 9,
+      "updatedAt": "2026-02-24T21:22:14.746Z",
+      "hero": {
+        "title": "ТО всех систем безопасности. SLA 24/7",
+        "subtitle": "Плановое ТО, аварийные выезды, запчасти. Комплексно",
+        "trustFactors": [
+          "SLA 24/7 Показатель",
+          "Первый месяц бесплатно",
+          "Гарантия работ",
+          "Все системы Показатель"
+        ],
+        "disclaimer": "Цена ориентировочная, точная после аудита"
+      },
+      "stats": [
+        {
+          "label": "Показатель",
+          "value": "SLA 24/7",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "бесплатно",
+          "value": "Первый месяц",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "работ",
+          "value": "Гарантия",
+          "subValue": "",
+          "isMarketing": true
+        },
+        {
+          "label": "Показатель",
+          "value": "Все системы",
+          "subValue": "",
+          "isMarketing": true
+        }
+      ],
+      "solutionKits": [
+        {
+          "kitId": "to-kit-audit",
+          "kitName": "Стартовый аудит",
+          "useCase": "Подготовка к запуску работ / проверке",
+          "targetObject": "офис, магазин, склад",
+          "includedItemCodes": ["TO-AUDIT"],
+          "budgetMin": 25000,
+          "budgetMax": 60000,
+          "durationText": "1-3 дня",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "to-kit-modernization",
+          "kitName": "Модернизация участка",
+          "useCase": "Замена критичных узлов без полной остановки",
+          "targetObject": "действующий объект",
+          "includedItemCodes": ["TO-PROJ", "TO-INSTALL"],
+          "budgetMin": 25000,
+          "budgetMax": 60000,
+          "durationText": "3-10 дней",
+          "ctaLabel": "Добавить в проект"
+        },
+        {
+          "kitId": "to-kit-scale",
+          "kitName": "Расширение и интеграция",
+          "useCase": "Добавление зон, точек, сценариев",
+          "targetObject": "склад / производство",
+          "includedItemCodes": ["TO-PNR", "TO-AUDIT", "TO-PROJ"],
+          "budgetMin": 25000,
+          "budgetMax": 60000,
+          "durationText": "1-4 недели",
+          "ctaLabel": "Добавить в проект"
+        }
+      ],
+      "catalogItems": [
+        {
+          "itemCode": "TO-AUDIT",
+          "itemName": "Аудит объекта",
+          "category": "Этапы проекта",
+          "unit": "выезд",
+          "priceType": "from",
+          "priceMin": 12000,
+          "currency": "RUB",
+          "includes": [
+            "Акт обследования и перечень замечаний",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-PROJ",
+          "itemName": "Проектирование / ТЗ",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 25000,
+          "currency": "RUB",
+          "includes": ["Подготовка проектных решений", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-INSTALL",
+          "itemName": "Монтаж / внедрение",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 45000,
+          "currency": "RUB",
+          "includes": [
+            "Исполнение по согласованному объему",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-PNR",
+          "itemName": "Пусконаладка / тестирование",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 18000,
+          "currency": "RUB",
+          "includes": ["Проверка сценариев и сдача", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-DOC",
+          "itemName": "Исполнительная документация",
+          "category": "Этапы проекта",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 10000,
+          "currency": "RUB",
+          "includes": ["Комплект актов и схем", "Координация с ответственным от заказчика"],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-TO",
+          "itemName": "Техническое обслуживание",
+          "category": "Этапы проекта",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 5000,
+          "currency": "RUB",
+          "includes": [
+            "Регламентные работы по графику",
+            "Координация с ответственным от заказчика"
+          ],
+          "excludes": ["Материалы и оборудование", "если не указаны в КП"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-PKG-1",
+          "itemName": "Ежемесячное ТО",
+          "category": "Готовые работы",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 9000,
+          "currency": "RUB",
+          "includes": ["Плановые регламентные работы"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-PKG-2",
+          "itemName": "Расширенное SLA",
+          "category": "Готовые работы",
+          "unit": "мес",
+          "priceType": "from",
+          "priceMin": 25000,
+          "currency": "RUB",
+          "includes": ["Приоритетный выезд и аварийные вызовы"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-PKG-3",
+          "itemName": "Разовый аудит состояния",
+          "category": "Готовые работы",
+          "unit": "проект",
+          "priceType": "from",
+          "priceMin": 30000,
+          "currency": "RUB",
+          "includes": ["Чек-лист", "риски", "план восстановления"],
+          "excludes": ["Точная спецификация после аудита/ТЗ"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-SUP-1",
+          "itemName": "Поставка: Контрольные приборы и панели",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-SUP-2",
+          "itemName": "Поставка: Линии связи и питания",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-SUP-3",
+          "itemName": "Поставка: Периферийные датчики и оповещатели",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-SUP-4",
+          "itemName": "Поставка: Запорная и исполнительная арматура (по системам)",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        },
+        {
+          "itemCode": "TO-SUP-5",
+          "itemName": "Поставка: Журналы и исполнительная документация",
+          "category": "Поставка и комплектующие",
+          "unit": "шт",
+          "priceType": "request",
+          "priceMin": 0,
+          "currency": "RUB",
+          "includes": ["Подбор аналога/бренда", "Проверка совместимости с проектом"],
+          "excludes": ["Монтаж и ПНР", "если не добавлены отдельно"],
+          "addToProjectDefaultQty": 1
+        }
+      ],
+      "processSteps": [
+        {
+          "stepId": "to-step-1",
+          "title": "Приемка",
+          "clientAction": "Согласует время доступа на объект и контактное лицо",
+          "contractorAction": "Аудит состояния и сбор документации",
+          "artifact": "Акт обследования",
+          "leadTime": "1-2 дня"
+        },
+        {
+          "stepId": "to-step-2",
+          "title": "Регламент",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Формирование графика ТО и SLA",
+          "artifact": "КП и договор",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "to-step-3",
+          "title": "Плановые работы",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Проверка, тестирование, профилактика",
+          "artifact": "График работ",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "to-step-4",
+          "title": "Аварийное реагирование",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Выезд, локализация и восстановление",
+          "artifact": "Акт ПНР / тесты",
+          "leadTime": "по графику"
+        },
+        {
+          "stepId": "to-step-5",
+          "title": "Отчетность",
+          "clientAction": "Подтверждает решения, доступ и окна работ",
+          "contractorAction": "Журнал работ и рекомендации",
+          "artifact": "Журнал ТО / рекомендации",
+          "leadTime": "1-3 дня"
+        }
+      ],
+      "aiRules": [
+        {
+          "ruleId": "to-rule-open",
+          "triggerType": "tray_empty",
+          "messageText": "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
+          "priority": 100
+        },
+        {
+          "ruleId": "to-rule-stage",
+          "triggerType": "missing_category",
+          "triggerValue": "Этапы проекта",
+          "messageText": "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
+          "priority": 90
+        },
+        {
+          "ruleId": "to-rule-related-aps",
+          "triggerType": "service_open",
+          "triggerValue": "aps",
+          "messageText": "Проверьте связанную услугу: APS. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 70
+        },
+        {
+          "ruleId": "to-rule-related-soue",
+          "triggerType": "service_open",
+          "triggerValue": "soue",
+          "messageText": "Проверьте связанную услугу: SOUE. Она часто влияет на объем, сроки или сдачу проекта.",
+          "priority": 69
+        }
+      ],
+      "seoBlock": {
+        "title": "Техническое обслуживание в Москве | Electromax",
+        "description": "Плановое ТО, аварийные выезды, запчасти. Комплексно",
+        "textBlock": "ТО всех систем безопасности. SLA 24/7 Плановое ТО, аварийные выезды, запчасти. Комплексно Полный цикл: аудит, проектирование, монтаж, обслуживание.",
+        "faq": [
+          {
+            "question": "Как часто нужно ТО?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что входит в регламент?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Сколько стоит договор ТО?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что такое SLA?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Есть ли гарантия на работы?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли разовое ТО?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что при поломке?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как расторгнуть договор?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Нужны ли журналы?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Как часто акты?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Что если система на гарантии?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          },
+          {
+            "question": "Можно ли ТО сторонней организации?",
+            "answer": "Ответ уточняется. Расскажем после аудита или по вашему ТЗ.",
+            "schemaInclude": true,
+            "intentTag": "general"
+          }
+        ]
+      }
+    }
+  ]
+}

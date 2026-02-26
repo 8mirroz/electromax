@@ -1,66 +1,44 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
-test.describe("Service Landing Pages & Calculator", () => {
-  test("Service page renders without errors", async ({ page }) => {
-    // Navigate to APS service page
-    await page.goto("http://localhost:3000/services/aps");
+const SLUGS = ["aps", "asuz", "eom", "eo", "os", "sks", "skud", "sot", "soue", "to"];
 
-    // Check if the HeroBanner title exists (from mock data: 'Fire Alarm Systems (APS)')
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("Fire Alarm Systems (APS)");
-
-    // Check if Breadcrumbs are present
-    await expect(page.locator('nav[aria-label="breadcrumb"]')).toBeVisible();
+test.describe("Service pages / Project Tray", () => {
+  test("all service slugs render without runtime errors", async ({ page }) => {
+    for (const slug of SLUGS) {
+      await page.goto(`http://localhost:3000/services/${slug}`);
+      await expect(page.getByTestId("service-hero-compact")).toBeVisible();
+      await expect(page.getByTestId("project-tray-trigger")).toBeVisible();
+      await expect(page.getByTestId("seo-faq-block")).toBeVisible();
+      await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(3);
+    }
   });
 
-  test("Calculator computes estimated price correctly", async ({ page }) => {
+  test("catalog item can be added to project and tray persists across service pages", async ({ page }) => {
     await page.goto("http://localhost:3000/services/aps");
+    await expect(page.getByTestId("hero-audit-cta")).toBeVisible();
 
-    // Wait for the calculator to be visible
-    const calculatorHeading = page.getByRole("heading", { name: "Калькулятор стоимости" });
-    await expect(calculatorHeading).toBeVisible();
+    const firstAddButton = page.locator('[data-testid^="add-to-project-"]').first();
+    await expect(firstAddButton).toBeVisible();
+    await firstAddButton.click();
 
-    // Default object type: Office (Coef: 1.0)
-    // Default area: 100
-    // Base price per sqm for APS: 450
-    // Initial cost should be: 1.0 * 100 * 450 = 45,000
-    await expect(page.getByText("45 000 ₽")).toBeVisible();
+    await expect(page.getByTestId("project-tray-drawer")).toBeVisible();
+    await expect(page.getByText(/1 поз\./)).toBeVisible();
 
-    // Change slider (area) to 200
-    const slider = page.locator('input[type="range"]');
-    await slider.fill("200");
+    await page.getByRole("button", { name: "Закрыть" }).click();
+    await page.goto("http://localhost:3000/services/soue");
 
-    // Expected value: 1.0 * 200 * 450 = 90,000
-    await expect(page.getByText("90 000 ₽")).toBeVisible();
-
-    // Change object type to Proishlenniy (industrial - coef: 1.5)
-    await page.getByRole("button", { name: "Промышленный объект" }).click();
-
-    // Expected value: 1.5 * 200 * 450 = 135,000
-    await expect(page.getByText("135 000 ₽")).toBeVisible();
+    await page.getByTestId("project-tray-trigger").click();
+    await expect(page.getByTestId("project-tray-drawer")).toBeVisible();
+    await expect(page.getByText(/1 поз\./)).toBeVisible();
+    await expect(page.getByTestId("ai-rail")).toBeVisible();
   });
 
-  test("Lead capture form submission works", async ({ page }) => {
-    await page.goto("http://localhost:3000/services/aps");
+  test("mobile layout shows hero CTA and tray bottom sheet", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("http://localhost:3000/services/skud");
 
-    // Fill the phone number
-    await page.fill('input[type="tel"]', "+79991234567");
-
-    // Intercept API call
-    const responsePromise = page.waitForResponse(
-      (response) => response.url().includes("/api/leads") && response.status() === 200,
-    );
-
-    // Submit form
-    await page.getByRole("button", { name: "Получить точный расчет" }).click();
-
-    // Wait for API response
-    const response = await responsePromise;
-    const body = await response.json();
-
-    expect(body.success).toBe(true);
-
-    // Verify UI shows success state
-    await expect(page.getByText("Спасибо за заявку!")).toBeVisible();
-    await expect(page.getByRole("button", { name: "Получить точный расчет" })).not.toBeVisible();
+    await expect(page.getByTestId("hero-audit-cta")).toBeVisible();
+    await page.getByTestId("project-tray-trigger").click();
+    await expect(page.getByTestId("project-tray-drawer")).toBeVisible();
   });
 });

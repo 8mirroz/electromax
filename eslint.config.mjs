@@ -13,6 +13,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    ".venv/**",
+    "node_modules/**",
+    "test-results/**",
+    "playwright-report/**",
   ]),
   eslintConfigPrettier,
 ]);

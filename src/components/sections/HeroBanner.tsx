@@ -22,7 +22,7 @@ export function HeroBanner({
         )}
       />
 
-      <div className="relative z-10 flex flex-col items-center text-center container mx-auto px-6 max-w-4xl space-y-6">
+      <div className="relative z-10 flex flex-col items-center text-center container mx-auto max-w-4xl space-y-6">
         <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight">{title}</h1>
         <p className="text-xl md:text-2xl text-muted-foreground w-4/5 leading-relaxed">
           {subtitle}

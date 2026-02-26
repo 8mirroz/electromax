@@ -14,6 +14,16 @@ const fontSans = Inter({
   display: "swap",
 });
 
+// Use Inter as display font too — guarantees zero CLS since it's the same loaded font.
+// When a premium display font (e.g. General Sans) is added, replace this variable here.
+const fontDisplay = Inter({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-display",
+  weight: ["700", "800", "900"],
+  display: "swap",
+  adjustFontFallback: true,
+});
+
 export const metadata: Metadata = {
   ...defaultMetadata,
   metadataBase: getSiteUrl() ? new URL(getSiteUrl()) : undefined,
@@ -57,12 +67,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="ru" className={fontSans?.variable || "font-sans"} suppressHydrationWarning>
+    <html lang="ru" className={`${fontSans.variable} ${fontDisplay.variable}`} suppressHydrationWarning>
       <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined&display=swap"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
@@ -80,9 +86,9 @@ export default function RootLayout({
           >
             Перейти к основному содержанию
           </a>
-          <div id="main-content" className="contents">
+          <main id="main-content">
             {children}
-          </div>
+          </main>
           <Analytics />
           <TelegramWidget />
         </AdaptiveProvider>

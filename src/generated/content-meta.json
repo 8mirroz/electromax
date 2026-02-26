@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-02-24T21:22:14.746Z",
+  "totalServices": 10,
+  "services": [
+    {
+      "slug": "aps",
+      "title": "Автоматическая пожарная сигнализация",
+      "shortName": "APS"
+    },
+    {
+      "slug": "asuz",
+      "title": "Автоматизация",
+      "shortName": "ASUZ"
+    },
+    {
+      "slug": "eo",
+      "title": "Освещение",
+      "shortName": "EO"
+    },
+    {
+      "slug": "eom",
+      "title": "Электроснабжение",
+      "shortName": "EOM"
+    },
+    {
+      "slug": "os",
+      "title": "Охранная сигнализация",
+      "shortName": "OS"
+    },
+    {
+      "slug": "sks",
+      "title": "Структурированные кабельные системы",
+      "shortName": "SKS"
+    },
+    {
+      "slug": "skud",
+      "title": "Системы контроля доступа",
+      "shortName": "SKUD"
+    },
+    {
+      "slug": "sot",
+      "title": "Видеонаблюдение",
+      "shortName": "SOT"
+    },
+    {
+      "slug": "soue",
+      "title": "Система оповещения",
+      "shortName": "SOUE"
+    },
+    {
+      "slug": "to",
+      "title": "Техническое обслуживание",
+      "shortName": "TO"
+    }
+  ]
+}

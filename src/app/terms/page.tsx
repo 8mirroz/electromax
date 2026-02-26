@@ -38,18 +38,21 @@ export default function TermsPage() {
       <Navbar />
 
       <section className="pt-28 pb-14 border-b border-border bg-muted/20">
-        <div className="container mx-auto max-w-4xl px-6">
-          <h1 className="text-4xl md:text-5xl font-display font-black leading-tight">
-            Пользовательское соглашение
-          </h1>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Действует с 25 февраля 2026 года. Используя сайт, вы соглашаетесь с условиями ниже.
-          </p>
+        <div className="container mx-auto max-w-7xl">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-display font-black leading-tight">
+              Пользовательское соглашение
+            </h1>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Действует с 25 февраля 2026 года. Используя сайт, вы соглашаетесь с условиями ниже.
+            </p>
+          </div>
         </div>
       </section>
 
       <section className="py-12 md:py-16">
-        <div className="container mx-auto max-w-4xl px-6 space-y-8 text-sm leading-relaxed text-foreground">
+        <div className="container mx-auto max-w-7xl">
+          <div className="space-y-8 text-sm leading-relaxed text-foreground">
           <div className="space-y-3">
             <h2 className="text-xl font-bold">1. Термины и стороны</h2>
             <p>
@@ -112,6 +115,7 @@ export default function TermsPage() {
             <p className="text-muted-foreground">
               Юридический адрес: 109012, г. Москва, ул. Индустриальная 42, БЦ «Технопарк», оф. 304.
             </p>
+          </div>
           </div>
         </div>
       </section>
