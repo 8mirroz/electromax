@@ -1,55 +1,10 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import { motion, useInView, type Variants } from "motion/react";
-import {
-  ShieldCheck,
-  Ban,
-  Settings,
-  Layers,
-  CheckCircle2,
-  ArrowRight,
-  Sparkles,
-} from "lucide-react";
-
-const AUDIT_TRIGGER_CARDS = [
-  {
-    title: "Перед проверкой надзора",
-    description:
-      "Сверим состояние систем и документации, чтобы сократить риск замечаний и повторного выезда.",
-    icon: ShieldCheck,
-    color: "text-blue-500",
-    bg: "bg-blue-50/50",
-    borderColor: "border-blue-200",
-  },
-  {
-    title: "Задержка запуска объекта",
-    description:
-      "Найдем критичные блокеры по АПС, СКУД, СОТ и электрике до выхода на монтаж и пусконаладку.",
-    icon: Ban,
-    color: "text-red-500",
-    bg: "bg-red-50/50",
-    borderColor: "border-red-200",
-  },
-  {
-    title: "Сбойная или устаревшая система",
-    description:
-      "Оценим износ, совместимость оборудования и точки отказа без полной остановки площадки.",
-    icon: Settings,
-    color: "text-amber-500",
-    bg: "bg-amber-50/50",
-    borderColor: "border-amber-200",
-  },
-  {
-    title: "Расширение / масштабирование",
-    description:
-      "Подготовим архитектурный план расширения под новые зоны, здания и сценарии доступа.",
-    icon: Layers,
-    color: "text-indigo-500",
-    bg: "bg-indigo-50/50",
-    borderColor: "border-indigo-200",
-  },
-];
+import { CheckCircle2, Search } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
 
 const AUDIT_CHECKLIST = [
   {
@@ -73,6 +28,11 @@ const AUDIT_CHECKLIST = [
 export function AuditSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const router = useRouter();
+
+  const handleOrderAudit = () => {
+    router.push("/contacts");
+  };
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -91,19 +51,6 @@ export function AuditSection() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.215, 0.61, 0.355, 1],
-      },
-    },
-  };
-
-  const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 40, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.7,
         ease: [0.215, 0.61, 0.355, 1],
       },
     },
@@ -131,11 +78,10 @@ export function AuditSection() {
             className="flex flex-col"
           >
             {/* Badge */}
-            <motion.div variants={itemVariants} className="mb-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-200 text-blue-600 text-sm font-medium">
-                <Sparkles className="w-4 h-4" />
+            <motion.div variants={itemVariants}>
+              <Badge icon={Search} className="mb-6">
                 Профессиональный аудит
-              </div>
+              </Badge>
             </motion.div>
 
             {/* Title */}
@@ -159,41 +105,26 @@ export function AuditSection() {
               приоритетами.
             </motion.p>
 
-            {/* Trigger Cards Grid */}
-            <motion.div variants={itemVariants} className="grid sm:grid-cols-2 gap-4 mb-10">
-              {AUDIT_TRIGGER_CARDS.map((card) => (
-                <motion.div
-                  key={card.title}
-                  variants={cardVariants}
-                  whileHover={{
-                    y: -4,
-                    scale: 1.02,
-                    transition: { duration: 0.2 },
-                  }}
-                  className={`group relative p-5 rounded-2xl ${card.bg} border ${card.borderColor} backdrop-blur-sm transition-all duration-300`}
-                >
-                  <div
-                    className={`w-10 h-10 rounded-xl ${card.bg} ${card.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <card.icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-semibold text-slate-900 mb-1 text-sm">{card.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">{card.description}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-
             {/* CTA Button */}
-            <motion.div variants={itemVariants}>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold uppercase tracking-wider text-sm rounded-2xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300"
+            <motion.div variants={itemVariants} className="mt-6">
+              <button
+                type="button"
+                onClick={handleOrderAudit}
+                className="relative h-11 inline-flex items-center justify-center px-7 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold tracking-tight text-[13px] rounded-2xl shadow-[0_4px_20px_-4px_rgba(59,130,246,0.4),0_8px_40px_-8px_rgba(79,70,229,0.3)] hover:shadow-[0_8px_30px_-4px_rgba(59,130,246,0.5),0_12px_50px_-8px_rgba(79,70,229,0.35)] transition-[box-shadow,filter] duration-200 hover:brightness-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2"
               >
                 Заказать аудит
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-                <div className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.button>
+              </button>
+              <a
+                href="https://t.me/electromax_support"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-4 h-11 inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-[#24A1DE] bg-white px-7 text-[13px] font-bold tracking-tight text-[#24A1DE] transition-colors duration-200 hover:bg-[#24A1DE] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24A1DE]/40 focus-visible:ring-offset-2"
+              >
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                </svg>
+                Обсудить в Telegram
+              </a>
             </motion.div>
           </motion.div>
 

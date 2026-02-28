@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Sparkles } from "lucide-react";
 import { SolutionsGallery } from "@/components/smart-cards/SolutionsGallery";
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { QuizModal } from "@/components/ui/QuizModal";
 import { SERVICES_DB } from "@/data/services";
@@ -97,14 +96,12 @@ export default function SolutionsPage() {
 
   return (
     <main className="min-h-screen bg-background">
-      <Navbar />
-
       <section className="relative overflow-hidden bg-surface-secondary/60">
         <div
           aria-hidden
           className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(37,99,235,0.08),transparent_70%)]"
         />
-        <div className="container relative mx-auto px-4 py-12 md:py-20">
+        <div className="container relative mx-auto px-4 pt-20 pb-16 md:pt-32 md:pb-24">
           <div className="mx-auto max-w-4xl text-center">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -117,38 +114,13 @@ export default function SolutionsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="mt-6 text-lg leading-8 text-text-muted"
+              className="mt-5 text-lg leading-8 text-text-muted"
             >
               Выберите категорию для быстрого старта или соберите проект самостоятельно
             </motion.p>
-
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <div className="flex w-full max-w-lg items-center gap-4">
-                <button
-                  type="button"
-                  onClick={() => setQuizOpen(true)}
-                  className="flex flex-1 items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-left text-sm text-white/80 shadow-inner transition-colors hover:bg-white/15"
-                >
-                  <Sparkles className="h-4 w-4 shrink-0 text-white/80" />
-                  Подобрать решение...
-                </button>
-                <button
-                  type="button"
-                  className="rounded-2xl bg-primary px-6 py-3 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
-                  onClick={() => setQuizOpen(true)}
-                >
-                  Получить расчёт
-                </button>
-              </div>
-
-              {quizOpen && <QuizModal isOpen={quizOpen} onClose={() => setQuizOpen(false)} />}
-              <p className="mt-3 text-xs text-white/70">
-                Бесплатный выезд инженера. Предварительная смета за 24 часа.
-              </p>
-            </div>
           </div>
 
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7">
+          <div className="mt-12 mb-0 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-7 md:mt-16 md:mb-0">
             {SERVICE_TAGS.map((service) => {
               const isAll = service.id === "all";
               const isCustom = service.id === "custom";
@@ -167,12 +139,12 @@ export default function SolutionsPage() {
                     }
                   }}
                   className={`flex h-[80px] items-center justify-between rounded-2xl border px-4 py-3 text-left transition-all duration-300 ${
-                    isAll
-                      ? "border-blue-200 bg-blue-50 text-blue-800 hover:border-blue-300 shadow-sm"
-                      : isCustom
-                        ? "border-emerald-200 bg-emerald-50 text-emerald-800 hover:border-emerald-300 shadow-sm"
-                        : isActive
-                          ? "border-primary bg-primary text-white shadow-[0_16px_34px_-28px_rgba(37,99,235,0.6)]"
+                    isActive
+                      ? "border-primary bg-primary text-white shadow-[0_16px_34px_-28px_rgba(37,99,235,0.6)]"
+                      : isAll
+                        ? "border-blue-200 bg-blue-50 text-blue-800 hover:border-blue-300 shadow-sm"
+                        : isCustom
+                          ? "border-emerald-200 bg-emerald-50 text-emerald-800 hover:border-emerald-300 shadow-sm"
                           : "border-border bg-white text-foreground shadow-[0_16px_34px_-28px_rgba(15,23,42,0.25)] hover:border-primary/60 hover:shadow-md"
                   }`}
                 >
@@ -183,19 +155,19 @@ export default function SolutionsPage() {
                       {service.shortName}
                     </p>
                     <p
-                      className={`mt-0.5 line-clamp-3 text-[9px] font-semibold uppercase leading-snug tracking-tight opacity-70 ${isActive ? "text-white/80" : "text-text-muted"}`}
+                      className={`mt-0.5 min-h-[2.4em] line-clamp-2 text-[10px] font-semibold lowercase first-letter:uppercase leading-snug tracking-tight opacity-70 ${isActive ? "text-white/80" : "text-text-muted"}`}
                     >
                       {stripTrailingAbbreviation(service.title)}
                     </p>
                   </div>
                   <div
                     className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-colors ${
-                      isAll
-                        ? "bg-blue-100 text-blue-700"
-                        : isCustom
-                          ? "bg-emerald-100 text-emerald-700"
-                          : isActive
-                            ? "bg-white/20 text-white"
+                      isActive
+                        ? "bg-white/20 text-white"
+                        : isAll
+                          ? "bg-blue-100 text-blue-700"
+                          : isCustom
+                            ? "bg-emerald-100 text-emerald-700"
                             : "bg-primary/10 text-primary"
                     }`}
                   >
@@ -212,7 +184,6 @@ export default function SolutionsPage() {
         services={SERVICES_DB}
         onAddToTray={handleAddToTray}
         activeFilter={activeFilter}
-        onFilterChange={setActiveFilter}
       />
 
       {notification && (
@@ -225,6 +196,8 @@ export default function SolutionsPage() {
           {notification}
         </motion.div>
       )}
+
+      {quizOpen && <QuizModal isOpen={quizOpen} onClose={() => setQuizOpen(false)} />}
 
       <Footer />
     </main>

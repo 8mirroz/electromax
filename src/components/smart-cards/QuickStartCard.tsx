@@ -50,13 +50,13 @@ export function QuickStartCard({
       <div className="border-b border-border bg-gradient-to-br from-muted/50 to-muted p-5">
         <div className="mb-3 flex items-center justify-between">
           <span
-            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${difficultyConfig[card.difficulty].color}`}
+            className={`inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-bold lowercase first-letter:uppercase tracking-tight ${difficultyConfig[card.difficulty].color}`}
           >
             <DifficultyIcon className="h-3.5 w-3.5" />
             {difficultyConfig[card.difficulty].label}
           </span>
         </div>
-        <h3 className="text-lg font-display font-black uppercase tracking-tight text-foreground">
+        <h3 className="text-base font-display font-black lowercase first-letter:uppercase tracking-tight text-foreground leading-tight">
           {card.title}
         </h3>
         <p className="mt-2 text-sm text-muted-foreground">{card.description}</p>

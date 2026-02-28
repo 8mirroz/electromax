@@ -9,7 +9,6 @@ interface SolutionsGalleryProps {
   services: Record<string, ServiceConfig>;
   onAddToTray?: (card: QuickStartCardType, serviceSlug: string) => void;
   activeFilter?: string;
-  onFilterChange?: (filter: string) => void;
 }
 
 type FilterType = "all" | string;
@@ -88,14 +87,14 @@ export function SolutionsGallery({ services, onAddToTray, activeFilter }: Soluti
               <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
               {TAG_STYLES[filter] && (
                 <span
-                  className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em]"
+                  className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] font-bold tracking-tight"
                   style={{
                     color: TAG_STYLES[filter].accent,
                     backgroundColor: `${TAG_STYLES[filter].accent}15`,
                     border: `1px solid ${TAG_STYLES[filter].accent}33`,
                   }}
                 >
-                  {TAG_STYLES[filter].label}
+                  {TAG_STYLES[filter].label.toLowerCase().replace(/^\w/, (c) => c.toUpperCase())}
                 </span>
               )}
             </div>
@@ -143,14 +142,16 @@ export function SolutionsGallery({ services, onAddToTray, activeFilter }: Soluti
                     <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
                     {TAG_STYLES[service.id] && (
                       <span
-                        className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em]"
+                        className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] font-bold tracking-tight"
                         style={{
                           color: TAG_STYLES[service.id].accent,
                           backgroundColor: `${TAG_STYLES[service.id].accent}15`,
                           border: `1px solid ${TAG_STYLES[service.id].accent}33`,
                         }}
                       >
-                        {TAG_STYLES[service.id].label}
+                        {TAG_STYLES[service.id].label
+                          .toLowerCase()
+                          .replace(/^\w/, (c) => c.toUpperCase())}
                       </span>
                     )}
                   </div>

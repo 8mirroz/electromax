@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { formatPhone } from "@/lib/phone";
 import { isValidRuPhone, type LeadApiResponse } from "@/lib/leads";
 import { MapPin, Phone, Mail, Clock, CheckCircle, Map, Copy, Check, Zap } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
 
 const contactInfo = [
   {
@@ -57,6 +58,7 @@ export default function ContactsPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [loadMap, setLoadMap] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [copyError, setCopyError] = useState<string | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoadMap(true), 3000);
@@ -106,10 +108,16 @@ export default function ContactsPage() {
     }
   };
 
-  const copyToClipboard = (value: string, index: number) => {
-    navigator.clipboard.writeText(value.replace(/"/g, ""));
-    setCopiedIndex(index);
-    setTimeout(() => setCopiedIndex(null), 2000);
+  const copyToClipboard = async (value: string, index: number) => {
+    try {
+      await navigator.clipboard.writeText(value.replace(/"/g, ""));
+      setCopyError(null);
+      setCopiedIndex(index);
+      setTimeout(() => setCopiedIndex(null), 2000);
+    } catch (err) {
+      console.error("Failed to copy to clipboard", err);
+      setCopyError("Не удалось скопировать. Попробуйте еще раз.");
+    }
   };
 
   return (
@@ -127,9 +135,9 @@ export default function ContactsPage() {
 
         <div className="container relative z-10 mx-auto max-w-7xl px-4">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-200 text-blue-700 text-sm font-semibold mb-6">
+            <Badge icon={Phone} className="mb-6">
               Контакты
-            </div>
+            </Badge>
 
             <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-display font-black tracking-tight leading-[1.05] text-slate-900 mb-6">
               Свяжитесь с командой{" "}
@@ -205,7 +213,7 @@ export default function ContactsPage() {
               </div>
 
               <div className="mb-8 rounded-2xl border border-slate-200 bg-slate-50/50 p-6">
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 flex items-center gap-2">
+                <div className="text-[10px] font-bold lowercase first-letter:uppercase tracking-tight text-slate-500 mb-4 flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-emerald-500" />
                   Что ускорит расчёт
                 </div>
@@ -236,7 +244,7 @@ export default function ContactsPage() {
                   </p>
                   <button
                     onClick={() => setStatus("idle")}
-                    className="text-sm font-bold uppercase tracking-wider text-emerald-600 hover:text-emerald-700 transition-colors"
+                    className="text-[11px] font-bold lowercase first-letter:uppercase tracking-tight text-emerald-600 hover:text-emerald-700 transition-colors"
                   >
                     Отправить ещё одну
                   </button>
@@ -378,7 +386,7 @@ export default function ContactsPage() {
               </div>
 
               <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-5">
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                <div className="text-[10px] font-bold lowercase first-letter:uppercase tracking-tight text-slate-500 mb-3">
                   Зона работы
                 </div>
                 <div className="space-y-3 text-sm text-slate-700">
@@ -405,7 +413,7 @@ export default function ContactsPage() {
                         <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                           <Map className="w-8 h-8 text-slate-400" />
                         </div>
-                        <p className="text-sm font-semibold text-slate-600 uppercase tracking-wider">
+                        <p className="text-[10px] font-bold text-slate-500 lowercase first-letter:uppercase tracking-tight">
                           Карта загружается...
                         </p>
                       </div>
@@ -417,7 +425,7 @@ export default function ContactsPage() {
                     >
                       <div className="bg-white rounded-2xl px-8 py-6 shadow-2xl text-center">
                         <Map className="w-10 h-10 text-blue-600 mx-auto mb-2" />
-                        <p className="text-sm font-bold text-slate-900 uppercase tracking-wider">
+                        <p className="text-[11px] font-bold text-slate-900 lowercase first-letter:uppercase tracking-tight">
                           Показать карту
                         </p>
                         <p className="text-xs text-slate-500 mt-1">Яндекс.Карты</p>
@@ -453,12 +461,20 @@ export default function ContactsPage() {
             {requisites.map((req, index) => (
               <div
                 key={req.label}
-                className="group relative rounded-xl border border-slate-200 bg-white p-5 hover:shadow-lg hover:border-slate-300 cursor-pointer transition-all"
+                className="group relative rounded-xl border border-slate-200 bg-white p-5 hover:shadow-lg hover:border-slate-300 cursor-pointer transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                 onClick={() => copyToClipboard(req.value, index)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    copyToClipboard(req.value, index);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
               >
                 <div className="flex items-start justify-between">
                   <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
+                    <div className="text-[10px] font-bold lowercase first-letter:uppercase tracking-tight text-slate-400 mb-1">
                       {req.label}
                     </div>
                     <div className="text-base font-bold text-slate-900 font-mono">{req.value}</div>
@@ -478,6 +494,7 @@ export default function ContactsPage() {
           <p className="text-center text-xs text-slate-400 mt-6">
             Нажмите на реквизит, чтобы скопировать
           </p>
+          {copyError && <p className="text-center text-xs text-rose-500 mt-2">{copyError}</p>}
         </div>
       </section>
 

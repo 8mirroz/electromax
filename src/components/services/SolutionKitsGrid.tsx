@@ -1,16 +1,32 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, CircleCheck, X } from "lucide-react";
+import { ArrowRight, CircleCheck, X, Package2 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
 import type { SolutionKit, ServicePageModel, CatalogItem } from "@/types";
 import { formatCatalogItemPrice } from "@/lib/services-content";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 interface SolutionKitsGridProps {
   model: ServicePageModel;
   onAddKit: (kit: SolutionKit) => void;
 }
+
+const hexToRgba = (hex: string, alpha: number) => {
+  const normalized = hex.replace("#", "");
+  const isShort = normalized.length === 3;
+  const full = isShort
+    ? normalized
+        .split("")
+        .map((char) => char + char)
+        .join("")
+    : normalized;
+  const value = parseInt(full, 16);
+  const r = (value >> 16) & 255;
+  const g = (value >> 8) & 255;
+  const b = value & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
 
 /**
  * Generates placeholder kits to ensure we always have exactly 6 cards.
@@ -28,11 +44,11 @@ function getKitsWithPlaceholders(model: ServicePageModel): SolutionKit[] {
       "Индивидуальный подбор оборудования",
       "Расчет оптимальной конфигурации",
       "Полный цикл монтажных работ",
-      "Гарантийное обслуживание"
+      "Гарантийное обслуживание",
     ],
     includedItemCodes: [],
-    budgetMin: 50000 + (i * 25000),
-    budgetMax: 150000 + (i * 50000),
+    budgetMin: 50000 + i * 25000,
+    budgetMax: 150000 + i * 50000,
     durationText: "1-3 дня",
     ctaLabel: "Добавить в проект",
   }));
@@ -54,17 +70,12 @@ export function SolutionKitsGrid({ model, onAddKit }: SolutionKitsGridProps) {
   }, []);
 
   return (
-    <section className="space-y-4 py-4" aria-labelledby="solution-kits-title">
-      <div className="flex items-center justify-between">
-        <div className="space-y-0.5">
-          <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/70">
-            Типовые решения
-          </span>
-          <h2 id="solution-kits-title" className="text-xl font-display font-black tracking-tight uppercase sm:text-2xl">
-            Наборы для быстрого старта
-          </h2>
-        </div>
-      </div>
+    <section className="space-y-5 py-4" aria-labelledby="solution-kits-title">
+      <SectionHeader
+        label="Типовые решения"
+        title={<span id="solution-kits-title">Наборы для быстрого старта</span>}
+        icon={Package2}
+      />
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {kits.map((kit, index) => (
@@ -99,7 +110,7 @@ function SolutionCard({
   kit,
   index,
   accent,
-  onClick
+  onClick,
 }: {
   kit: SolutionKit;
   index: number;
@@ -108,13 +119,37 @@ function SolutionCard({
 }) {
   return (
     <motion.article
+      layoutId={`kit-${kit.id}`}
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
       onClick={onClick}
-      className="group relative flex flex-col overflow-hidden rounded-[20px] border border-white/40 bg-white/60 p-4 shadow-md ring-1 ring-black/5 transition-all hover:-translate-y-1 hover:shadow-lg cursor-pointer backdrop-blur-xl"
+      className="group relative flex flex-col overflow-hidden rounded-[20px] border border-white/40 bg-white/70 p-4 shadow-[0_25px_60px_-55px_rgba(15,23,42,0.6)] ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_80px_-60px_rgba(15,23,42,0.7)] cursor-pointer backdrop-blur-xl"
     >
+      {/* Top accent strip (clipped by rounding) */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-3 transition-all duration-300 group-hover:h-4">
+        <div
+          className="absolute inset-0 opacity-55 transition-opacity duration-300 group-hover:opacity-85"
+          style={{
+            background: `linear-gradient(90deg, ${hexToRgba(accent, 0.9)}, ${hexToRgba(
+              accent,
+              0.5,
+            )} 55%, ${hexToRgba(accent, 0)} 100%)`,
+          }}
+        />
+        <div
+          className="absolute inset-x-0 top-0 h-[3px] transition-all duration-300 group-hover:h-[4px]"
+          style={{
+            background: `linear-gradient(90deg, ${accent}, ${hexToRgba(accent, 0.75)} 60%, ${hexToRgba(
+              accent,
+              0,
+            )} 100%)`,
+          }}
+        />
+        <div className="absolute inset-x-0 top-0 h-px bg-white/60" />
+      </div>
+
       <div
         className="absolute -right-4 -top-4 h-20 w-20 rounded-full blur-2xl transition-opacity opacity-10 group-hover:opacity-30"
         style={{ backgroundColor: accent }}
@@ -136,7 +171,10 @@ function SolutionCard({
       <div className="relative mb-3 space-y-1">
         {kit.bullets.slice(0, 3).map((bullet, i) => (
           <div key={i} className="flex items-start gap-2 text-[12px] text-muted-foreground">
-            <div className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ backgroundColor: accent }} />
+            <div
+              className="mt-1.5 h-1 w-1 shrink-0 rounded-full"
+              style={{ backgroundColor: accent }}
+            />
             <span className="line-clamp-1">{bullet}</span>
           </div>
         ))}
@@ -146,7 +184,7 @@ function SolutionCard({
         <div className="flex flex-col">
           <div className="text-[8px] font-bold uppercase text-muted-foreground/60">Бюджет</div>
           <div className="text-xs font-black text-foreground">
-            {kit.budgetMin ? `от ${kit.budgetMin.toLocaleString('ru-RU')} ₽` : "По запросу"}
+            {kit.budgetMin ? `от ${kit.budgetMin.toLocaleString("ru-RU")} ₽` : "По запросу"}
           </div>
         </div>
         <button className="flex h-8 items-center gap-1.5 rounded-lg border border-primary/20 bg-white px-3 text-[11px] font-bold text-foreground transition-all hover:bg-primary hover:text-white">
@@ -162,7 +200,7 @@ function ExpandedKitModal({
   kit,
   model,
   onClose,
-  onAdd
+  onAdd,
 }: {
   kit: SolutionKit;
   model: ServicePageModel;
@@ -170,9 +208,9 @@ function ExpandedKitModal({
   onAdd: () => void;
 }) {
   const includedItems = kit.includedItemCodes
-    .map(code => {
+    .map((code) => {
       for (const section of model.catalog) {
-        const item = section.items.find(i => i.itemCode === code);
+        const item = section.items.find((i) => i.itemCode === code);
         if (item) return item;
       }
       return null;
@@ -204,7 +242,9 @@ function ExpandedKitModal({
 
         <div className="relative flex items-center justify-between border-b border-border/50 p-6">
           <div className="space-y-1">
-            <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Детали решения</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+              Детали решения
+            </span>
             <h3 className="text-2xl font-display font-black tracking-tight">{kit.name}</h3>
           </div>
           <button
@@ -219,10 +259,15 @@ function ExpandedKitModal({
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="space-y-6">
               <div className="space-y-4">
-                <div className="text-sm font-bold uppercase tracking-widest text-primary">Что включено</div>
+                <div className="text-sm font-bold uppercase tracking-widest text-primary">
+                  Что включено
+                </div>
                 <div className="grid gap-3">
                   {kit.bullets.map((bullet, i) => (
-                    <div key={i} className="flex gap-3 rounded-2xl border border-border/50 bg-slate-50/50 p-4">
+                    <div
+                      key={i}
+                      className="flex gap-3 rounded-2xl border border-border/50 bg-slate-50/50 p-4"
+                    >
                       <CircleCheck className="h-5 w-5 shrink-0 text-primary" />
                       <p className="text-sm leading-relaxed text-foreground/80">{bullet}</p>
                     </div>
@@ -232,13 +277,17 @@ function ExpandedKitModal({
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-3xl border border-border/50 bg-slate-50/50 p-5">
-                  <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Срок запуска</div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">
+                    Срок запуска
+                  </div>
                   <div className="text-xl font-black text-foreground">{kit.durationText}</div>
                 </div>
                 <div className="rounded-3xl border border-primary/10 bg-primary/5 p-5">
-                  <div className="text-xs font-bold uppercase tracking-widest text-primary mb-1">Бюджет</div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-primary mb-1">
+                    Бюджет
+                  </div>
                   <div className="text-xl font-black text-primary">
-                    {kit.budgetMin ? `${kit.budgetMin.toLocaleString('ru-RU')} ₽` : "По запросу"}
+                    {kit.budgetMin ? `${kit.budgetMin.toLocaleString("ru-RU")} ₽` : "По запросу"}
                   </div>
                 </div>
               </div>
@@ -246,17 +295,26 @@ function ExpandedKitModal({
 
             <div className="space-y-6">
               <div className="space-y-4">
-                <div className="text-sm font-bold uppercase tracking-widest text-primary">Состав системы</div>
+                <div className="text-sm font-bold uppercase tracking-widest text-primary">
+                  Состав системы
+                </div>
                 <div className="space-y-2">
                   {includedItems.length > 0 ? (
                     includedItems.map((item, i) => (
-                      <div key={i} className="flex items-center justify-between rounded-xl border border-border/40 p-3 text-sm">
+                      <div
+                        key={i}
+                        className="flex items-center justify-between rounded-xl border border-border/40 p-3 text-sm"
+                      >
                         <span className="font-medium text-foreground">{item.name}</span>
-                        <span className="text-muted-foreground">{formatCatalogItemPrice(item)}</span>
+                        <span className="text-muted-foreground">
+                          {formatCatalogItemPrice(item)}
+                        </span>
                       </div>
                     ))
                   ) : (
-                    <p className="text-sm italic text-muted-foreground">Состав уточняется специалистом при аудите</p>
+                    <p className="text-sm italic text-muted-foreground">
+                      Состав уточняется специалистом при аудите
+                    </p>
                   )}
                 </div>
               </div>
@@ -264,7 +322,8 @@ function ExpandedKitModal({
               <div className="rounded-3xl bg-slate-900 p-6 text-white">
                 <h4 className="mb-2 font-display font-bold">Готовое решение</h4>
                 <p className="text-sm text-slate-400 mb-4 leading-relaxed">
-                  Этот комплект содержит базовый набор оборудования и услуг. Вы можете добавить его в проект и позже скорректировать количество или выбрать другие модели в каталоге.
+                  Этот комплект содержит базовый набор оборудования и услуг. Вы можете добавить его
+                  в проект и позже скорректировать количество или выбрать другие модели в каталоге.
                 </p>
                 <button
                   onClick={onAdd}

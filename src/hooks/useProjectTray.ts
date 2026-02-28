@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { startTransition, useEffect, useRef, useState } from "react";
 import type { CatalogItem, ProjectTrayState, SolutionKit } from "@/types";
 import {
   addKitToTray,
@@ -17,13 +17,13 @@ import {
 } from "@/lib/project-tray";
 
 interface UseProjectTrayOptions {
-  serviceSlug: string;
-  catalogItems: CatalogItem[];
+  serviceSlug?: string;
+  catalogItems?: CatalogItem[];
 }
 
-export function useProjectTray({ serviceSlug, catalogItems }: UseProjectTrayOptions) {
+export function useProjectTray({ serviceSlug, catalogItems = [] }: UseProjectTrayOptions = {}) {
   const [tray, setTray] = useState<ProjectTrayState>(() =>
-    createEmptyProjectTrayState(serviceSlug),
+    createEmptyProjectTrayState(serviceSlug ?? null),
   );
   const [isOpen, setIsOpen] = useState(false);
   const hasHydratedRef = useRef(false);
@@ -31,15 +31,26 @@ export function useProjectTray({ serviceSlug, catalogItems }: UseProjectTrayOpti
   const itemsByCode = new Map(catalogItems.map((item) => [item.itemCode, item]));
 
   useEffect(() => {
-    const saved = readProjectTrayState(typeof window === "undefined" ? null : window.localStorage);
-    if (saved) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate tray from persisted storage
-      setTray(saved);
-    } else {
-      setTray(touchState(createEmptyProjectTrayState(serviceSlug)));
-    }
+    const updateCount = () => {
+      const saved = readProjectTrayState(
+        typeof window === "undefined" ? null : window.localStorage,
+      );
+      if (saved) {
+        setTray(saved);
+      }
+    };
+
+    updateCount();
+    window.addEventListener("project-tray-updated", updateCount);
+    window.addEventListener("storage", updateCount);
+
     hasHydratedRef.current = true;
-  }, [serviceSlug]);
+
+    return () => {
+      window.removeEventListener("project-tray-updated", updateCount);
+      window.removeEventListener("storage", updateCount);
+    };
+  }, []);
 
   const apply = (updater: (state: ProjectTrayState) => ProjectTrayState) => {
     startTransition(() => {
@@ -55,9 +66,10 @@ export function useProjectTray({ serviceSlug, catalogItems }: UseProjectTrayOpti
 
   const addItem = (
     item: CatalogItem,
-    options?: Record<string, string>,
-    calculatedPrice?: { min: number; max: number },
+    _options?: Record<string, string>,
+    _calculatedPrice?: { min: number; max: number },
   ) => {
+    if (!serviceSlug) return;
     apply((current) =>
       addOrMergeTrayItem(
         { ...current, serviceSlug },
@@ -67,6 +79,7 @@ export function useProjectTray({ serviceSlug, catalogItems }: UseProjectTrayOpti
   };
 
   const addKit = (kit: SolutionKit) => {
+    if (!serviceSlug) return;
     apply((current) =>
       addKitToTray({
         state: { ...current, serviceSlug },
@@ -90,11 +103,11 @@ export function useProjectTray({ serviceSlug, catalogItems }: UseProjectTrayOpti
   };
 
   const setNotes = (notes: string) => {
-    apply((current) => touchState({ ...current, serviceSlug, notes }));
+    apply((current) => touchState({ ...current, notes }));
   };
 
   const clearProject = () => {
-    apply(() => clearProjectTray(serviceSlug));
+    apply(() => clearProjectTray(serviceSlug ?? null));
   };
 
   return {

@@ -1,39 +1,51 @@
+import type { Metadata, Viewport } from "next";
+import { Inter, Montserrat } from "next/font/google";
 import "@/styles/globals.css";
-import { Analytics } from "@/components/Analytics";
-import { TelegramWidget } from "@/components/ui/TelegramWidget";
-import { ScrollProgress } from "@/components/ui/PremiumAnimations";
 import { AdaptiveProvider } from "@/components/AdaptiveProvider";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { defaultMetadata, getSiteUrl, defaultOgImage } from "@/lib/seo";
+import { ScrollProgress } from "@/components/ui/PremiumAnimations";
+import { defaultOgImage, getSiteUrl } from "@/lib/seo";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/sections/Footer";
+import { GlobalProjectTray } from "@/components/services/GlobalProjectTray";
 
 const fontSans = Inter({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
-// Use Inter as display font too — guarantees zero CLS since it's the same loaded font.
-// When a premium display font (e.g. General Sans) is added, replace this variable here.
-const fontDisplay = Inter({
+const fontDisplay = Montserrat({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-display",
-  weight: ["700", "800", "900"],
+  variable: "--font-montserrat",
   display: "swap",
-  adjustFontFallback: true,
 });
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
-  ...defaultMetadata,
-  metadataBase: getSiteUrl() ? new URL(getSiteUrl()) : undefined,
+  title: {
+    default: "Electromax | Инженерная интеграция систем безопасности",
+    template: "%s | Electromax",
+  },
+  description:
+    "Проектирование и монтаж систем безопасности, видеонаблюдения и электроснабжения в Москве. Комплексные инженерные решения для бизнеса.",
+  metadataBase: new URL(getSiteUrl() || "http://localhost:3000"),
   openGraph: {
-    ...defaultMetadata.openGraph,
     siteName: "Electromax",
     images: [defaultOgImage],
+    type: "website",
+    locale: "ru_RU",
   },
   twitter: {
-    ...defaultMetadata.twitter,
+    card: "summary_large_image",
     images: [defaultOgImage],
   },
 };
@@ -67,7 +79,11 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="ru" className={`${fontSans.variable} ${fontDisplay.variable}`} suppressHydrationWarning>
+    <html
+      lang="ru"
+      className={`${fontSans.variable} ${fontDisplay.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           type="application/ld+json"
@@ -86,11 +102,10 @@ export default function RootLayout({
           >
             Перейти к основному содержанию
           </a>
-          <main id="main-content">
-            {children}
-          </main>
-          <Analytics />
-          <TelegramWidget />
+          <Navbar />
+          <main id="main-content">{children}</main>
+          <Footer />
+          <GlobalProjectTray />
         </AdaptiveProvider>
       </body>
     </html>

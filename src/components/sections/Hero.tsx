@@ -30,24 +30,21 @@ export function Hero() {
     noMotion
       ? {}
       : {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as const },
-      };
+          initial: { opacity: 0, y: 20 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as const },
+        };
 
   return (
-    <section className="relative overflow-hidden bg-surface-secondary/60">
+    <section className="relative overflow-hidden bg-white">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_10%_0%,rgba(37,99,235,0.12),transparent)] perf-lite:opacity-0"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_10%_0%,rgba(37,99,235,0.08),transparent)] perf-lite:opacity-0"
       />
 
-      <div className="relative container mx-auto max-w-7xl pt-10 pb-10 md:pt-14 md:pb-12">
+      <div className="relative container mx-auto max-w-7xl pt-10 pb-2 md:pt-14 md:pb-4">
         <div className="rounded-[28px] border border-border bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-700 p-6 text-white shadow-[0_24px_50px_-28px_rgba(30,64,175,0.65)] sm:p-8">
           <motion.div {...fadeUp(0)} className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90">
-              Электромакс
-            </div>
             <h1
               className="mt-5 font-display font-black leading-[1.08] tracking-tight text-white"
               style={{ fontSize: "clamp(2rem, 5vw, 3.6rem)" }}
@@ -65,18 +62,19 @@ export function Hero() {
               <button
                 type="button"
                 onClick={() => setQuizOpen(true)}
-                className="flex flex-1 items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white/80 shadow-inner hover:bg-white/15 transition-colors text-left"
+                className="flex h-11 flex-1 items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 text-sm text-white/80 shadow-inner hover:bg-white/15 transition-colors text-left"
               >
                 <Sparkles className="h-4 w-4 text-white/80 shrink-0" />
                 Рассчитать стоимость проекта...
               </button>
-              <button
-                type="button"
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setQuizOpen(true)}
-                className="inline-flex h-11 items-center justify-center rounded-2xl bg-white px-5 text-sm font-bold text-blue-700 transition hover:translate-y-[-1px]"
+                className="h-11 px-7 rounded-2xl bg-white text-blue-600 font-bold text-[13px] tracking-tight shadow-lg shadow-blue-900/20 hover:bg-slate-50 transition-colors"
               >
                 Получить расчёт
-              </button>
+              </motion.button>
             </div>
             {quizOpen && <QuizModal isOpen={quizOpen} onClose={() => setQuizOpen(false)} />}
             <p className="mt-3 text-xs text-white/70">

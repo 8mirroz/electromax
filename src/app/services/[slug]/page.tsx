@@ -1,8 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Footer } from "@/components/sections/Footer";
-import { Navbar } from "@/components/layout/Navbar";
 import { defaultOgImage, getSiteUrl } from "@/lib/seo";
 import { getServicePageModel, getServicePageSlugs } from "@/lib/services-content";
 import { ServicePageClient } from "./ServicePageClient";
@@ -139,12 +137,11 @@ export default async function ServicePage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <Navbar />
       <div className="border-b border-border bg-muted/20 py-3">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <nav
             aria-label="breadcrumb"
-            className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground/60"
+            className="flex items-center gap-2 text-[10px] font-bold lowercase first-letter:uppercase tracking-tight text-muted-foreground/60"
           >
             <Link href="/" className="hover:text-primary transition-colors">
               Главная
@@ -160,7 +157,6 @@ export default async function ServicePage({ params }: PageProps) {
       </div>
 
       <ServicePageClient model={model} />
-      <Footer />
     </main>
   );
 }

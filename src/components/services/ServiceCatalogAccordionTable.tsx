@@ -3,6 +3,8 @@
 import { useState } from "react";
 import type { CatalogItem, ServiceCatalogSection } from "@/types";
 import { formatCatalogItemPrice } from "@/lib/services-content";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ListChecks } from "lucide-react";
 
 // Опции конфигурации для миниблоков
 interface ConfigOption {
@@ -391,8 +393,6 @@ export function ServiceCatalogAccordionTable({
     };
   };
 
-
-
   const handleAddToProject = (item: CatalogItem) => {
     const options = selectedOptions[item.id] || {};
     const price = calculatedPrices[item.id];
@@ -400,20 +400,12 @@ export function ServiceCatalogAccordionTable({
   };
 
   return (
-    <section className="space-y-4" aria-labelledby="service-catalog-title">
-      <div className="flex items-center justify-between mb-4">
-        <div className="space-y-0.5">
-          <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-            Перечень услуг
-          </div>
-          <h2
-            id="service-catalog-title"
-            className="text-xl font-display font-black uppercase tracking-tight sm:text-2xl"
-          >
-            Добавьте позиции в проект
-          </h2>
-        </div>
-      </div>
+    <section className="space-y-5" aria-labelledby="service-catalog-title">
+      <SectionHeader
+        label="Перечень услуг"
+        title={<span id="service-catalog-title">Добавьте позиции в проект</span>}
+        icon={ListChecks}
+      />
 
       {sections.map((section) => (
         <div
@@ -462,7 +454,9 @@ export function ServiceCatalogAccordionTable({
                             <span className="rounded-full border border-border/70 bg-white px-2 py-0.5">
                               {getServiceBadge(item)}
                             </span>
-                            <span className="text-foreground/40 text-[9px]">Код: {item.itemCode}</span>
+                            <span className="text-foreground/40 text-[9px]">
+                              Код: {item.itemCode}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -498,10 +492,15 @@ export function ServiceCatalogAccordionTable({
                     <div className="grid gap-8 lg:grid-cols-[1fr_2fr]">
                       {/* Левая часть: Что включено */}
                       <div className="space-y-4">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">Что включено</div>
+                        <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+                          Что включено
+                        </div>
                         <ul className="space-y-2">
                           {(item.includes?.slice(0, 4) || ["Состав уточняется"]).map((entry) => (
-                            <li key={entry} className="flex items-start gap-2 text-[12px] leading-relaxed text-foreground/80">
+                            <li
+                              key={entry}
+                              className="flex items-start gap-2 text-[12px] leading-relaxed text-foreground/80"
+                            >
                               <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
                               {entry}
                             </li>
@@ -509,7 +508,9 @@ export function ServiceCatalogAccordionTable({
                         </ul>
                         {item.priceDependsOn && item.priceDependsOn.length > 0 && (
                           <div className="pt-2 border-t border-border/40">
-                            <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-1.5">Цена зависит от</div>
+                            <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-1.5">
+                              Цена зависит от
+                            </div>
                             <p className="text-[11px] text-muted-foreground leading-snug">
                               {item.priceDependsOn[0]}
                             </p>
@@ -520,15 +521,22 @@ export function ServiceCatalogAccordionTable({
                       {/* Правая часть: Конфигуратор */}
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
-                          <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/60">Конфигурация параметров</div>
+                          <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/60">
+                            Конфигурация параметров
+                          </div>
                           {Object.keys(selectedOptions[item.id] || {}).length > 0 && (
-                            <div className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Параметры применены</div>
+                            <div className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">
+                              Параметры применены
+                            </div>
                           )}
                         </div>
 
                         <div className="grid gap-2 sm:grid-cols-2">
                           {configs.map((config) => (
-                            <div key={config.id} className="rounded-xl border border-border/50 bg-slate-50/30 p-2.5 transition-colors hover:border-border hover:bg-slate-50/60">
+                            <div
+                              key={config.id}
+                              className="rounded-xl border border-border/50 bg-slate-50/30 p-2.5 transition-colors hover:border-border hover:bg-slate-50/60"
+                            >
                               <div className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground mb-1.5">
                                 {config.label}
                               </div>
@@ -537,7 +545,9 @@ export function ServiceCatalogAccordionTable({
                                   type="text"
                                   placeholder={config.placeholder}
                                   value={currentOptions[config.id] || ""}
-                                  onChange={(e) => handleOptionChange(item, config.id, e.target.value)}
+                                  onChange={(e) =>
+                                    handleOptionChange(item, config.id, e.target.value)
+                                  }
                                   className="w-full rounded-lg border border-border/60 bg-white px-2.5 py-1.5 text-[12px] focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/5"
                                 />
                               ) : (
@@ -547,10 +557,11 @@ export function ServiceCatalogAccordionTable({
                                       key={option}
                                       type="button"
                                       onClick={() => handleOptionChange(item, config.id, option)}
-                                      className={`rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-tight transition-all ${currentOptions[config.id] === option
-                                        ? "border-primary bg-primary text-white"
-                                        : "border-border/60 bg-white hover:border-border hover:bg-slate-50 text-foreground/70"
-                                        }`}
+                                      className={`rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-tight transition-all ${
+                                        currentOptions[config.id] === option
+                                          ? "border-primary bg-primary text-white"
+                                          : "border-border/60 bg-white hover:border-border hover:bg-slate-50 text-foreground/70"
+                                      }`}
                                     >
                                       {option}
                                     </button>

@@ -6,8 +6,6 @@ import Image from "next/image";
 import { motion, useInView, useReducedMotion, type Variants } from "motion/react";
 import { Hero } from "@/components/sections/Hero";
 import { AuditSection } from "@/components/sections/AuditSection";
-import { Footer } from "@/components/sections/Footer";
-import { Navbar } from "@/components/layout/Navbar";
 import { usePerformanceTier } from "@/components/AdaptiveProvider";
 import { PROJECTS_DB } from "@/data/projects";
 import {
@@ -26,7 +24,25 @@ import {
   Lightbulb,
   Wind,
   Cpu,
+  Briefcase,
 } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
+
+const hexToRgba = (hex: string, alpha: number) => {
+  const normalized = hex.replace("#", "");
+  const isShort = normalized.length === 3;
+  const full = isShort
+    ? normalized
+        .split("")
+        .map((char) => char + char)
+        .join("")
+    : normalized;
+  const value = parseInt(full, 16);
+  const r = (value >> 16) & 255;
+  const g = (value >> 8) & 255;
+  const b = value & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
 
 const SERVICE_SHOWCASE_CARDS = [
   {
@@ -247,26 +263,33 @@ const staggerItem: Variants = {
 function ServicesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { isLite } = usePerformanceTier();
+  const shouldReduceMotion = useReducedMotion() || isLite;
 
   const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 40, scale: 0.95 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        delay: i * 0.08,
-        duration: 0.5,
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-      },
-    }),
+    hidden: shouldReduceMotion
+      ? { opacity: 1, y: 0, scale: 1 }
+      : { opacity: 0, y: 40, scale: 0.95 },
+    visible: (i: number) =>
+      shouldReduceMotion
+        ? { opacity: 1, y: 0, scale: 1, transition: { duration: 0 } }
+        : {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+              delay: i * 0.08,
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+            },
+          },
   };
 
   return (
     <section
       id="services"
       ref={ref}
-      className="relative overflow-hidden bg-gradient-to-b from-slate-200 via-slate-100 to-slate-200 py-24 md:py-32"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50/20 to-white py-12 md:py-16"
     >
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -277,16 +300,16 @@ function ServicesSection() {
 
       <div className="container relative z-10 mx-auto max-w-7xl px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
+          animate={shouldReduceMotion ? { opacity: 1, y: 0 } : isInView ? { opacity: 1, y: 0 } : {}}
+          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.6 }}
           className="mb-14 md:mb-16"
         >
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-200 text-blue-700 text-sm font-semibold mb-5">
+              <Badge icon={Zap} className="mb-5">
                 Полный спектр услуг
-              </div>
+              </Badge>
               <h2 className="text-balance text-[clamp(2rem,4vw,3rem)] leading-[1.05] font-display font-black tracking-tight text-slate-900 mb-4">
                 Инженерные системы
                 <span className="block bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
@@ -324,17 +347,42 @@ function ServicesSection() {
                 <article
                   className="relative flex h-full flex-col rounded-2xl border-2 border-slate-100 bg-white p-5 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.2)] will-change-transform overflow-hidden"
                   style={{
-                    boxShadow: `0 2px 12px -2px ${service.accent}10`,
+                    boxShadow: `0 2px 12px -2px ${hexToRgba(service.accent, 0.1)}`,
                   }}
                 >
-                  {/* Top accent line - rounded bar */}
+                  {/* Top accent strip (clipped by card rounding) */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-3 transition-all duration-300 group-hover:h-4">
+                    <div
+                      className="absolute inset-0 opacity-60 transition-opacity duration-300 group-hover:opacity-90"
+                      style={{
+                        background: `linear-gradient(90deg, ${hexToRgba(
+                          service.accent,
+                          0.9,
+                        )}, ${hexToRgba(service.accent, 0.55)} 55%, ${hexToRgba(
+                          service.accent,
+                          0,
+                        )} 100%)`,
+                      }}
+                    />
+                    <div
+                      className="absolute inset-x-0 top-0 h-[3px] transition-all duration-300 group-hover:h-[4px]"
+                      style={{
+                        background: `linear-gradient(90deg, ${service.accent}, ${hexToRgba(
+                          service.accent,
+                          0.75,
+                        )} 60%, ${hexToRgba(service.accent, 0)} 100%)`,
+                      }}
+                    />
+                    <div className="absolute inset-x-0 top-0 h-px bg-white/60" />
+                  </div>
+                  {/* Hover ring for "selected" feel */}
                   <div
-                    className="absolute top-0 left-4 right-4 h-1 rounded-full transition-all duration-300 group-hover:h-1.5"
-                    style={{ backgroundColor: service.accent }}
+                    className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    style={{ boxShadow: `inset 0 0 0 1px ${hexToRgba(service.accent, 0.22)}` }}
                   />
 
                   {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-start justify-between mb-4 pt-4">
                     <div
                       className="flex h-11 w-11 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105"
                       style={{
@@ -345,10 +393,11 @@ function ServicesSection() {
                       <service.icon className="h-5 w-5" />
                     </div>
                     <span
-                      className="inline-flex items-center rounded-lg px-3 py-1.5 text-sm font-bold uppercase tracking-wider"
+                      className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] font-bold tracking-tight"
                       style={{
                         color: service.accent,
                         backgroundColor: `${service.accent}12`,
+                        border: `1px solid ${service.accent}24`,
                       }}
                     >
                       {service.tag}
@@ -388,23 +437,6 @@ function ServicesSection() {
             </motion.div>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.8, duration: 0.5 }}
-          className="mt-14 text-center"
-        >
-          <p className="text-slate-500 mb-4">Не нашли нужную услугу?</p>
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-white font-medium hover:bg-slate-800 transition-colors group"
-          >
-            Смотреть все услуги
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );
@@ -430,11 +462,11 @@ function ProjectsSection() {
           className="flex flex-col md:flex-row md:items-end md:justify-between mb-12"
         >
           <div>
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-surface-primary text-primary text-xs font-black uppercase tracking-[0.2em] border border-border mb-6">
+            <Badge icon={Briefcase} className="mb-6">
               Портфолио
-            </span>
-            <h2 className="text-3xl md:text-4xl font-display font-black text-foreground">
-              РЕАЛИЗОВАННЫЕ ПРОЕКТЫ
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-display font-black text-foreground lowercase first-letter:uppercase">
+              Реализованные проекты
             </h2>
           </div>
           <Link
@@ -466,7 +498,7 @@ function ProjectsSection() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     <div className="absolute top-4 left-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/90 text-xs font-bold text-text-primary backdrop-blur-sm">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-white/90 text-[10px] font-bold text-text-primary backdrop-blur-sm">
                         {project.year}
                       </span>
                     </div>
@@ -506,15 +538,11 @@ function ProjectsSection() {
 // Fixed CTA Button
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Navbar />
-      <div className="pt-16">
-        <Hero />
-        <ServicesSection />
-        <AuditSection />
-        <ProjectsSection />
-        <Footer />
-      </div>
-    </main>
+    <div className="pt-16">
+      <Hero />
+      <ServicesSection />
+      <AuditSection />
+      <ProjectsSection />
+    </div>
   );
 }

@@ -2,32 +2,10 @@
 
 import { Logo } from "@/components/layout/Logo";
 import { MobileNav } from "@/components/ui/MobileNav";
-import { Phone, ShoppingCart } from "lucide-react";
+import { Phone } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { readProjectTrayState } from "@/lib/project-tray";
 
 export function Navbar() {
-  const [itemCount, setItemCount] = useState(0);
-
-  useEffect(() => {
-    // Basic sync from localStorage
-    const updateCount = () => {
-      const state = readProjectTrayState(window.localStorage);
-      setItemCount(state?.items.length || 0);
-    };
-
-    updateCount();
-    window.addEventListener("storage", updateCount);
-    // Custom event if needed for same-window updates
-    window.addEventListener("project-tray-updated", updateCount);
-
-    return () => {
-      window.removeEventListener("storage", updateCount);
-      window.removeEventListener("project-tray-updated", updateCount);
-    };
-  }, []);
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border">
       <div className="container mx-auto h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -54,18 +32,37 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="tel:+74951234567"
-            className="hidden lg:flex items-center gap-2 text-[15px] font-medium text-text-secondary hover:text-foreground transition-colors"
+            className="hidden lg:flex items-center gap-2 text-[17px] font-bold text-text-primary hover:text-primary transition-colors mr-6"
           >
-            <Phone className="h-4 w-4" />
+            <Phone className="h-5 w-5 text-primary" />
             <span className="tabular-nums">+7 (495) 123-45-67</span>
           </a>
 
-          <Link
-            href="/contacts"
-            className="hidden sm:inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary text-[15px] font-medium text-white hover:bg-primary/90 transition-colors"
+          <a
+            href="https://t.me/electromax_support"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-[#24A1DE] hover:bg-[#24A1DE] hover:text-white transition-all duration-300 shadow-sm"
+            aria-label="Telegram"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+            </svg>
+          </a>
+
+          <button
+            type="button"
+            onClick={() => {
+              const event = new CustomEvent("open-project-tray", { cancelable: true });
+              window.dispatchEvent(event);
+              if (!event.defaultPrevented) {
+                window.location.href = "/contacts";
+              }
+            }}
+            className="hidden sm:inline-flex items-center justify-center h-11 px-6 rounded-2xl bg-primary text-[13px] font-bold uppercase tracking-wider text-white hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/20"
           >
             ПРОЕКТ
-          </Link>
+          </button>
 
           <MobileNav />
         </div>

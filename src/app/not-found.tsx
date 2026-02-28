@@ -16,7 +16,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/"
-            className="text-xs font-bold text-muted-foreground hover:text-primary uppercase tracking-widest"
+            className="text-[10px] font-bold text-muted-foreground hover:text-primary lowercase first-letter:uppercase tracking-tight"
           >
             На главную
           </Link>

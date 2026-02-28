@@ -5,7 +5,17 @@ import { cn } from "@/lib/utils";
 import { Turnstile } from "@marsidev/react-turnstile";
 import { isValidRuPhone, type LeadApiResponse, type LeadPayload } from "@/lib/leads";
 import { formatPhone } from "@/lib/phone";
-import { Building2, Warehouse, Factory, Store, Ruler, Layers, Phone, ArrowRight, ShieldCheck, Zap, Info } from "lucide-react";
+import {
+  Building2,
+  Warehouse,
+  Factory,
+  Store,
+  Ruler,
+  Layers,
+  Phone,
+  ShieldCheck,
+  Info,
+} from "lucide-react";
 import { RainbowButton } from "@/components/ui/RainbowButton";
 
 interface CalculatorFormProps {
@@ -95,7 +105,9 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
         <div className="w-24 h-24 bg-primary rounded-3xl flex items-center justify-center text-white mx-auto mb-10 shadow-xl relative z-10">
           <ShieldCheck className="w-12 h-12" />
         </div>
-        <h2 className="text-3xl font-display font-black text-foreground mb-4 uppercase tracking-tighter relative z-10">ПРОТОКОЛ ИНИЦИИРОВАН</h2>
+        <h2 className="text-3xl font-display font-black text-foreground mb-4 uppercase tracking-tighter relative z-10">
+          ПРОТОКОЛ ИНИЦИИРОВАН
+        </h2>
         <p className="text-muted-foreground font-medium mb-12 leading-relaxed relative z-10">
           Инженерный отдел получил ваши данные. Связь будет установлена в течение 15 минут.
         </p>
@@ -115,8 +127,12 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
       <div className="bg-foreground p-10 relative overflow-hidden">
         <div className="absolute inset-0 bg-blueprint opacity-[0.05] pointer-events-none" />
         <div className="flex flex-col gap-1 relative z-10">
-          <div className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Конфигуратор систем</div>
-          <h2 className="text-2xl font-display font-black text-white uppercase tracking-tight">ИНЖЕНЕРНЫЙ КОНФИГУРАТОР</h2>
+          <div className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">
+            Конфигуратор систем
+          </div>
+          <h2 className="text-2xl font-display font-black text-white uppercase tracking-tight">
+            ИНЖЕНЕРНЫЙ КОНФИГУРАТОР
+          </h2>
         </div>
       </div>
 
@@ -126,7 +142,9 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
           <div className="flex-1 h-[2px] bg-border relative">
             <div className="absolute inset-0 bg-primary w-2/3 transition-all duration-300 ease-out shadow-[0_0_10px_rgba(var(--primary),0.5)]"></div>
           </div>
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">Шаг 02/03</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">
+            Шаг 02/03
+          </span>
         </div>
 
         {/* Object Type */}
@@ -145,14 +163,18 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
                   "flex items-center gap-4 p-5 rounded-2xl border transition-all duration-500 text-left relative overflow-hidden",
                   objectType === type.id
                     ? "border-primary/50 bg-primary/5 text-primary shadow-xl shadow-primary/5"
-                    : "border-border/50 bg-background text-muted-foreground hover:border-primary/30"
+                    : "border-border/50 bg-background text-muted-foreground hover:border-primary/30",
                 )}
               >
-                <type.icon className={cn(
-                  "w-5 h-5 transition-transform duration-500",
-                  objectType === type.id ? "scale-110 rotate-3" : ""
-                )} />
-                <span className="text-[10px] font-black uppercase tracking-widest">{type.label}</span>
+                <type.icon
+                  className={cn(
+                    "w-5 h-5 transition-transform duration-500",
+                    objectType === type.id ? "scale-110 rotate-3" : "",
+                  )}
+                />
+                <span className="text-[10px] font-black uppercase tracking-widest">
+                  {type.label}
+                </span>
                 {objectType === type.id && (
                   <div className="absolute top-0 right-0 w-2 h-2 bg-primary m-2 rounded-full" />
                 )}
@@ -169,7 +191,10 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
               AREA SPECIFICATION
             </label>
             <div className="bg-muted/50 px-5 py-2 rounded-lg text-lg font-black text-foreground border border-border/50 font-display">
-              {area} <span className="text-[10px] text-muted-foreground uppercase opacity-50 ml-1">SQM</span>
+              {area}{" "}
+              <span className="text-[10px] text-muted-foreground uppercase opacity-50 ml-1">
+                SQM
+              </span>
             </div>
           </div>
           <input
@@ -186,9 +211,11 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
         {/* Pricing Display */}
         <div className="p-10 rounded-[2.5rem] glass border border-primary/20 flex flex-col gap-6 relative overflow-hidden group/pricing">
           <div className="absolute inset-0 bg-blueprint opacity-[0.02] pointer-events-none" />
-          <div className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground">CALCULATED VALUATION [±15%]</div>
+          <div className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground">
+            CALCULATED VALUATION [±15%]
+          </div>
           <div className="text-4xl md:text-5xl font-display font-black text-primary tracking-tighter flex items-baseline gap-2">
-            {mounted ? estimatedPrice.toLocaleString('ru-RU') : '---'}
+            {mounted ? estimatedPrice.toLocaleString("ru-RU") : "---"}
             <span className="text-xl font-bold opacity-30">₽</span>
           </div>
           <div className="flex items-center gap-3 text-[10px] font-black tracking-widest text-emerald-500 uppercase">
@@ -215,7 +242,9 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
               aria-describedby={errorMessage ? "calculator-phone-error" : undefined}
               className={cn(
                 "w-full pl-16 pr-6 py-6 rounded-2xl border bg-background font-display font-black text-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 transition-all duration-500",
-                status === "error" ? "border-destructive animate-shake" : "border-border/50 focus:border-primary/50 shadow-sm"
+                status === "error"
+                  ? "border-destructive animate-shake"
+                  : "border-border/50 focus:border-primary/50 shadow-sm",
               )}
             />
           </div>
@@ -223,7 +252,11 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
           {errorMessage && (
             <div className="flex items-center justify-center gap-2 text-destructive">
               <Info className="w-4 h-4" />
-              <p id="calculator-phone-error" role="alert" className="text-[10px] font-black uppercase tracking-widest">
+              <p
+                id="calculator-phone-error"
+                role="alert"
+                className="text-[10px] font-black uppercase tracking-widest"
+              >
                 {errorMessage}
               </p>
             </div>
@@ -247,7 +280,8 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
           </RainbowButton>
 
           <p className="text-[9px] text-muted-foreground text-center font-bold uppercase tracking-[0.2em] leading-relaxed opacity-50">
-            Secure connection established. Data is encrypted <br />according to ISO/IEC 27001 standards.
+            Secure connection established. Data is encrypted <br />
+            according to ISO/IEC 27001 standards.
           </p>
         </div>
       </form>

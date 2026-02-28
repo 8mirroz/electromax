@@ -774,16 +774,22 @@ function buildHero(service: LegacyLike): ServiceHeroModel {
     .slice(0, 3)
     .join(", ");
 
+  const baseSubtitle = service.content?.hero?.subtitle?.trim() || service.description;
+  const trustItems = service.content?.hero?.features?.filter(Boolean).slice(0, 3) ?? [];
+
   return {
     title: service.title,
-    subtitle: `${service.description} Работаем по объектам: ${objectHint}.`,
+    subtitle: `${baseSubtitle} Объекты: ${objectHint}.`,
     ctaLabel: `Заказать аудит ${service.shortName}`,
     ctaHint: "Точная цена после аудита/ТЗ. На странице показаны ориентиры.",
-    trustItems: [
-      "Лицензии и допуски по профилю работ",
-      "Инженерный аудит до КП и договора",
-      "Интеграция со смежными системами при необходимости",
-    ],
+    trustItems:
+      trustItems.length >= 3
+        ? trustItems
+        : [
+            "Инженерный аудит до КП и договора",
+            "Согласуем состав работ и сроки",
+            "Интеграция со смежными системами при необходимости",
+          ],
     priceDisclaimer:
       "Ориентиры стоимости на странице не являются публичной офертой. Итоговая цена зависит от объекта, ТЗ и состава работ.",
   };
