@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowRight, Clock, TrendingUp, Zap, Shield, Layers } from "lucide-react";
+import { Clock, TrendingUp, Zap, Shield, Layers } from "lucide-react";
 import type { QuickStartCard as QuickStartCardType } from "@/types";
 
 interface QuickStartCardProps {
@@ -46,12 +46,6 @@ export function QuickStartCard({
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-shadow hover:shadow-lg"
     >
-      {card.featured && (
-        <div className="absolute right-3 top-3 z-10 rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
-          Популярное
-        </div>
-      )}
-
       {/* Header */}
       <div className="border-b border-border bg-gradient-to-br from-muted/50 to-muted p-5">
         <div className="mb-3 flex items-center justify-between">
@@ -61,11 +55,6 @@ export function QuickStartCard({
             <DifficultyIcon className="h-3.5 w-3.5" />
             {difficultyConfig[card.difficulty].label}
           </span>
-          {card.budgetFrom && (
-            <span className="text-sm font-bold text-foreground">
-              от {card.budgetFrom.toLocaleString("ru-RU")} ₽
-            </span>
-          )}
         </div>
         <h3 className="text-lg font-display font-black uppercase tracking-tight text-foreground">
           {card.title}
@@ -75,12 +64,6 @@ export function QuickStartCard({
 
       {/* Body */}
       <div className="flex flex-1 flex-col p-5">
-        {/* Duration */}
-        <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
-          <Clock className="h-4 w-4" />
-          <span>{card.duration}</span>
-        </div>
-
         {/* Benefits */}
         <div className="mb-5 space-y-2">
           {card.benefits.map((benefit, idx) => (
@@ -90,25 +73,22 @@ export function QuickStartCard({
             </div>
           ))}
         </div>
-
-        {/* Service Badge */}
-        <div className="mt-auto rounded-lg bg-muted px-3 py-2">
-          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-            {serviceTitle}
-          </p>
-        </div>
+        <div className="mt-auto" />
       </div>
 
-      {/* Footer Action */}
-      <div className="border-t border-border bg-muted/30 p-4">
-        <button
-          type="button"
-          onClick={() => onAddToTray?.(card, serviceSlug)}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
-        >
-          {card.ctaLabel}
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </button>
+      {/* Footer Meta */}
+      <div className="border-t border-border bg-muted/30 px-4 py-3 text-sm text-muted-foreground">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <Clock className="h-4 w-4" />
+            <span>{card.duration}</span>
+          </div>
+          {card.budgetFrom && (
+            <span className="font-bold text-foreground">
+              от {card.budgetFrom.toLocaleString("ru-RU")} ₽
+            </span>
+          )}
+        </div>
       </div>
     </motion.div>
   );

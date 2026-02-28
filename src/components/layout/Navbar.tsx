@@ -1,7 +1,5 @@
 "use client";
 
-import { PerformanceToggle } from "@/components/ui/PerformanceToggle";
-import { usePerformanceTier } from "@/components/AdaptiveProvider";
 import { Logo } from "@/components/layout/Logo";
 import { MobileNav } from "@/components/ui/MobileNav";
 import { Phone, ShoppingCart } from "lucide-react";
@@ -10,7 +8,6 @@ import { useEffect, useState } from "react";
 import { readProjectTrayState } from "@/lib/project-tray";
 
 export function Navbar() {
-  const { isLite } = usePerformanceTier();
   const [itemCount, setItemCount] = useState(0);
 
   useEffect(() => {
@@ -67,10 +64,9 @@ export function Navbar() {
             href="/contacts"
             className="hidden sm:inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary text-[15px] font-medium text-white hover:bg-primary/90 transition-colors"
           >
-            Обсудить проект
+            ПРОЕКТ
           </Link>
 
-          <PerformanceToggle />
           <MobileNav />
         </div>
       </div>

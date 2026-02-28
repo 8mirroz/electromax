@@ -71,7 +71,14 @@ type Agent2AltPageModel = {
   description?: string;
   themeColor?: string;
   hero?: { title?: string; subtitle?: string; trustFactors?: string[]; disclaimer?: string };
-  stats?: Array<{ label?: string; value?: string; subValue?: string; isMarketing?: boolean; id?: string; description?: string }>;
+  stats?: Array<{
+    label?: string;
+    value?: string;
+    subValue?: string;
+    isMarketing?: boolean;
+    id?: string;
+    description?: string;
+  }>;
   solutionKits?: Array<{
     kitId?: string;
     kitName?: string;
@@ -101,7 +108,11 @@ type Agent2AltPageModel = {
 type GeneratedServicesFile =
   | { services?: Array<Partial<ServicePageModel> & { slug: string }> }
   | Agent2AltPageModel[]
-  | { schemaVersion?: string; generatedAt?: string; services?: Array<Partial<ServicePageModel> & { slug: string }> };
+  | {
+      schemaVersion?: string;
+      generatedAt?: string;
+      services?: Array<Partial<ServicePageModel> & { slug: string }>;
+    };
 
 const generatedServiceRows = (() => {
   const raw = generatedServicesJson as unknown as GeneratedServicesFile;
@@ -118,7 +129,10 @@ const seedMap = new Map(
 
 const generatedRowMap = new Map(
   generatedServiceRows
-    .filter((row): row is (Partial<ServicePageModel> & { slug: string }) | Agent2AltPageModel => typeof (row as { slug?: string }).slug === "string")
+    .filter(
+      (row): row is (Partial<ServicePageModel> & { slug: string }) | Agent2AltPageModel =>
+        typeof (row as { slug?: string }).slug === "string",
+    )
     .map((row) => [row.slug, row]),
 );
 
@@ -140,11 +154,23 @@ const slugThemeDefaults: Record<string, ServiceThemeTokens> = {
   sot: { accent: "#2563eb", accentSoft: "#eff6ff", accentStrong: "#1e3a8a" },
   soue: { accent: "#f97316", accentSoft: "#fff7ed", accentStrong: "#9a3412" },
   to: { accent: "#ea580c", accentSoft: "#fff7ed", accentStrong: "#9a3412" },
+  ov: { accent: "#06b6d4", accentSoft: "#ecfeff", accentStrong: "#155e75" },
+  p: { accent: "#8b5cf6", accentSoft: "#f5f3ff", accentStrong: "#5b21b6" },
+  pnr: { accent: "#f97316", accentSoft: "#fff7ed", accentStrong: "#9a3412" },
 };
 
 type LegacyLike = Pick<
   ServiceConfig,
-  "id" | "title" | "shortName" | "description" | "basePricePerSqm" | "complexity" | "content" | "packages" | "includedSteps" | "equipment"
+  | "id"
+  | "title"
+  | "shortName"
+  | "description"
+  | "basePricePerSqm"
+  | "complexity"
+  | "content"
+  | "packages"
+  | "includedSteps"
+  | "equipment"
 >;
 
 const stubServices: Record<string, LegacyLike> = {
@@ -160,18 +186,43 @@ const stubServices: Record<string, LegacyLike> = {
       hero: {
         subtitle:
           "Проверяем текущую автоматику, точки отказа и сценарии взаимодействия между вентиляцией, электроснабжением, освещением и безопасностью.",
-        features: ["Интеграция подсистем", "Сценарии и аварийные режимы", "Диспетчерский контроль 24/7"],
+        features: [
+          "Интеграция подсистем",
+          "Сценарии и аварийные режимы",
+          "Диспетчерский контроль 24/7",
+        ],
       },
       problems: [
-        { title: "Разрозненные системы", description: "Подсистемы работают отдельно и не передают статусы в единый центр." },
-        { title: "Нет логов и алертов", description: "Аварии обнаруживаются поздно, без понятной причины и истории событий." },
-        { title: "Сложное масштабирование", description: "При расширении объекта текущая автоматика плохо переносится и конфликтует." },
+        {
+          title: "Разрозненные системы",
+          description: "Подсистемы работают отдельно и не передают статусы в единый центр.",
+        },
+        {
+          title: "Нет логов и алертов",
+          description: "Аварии обнаруживаются поздно, без понятной причины и истории событий.",
+        },
+        {
+          title: "Сложное масштабирование",
+          description: "При расширении объекта текущая автоматика плохо переносится и конфликтует.",
+        },
       ],
     },
     packages: [
-      { title: "Аудит и карта интеграций", oneTimePrice: 45000, features: ["Инвентаризация контуров и протоколов"] },
-      { title: "Сценарии и диспетчеризация", oneTimePrice: 180000, features: ["Настройка логики, алертов и панелей"] },
-      { title: "Сопровождение", monthlyPrice: 15000, features: ["Регламентное обслуживание и корректировки"] },
+      {
+        title: "Аудит и карта интеграций",
+        oneTimePrice: 45000,
+        features: ["Инвентаризация контуров и протоколов"],
+      },
+      {
+        title: "Сценарии и диспетчеризация",
+        oneTimePrice: 180000,
+        features: ["Настройка логики, алертов и панелей"],
+      },
+      {
+        title: "Сопровождение",
+        monthlyPrice: 15000,
+        features: ["Регламентное обслуживание и корректировки"],
+      },
     ],
     includedSteps: [
       { title: "Аудит", description: "Сбор текущей схемы, протоколов и зависимостей" },
@@ -200,18 +251,39 @@ const stubServices: Record<string, LegacyLike> = {
       hero: {
         subtitle:
           "Оцениваем состояние систем, полноту регламентов и фактическую готовность объекта к проверкам и аварийным сценариям.",
-        features: ["SLA и аварийный выезд", "Журналы и регламенты", "Плановые проверки и профилактика"],
+        features: [
+          "SLA и аварийный выезд",
+          "Журналы и регламенты",
+          "Плановые проверки и профилактика",
+        ],
       },
       problems: [
-        { title: "Формальное ТО", description: "Работы закрываются на бумаге, а реальные неисправности накапливаются." },
-        { title: "Срыв SLA", description: "Нет понятного графика и ответственного за критичные узлы." },
-        { title: "Проверки и замечания", description: "Документы и фактическое состояние объекта расходятся." },
+        {
+          title: "Формальное ТО",
+          description: "Работы закрываются на бумаге, а реальные неисправности накапливаются.",
+        },
+        {
+          title: "Срыв SLA",
+          description: "Нет понятного графика и ответственного за критичные узлы.",
+        },
+        {
+          title: "Проверки и замечания",
+          description: "Документы и фактическое состояние объекта расходятся.",
+        },
       ],
     },
     packages: [
       { title: "Ежемесячное ТО", monthlyPrice: 9000, features: ["Плановые регламентные работы"] },
-      { title: "Расширенное SLA", monthlyPrice: 25000, features: ["Приоритетный выезд и аварийные вызовы"] },
-      { title: "Разовый аудит состояния", oneTimePrice: 30000, features: ["Чек-лист, риски, план восстановления"] },
+      {
+        title: "Расширенное SLA",
+        monthlyPrice: 25000,
+        features: ["Приоритетный выезд и аварийные вызовы"],
+      },
+      {
+        title: "Разовый аудит состояния",
+        oneTimePrice: 30000,
+        features: ["Чек-лист, риски, план восстановления"],
+      },
     ],
     includedSteps: [
       { title: "Приемка", description: "Аудит состояния и сбор документации" },
@@ -241,6 +313,9 @@ const relatedServiceMap: Record<string, string[]> = {
   sot: ["os", "sks", "to"],
   soue: ["aps", "to", "skud"],
   to: ["aps", "soue", "skud"],
+  ov: ["asuz", "eom", "to"],
+  p: ["aps", "eom", "asuz"],
+  pnr: ["p", "asuz", "to"],
 };
 
 function capitalize(text: string) {
@@ -264,11 +339,15 @@ function toAccentTokens(accent?: string): ServiceThemeTokens | null {
   };
 }
 
-function normalizeCatalogFromAlt(slug: string, shortName: string, items?: Agent2AltCatalogItem[]): ServiceCatalogSection[] {
+function normalizeCatalogFromAlt(
+  slug: string,
+  shortName: string,
+  items?: Agent2AltCatalogItem[],
+): ServiceCatalogSection[] {
   if (!items?.length) return [];
 
   const normalizedItems: CatalogItem[] = items
-    .filter(item => item && (item.itemName || item.itemCode)) // Ensure it's not a stat
+    .filter((item) => item && (item.itemName || item.itemCode)) // Ensure it's not a stat
     .map((item, index) => ({
       id: `${slug}-alt-item-${index + 1}`,
       itemCode: item.itemCode || `SKU-${slug}-${index + 1}`,
@@ -292,7 +371,10 @@ function normalizeCatalogFromAlt(slug: string, shortName: string, items?: Agent2
   ];
 }
 
-function normalizeProcessFromAlt(slug: string, steps?: Agent2AltProcessStep[]): ProcessRoadmapStep[] {
+function normalizeProcessFromAlt(
+  slug: string,
+  steps?: Agent2AltProcessStep[],
+): ProcessRoadmapStep[] {
   if (!steps?.length) return [];
   return steps.map((step, index) => ({
     id: step.stepId || `${slug}-process-${index + 1}`,
@@ -304,7 +386,10 @@ function normalizeProcessFromAlt(slug: string, steps?: Agent2AltProcessStep[]): 
   }));
 }
 
-function normalizeAiRulesFromAlt(slug: string, rules?: Agent2AltPageModel["aiRules"]): AiAssistRule[] {
+function normalizeAiRulesFromAlt(
+  slug: string,
+  rules?: Agent2AltPageModel["aiRules"],
+): AiAssistRule[] {
   if (!rules?.length) return [];
   return rules.map((rule, index) => ({
     id: rule.ruleId || `${slug}-rule-${index + 1}`,
@@ -317,13 +402,15 @@ function normalizeAiRulesFromAlt(slug: string, rules?: Agent2AltPageModel["aiRul
   }));
 }
 
-function normalizeSeoFromAlt(slug: string, seoBlock?: Agent2AltSeoBlock): { seo?: ServicePageSeoBlock; faq: SeoFaqItem[] } {
+function normalizeSeoFromAlt(
+  slug: string,
+  seoBlock?: Agent2AltSeoBlock,
+): { seo?: ServicePageSeoBlock; faq: SeoFaqItem[] } {
   if (!seoBlock) return { faq: [] };
 
-  const paragraphs = [
-    seoBlock.description,
-    seoBlock.textBlock,
-  ].filter((value): value is string => typeof value === "string" && value.trim().length > 0);
+  const paragraphs = [seoBlock.description, seoBlock.textBlock].filter(
+    (value): value is string => typeof value === "string" && value.trim().length > 0,
+  );
 
   const faq: SeoFaqItem[] = (seoBlock.faq || [])
     .filter((item) => item.question && item.answer)
@@ -336,24 +423,30 @@ function normalizeSeoFromAlt(slug: string, seoBlock?: Agent2AltSeoBlock): { seo?
     }));
 
   return {
-    seo: seoBlock.title || paragraphs.length
-      ? {
-        title: seoBlock.title || `Услуга ${slug.toUpperCase()}`,
-        paragraphs,
-        relatedServiceSlugs: [],
-      }
-      : undefined,
+    seo:
+      seoBlock.title || paragraphs.length
+        ? {
+            title: seoBlock.title || `Услуга ${slug.toUpperCase()}`,
+            paragraphs,
+            relatedServiceSlugs: [],
+          }
+        : undefined,
     faq,
   };
 }
 
-function normalizeGeneratedRow(row: (Partial<ServicePageModel> & { slug: string }) | Agent2AltPageModel): Partial<ServicePageModel> {
+function normalizeGeneratedRow(
+  row: (Partial<ServicePageModel> & { slug: string }) | Agent2AltPageModel,
+): Partial<ServicePageModel> {
   const anyRow = row as Record<string, unknown>;
   const looksLikeCurrent =
     "catalog" in anyRow ||
     "process" in anyRow ||
     "seo" in anyRow ||
-    ("hero" in anyRow && typeof anyRow.hero === "object" && anyRow.hero !== null && "ctaLabel" in (anyRow.hero as object));
+    ("hero" in anyRow &&
+      typeof anyRow.hero === "object" &&
+      anyRow.hero !== null &&
+      "ctaLabel" in (anyRow.hero as object));
 
   if (looksLikeCurrent) {
     return row as Partial<ServicePageModel>;
@@ -371,18 +464,21 @@ function normalizeGeneratedRow(row: (Partial<ServicePageModel> & { slug: string 
     theme: theme ?? undefined,
     hero: alt.hero
       ? {
-        title: alt.hero.title || alt.title || alt.slug,
-        subtitle: alt.hero.subtitle || alt.description || "",
-        ctaLabel: "Заказать аудит объекта",
-        trustItems: alt.hero.trustFactors || [],
-        priceDisclaimer: alt.hero.disclaimer,
-      }
+          title: alt.hero.title || alt.title || alt.slug,
+          subtitle: alt.hero.subtitle || alt.description || "",
+          ctaLabel: "Заказать аудит объекта",
+          trustItems: alt.hero.trustFactors || [],
+          priceDisclaimer: alt.hero.disclaimer,
+        }
       : undefined,
     stats: alt.stats?.map((stat, index) => ({
       id: stat.id || `${alt.slug}-stat-alt-${index + 1}`,
       label: stat.label || "Метрика",
       value: stat.value || "-",
-      description: stat.description || stat.subValue || (stat.isMarketing ? "Маркетинговая метрика" : "Операционная метрика"),
+      description:
+        stat.description ||
+        stat.subValue ||
+        (stat.isMarketing ? "Маркетинговая метрика" : "Операционная метрика"),
       verified: !stat.isMarketing,
     })),
     solutionKits: alt.solutionKits?.map((kit, index) => ({
@@ -398,7 +494,11 @@ function normalizeGeneratedRow(row: (Partial<ServicePageModel> & { slug: string 
       durationText: kit.durationText || "по графику",
       ctaLabel: kit.ctaLabel || "Добавить в проект",
     })),
-    catalog: normalizeCatalogFromAlt(alt.slug, alt.shortName || alt.slug.toUpperCase(), alt.catalogItems),
+    catalog: normalizeCatalogFromAlt(
+      alt.slug,
+      alt.shortName || alt.slug.toUpperCase(),
+      alt.catalogItems,
+    ),
     process: normalizeProcessFromAlt(alt.slug, alt.processSteps),
     aiRules: normalizeAiRulesFromAlt(alt.slug, alt.aiRules),
     seo,
@@ -406,7 +506,10 @@ function normalizeGeneratedRow(row: (Partial<ServicePageModel> & { slug: string 
   };
 }
 
-function mergeGeneratedIntoBase(base: ServicePageModel, generatedRow?: (Partial<ServicePageModel> & { slug: string }) | Agent2AltPageModel): ServicePageModel {
+function mergeGeneratedIntoBase(
+  base: ServicePageModel,
+  generatedRow?: (Partial<ServicePageModel> & { slug: string }) | Agent2AltPageModel,
+): ServicePageModel {
   if (!generatedRow) return base;
 
   const generated = normalizeGeneratedRow(generatedRow);
@@ -424,22 +527,27 @@ function mergeGeneratedIntoBase(base: ServicePageModel, generatedRow?: (Partial<
     hero: generated.hero ? { ...base.hero, ...generated.hero } : base.hero,
     stats: generated.stats && generated.stats.length > 0 ? generated.stats : base.stats,
     solutionKits:
-      generated.solutionKits && generated.solutionKits.length > 0 ? generated.solutionKits : base.solutionKits,
+      generated.solutionKits && generated.solutionKits.length > 0
+        ? generated.solutionKits
+        : base.solutionKits,
     catalog: generated.catalog && generated.catalog.length > 0 ? generated.catalog : base.catalog,
     process: generated.process && generated.process.length > 0 ? generated.process : base.process,
     aiRules: generated.aiRules && generated.aiRules.length > 0 ? generated.aiRules : base.aiRules,
     seo: generated.seo
       ? {
-        ...base.seo,
-        ...generated.seo,
-        relatedServiceSlugs:
-          generated.seo.relatedServiceSlugs && generated.seo.relatedServiceSlugs.length > 0
-            ? generated.seo.relatedServiceSlugs
-            : base.seo.relatedServiceSlugs,
-      }
+          ...base.seo,
+          ...generated.seo,
+          relatedServiceSlugs:
+            generated.seo.relatedServiceSlugs && generated.seo.relatedServiceSlugs.length > 0
+              ? generated.seo.relatedServiceSlugs
+              : base.seo.relatedServiceSlugs,
+        }
       : base.seo,
     faq: generated.faq && generated.faq.length > 0 ? generated.faq : base.faq,
-    benchmarks: generated.benchmarks && generated.benchmarks.length > 0 ? generated.benchmarks : base.benchmarks,
+    benchmarks:
+      generated.benchmarks && generated.benchmarks.length > 0
+        ? generated.benchmarks
+        : base.benchmarks,
     relatedServiceSlugs: generatedRelated,
   };
 }
@@ -470,12 +578,48 @@ function buildCatalogItems(service: LegacyLike): CatalogItem[] {
   });
 
   const stageItems: CatalogItem[] = [
-    ["AUDIT", "Аудит объекта", "выезд", Math.max(12000, Math.round(service.basePricePerSqm * 20)), "Акт обследования и перечень замечаний"],
-    ["PROJ", "Проектирование / ТЗ", "проект", Math.max(25000, Math.round(service.basePricePerSqm * 60)), "Подготовка проектных решений"],
-    ["INSTALL", "Монтаж / внедрение", "проект", Math.max(45000, Math.round(service.basePricePerSqm * 100)), "Исполнение по согласованному объему"],
-    ["PNR", "Пусконаладка / тестирование", "проект", Math.max(18000, Math.round(service.basePricePerSqm * 35)), "Проверка сценариев и сдача"],
-    ["DOC", "Исполнительная документация", "проект", Math.max(10000, Math.round(service.basePricePerSqm * 20)), "Комплект актов и схем"],
-    ["TO", "Техническое обслуживание", "мес", Math.max(5000, Math.round(service.basePricePerSqm * 10)), "Регламентные работы по графику"],
+    [
+      "AUDIT",
+      "Аудит объекта",
+      "выезд",
+      Math.max(12000, Math.round(service.basePricePerSqm * 20)),
+      "Акт обследования и перечень замечаний",
+    ],
+    [
+      "PROJ",
+      "Проектирование / ТЗ",
+      "проект",
+      Math.max(25000, Math.round(service.basePricePerSqm * 60)),
+      "Подготовка проектных решений",
+    ],
+    [
+      "INSTALL",
+      "Монтаж / внедрение",
+      "проект",
+      Math.max(45000, Math.round(service.basePricePerSqm * 100)),
+      "Исполнение по согласованному объему",
+    ],
+    [
+      "PNR",
+      "Пусконаладка / тестирование",
+      "проект",
+      Math.max(18000, Math.round(service.basePricePerSqm * 35)),
+      "Проверка сценариев и сдача",
+    ],
+    [
+      "DOC",
+      "Исполнительная документация",
+      "проект",
+      Math.max(10000, Math.round(service.basePricePerSqm * 20)),
+      "Комплект актов и схем",
+    ],
+    [
+      "TO",
+      "Техническое обслуживание",
+      "мес",
+      Math.max(5000, Math.round(service.basePricePerSqm * 10)),
+      "Регламентные работы по графику",
+    ],
   ].map(([code, name, unit, min, comment], index) => ({
     id: `${service.id}-stage-${index + 1}`,
     itemCode: `${service.id.toUpperCase()}-${code}`,
@@ -532,9 +676,15 @@ function buildCatalogSections(service: LegacyLike): ServiceCatalogSection[] {
 
 function buildSolutionKits(service: LegacyLike): SolutionKit[] {
   const catalogItems = buildCatalogItems(service);
-  const byPrefix = (needle: string) => catalogItems.filter((item) => item.itemCode.includes(needle)).slice(0, 2).map((i) => i.itemCode);
+  const byPrefix = (needle: string) =>
+    catalogItems
+      .filter((item) => item.itemCode.includes(needle))
+      .slice(0, 2)
+      .map((i) => i.itemCode);
 
-  const defaults: Array<Pick<SolutionKit, "id" | "name" | "useCase" | "targetObject" | "durationText">> = [
+  const defaults: Array<
+    Pick<SolutionKit, "id" | "name" | "useCase" | "targetObject" | "durationText">
+  > = [
     {
       id: `${service.id}-kit-audit`,
       name: "Стартовый аудит",
@@ -566,7 +716,11 @@ function buildSolutionKits(service: LegacyLike): SolutionKit[] {
       "Ориентир бюджета и график этапов",
     ],
     includedItemCodes:
-      index === 0 ? byPrefix("AUDIT") : index === 1 ? [...byPrefix("PROJ"), ...byPrefix("INSTALL")] : [...byPrefix("PNR"), ...byPrefix("TO")],
+      index === 0
+        ? byPrefix("AUDIT")
+        : index === 1
+          ? [...byPrefix("PROJ"), ...byPrefix("INSTALL")]
+          : [...byPrefix("PNR"), ...byPrefix("TO")],
     budgetMin: Math.max(25000, Math.round(service.basePricePerSqm * (index + 1) * 40)),
     budgetMax: Math.max(60000, Math.round(service.basePricePerSqm * (index + 1) * 120)),
     currency: "RUB",
@@ -630,35 +784,308 @@ function buildHero(service: LegacyLike): ServiceHeroModel {
       "Инженерный аудит до КП и договора",
       "Интеграция со смежными системами при необходимости",
     ],
-    priceDisclaimer: "Ориентиры стоимости на странице не являются публичной офертой. Итоговая цена зависит от объекта, ТЗ и состава работ.",
+    priceDisclaimer:
+      "Ориентиры стоимости на странице не являются публичной офертой. Итоговая цена зависит от объекта, ТЗ и состава работ.",
   };
 }
 
 function buildProcess(service: LegacyLike): ProcessRoadmapStep[] {
-  const fallbackArtifacts = ["Акт обследования", "КП и договор", "График работ", "Акт ПНР / тесты", "Журнал ТО / рекомендации"];
-  return service.includedSteps.map((step, index): ProcessRoadmapStep => ({
-    id: `${service.id}-step-${index + 1}`,
-    title: step.title,
-    clientAction:
-      index === 0
-        ? "Согласует время доступа на объект и контактное лицо"
-        : "Подтверждает решения, доступ и окна работ",
-    electromaxAction: step.description,
-    artifact: fallbackArtifacts[index] ?? "Акт/отчет по этапу",
-    durationText: index === 0 ? "1-2 дня" : index === service.includedSteps.length - 1 ? "1-3 дня" : "по графику",
-  }));
+  const fallbackArtifacts = [
+    "Акт обследования",
+    "КП и договор",
+    "График работ",
+    "Акт ПНР / тесты",
+    "Журнал ТО / рекомендации",
+  ];
+  return service.includedSteps.map(
+    (step, index): ProcessRoadmapStep => ({
+      id: `${service.id}-step-${index + 1}`,
+      title: step.title,
+      clientAction:
+        index === 0
+          ? "Согласует время доступа на объект и контактное лицо"
+          : "Подтверждает решения, доступ и окна работ",
+      electromaxAction: step.description,
+      artifact: fallbackArtifacts[index] ?? "Акт/отчет по этапу",
+      durationText:
+        index === 0
+          ? "1-2 дня"
+          : index === service.includedSteps.length - 1
+            ? "1-3 дня"
+            : "по графику",
+    }),
+  );
 }
 
 function buildFaq(service: LegacyLike): SeoFaqItem[] {
+  const specializedFaq: Record<string, SeoFaqItem[]> = {
+    skud: [
+      {
+        id: "skud-faq-1",
+        question: "Что лучше: карта или Face ID?",
+        answer:
+          "Оба варианта используются и часто комбинируются. Карты дешевле и проще в замене, Face ID обеспечивает более высокий уровень безопасности (нельзя передать) и удобство (нельзя забыть). Оптимально — карта + биометрия.",
+        schemaInclude: true,
+        intentTag: "tech",
+      },
+      {
+        id: "skud-faq-2",
+        question: "Интегрируется ли СКУД с 1С?",
+        answer:
+          "Да, система интегрируется с 1С:ЗУП для автоматического учета рабочего времени и формирования табелей без ручного ввода.",
+        schemaInclude: true,
+        intentTag: "integration",
+      },
+      {
+        id: "skud-faq-3",
+        question: "Сколько стоит установка турникета?",
+        answer:
+          "Стоимость зависит от типа (трипод, ротор) и пропускной способности. Базовые решения с монтажом начинаются от 70 000 руб.",
+        schemaInclude: true,
+        intentTag: "price",
+      },
+      {
+        id: "skud-faq-4",
+        question: "Есть ли беспроводные решения?",
+        answer:
+          "Да, существуют радиоканальные считыватели и замки, удобные для объектов, где нежелательна прокладка кабеля.",
+        schemaInclude: true,
+        intentTag: "tech",
+      },
+      {
+        id: "skud-faq-5",
+        question: "Как работает учет рабочего времени?",
+        answer:
+          "Система фиксирует время первого и последнего прикладывания карты, позволяя строить отчеты по опозданиям и дисциплине.",
+        schemaInclude: true,
+        intentTag: "features",
+      },
+      {
+        id: "skud-faq-6",
+        question: "Что будет при отключении электричества?",
+        answer:
+          "Предусматриваются блоки бесперебойного питания (ИБП), обеспечивающие работу системы от 4 до 24 часов самостоятельно.",
+        schemaInclude: true,
+        intentTag: "safety",
+      },
+      {
+        id: "skud-faq-7",
+        question: "Как быстро добавить нового сотрудника?",
+        answer:
+          "Администратор через ПО или мобильное приложение может мгновенно внести данные и выдать виртуальный или физ. пропуск.",
+        schemaInclude: true,
+        intentTag: "ops",
+      },
+      {
+        id: "skud-faq-8",
+        question: "Нужен ли выделенный сервер?",
+        answer:
+          "Для небольших офисов достаточно контроллера с памятью. Для крупных сетей и аналитики мы разворачиваем сервер СКУД.",
+        schemaInclude: true,
+        intentTag: "it",
+      },
+      {
+        id: "skud-faq-9",
+        question: "Соответствует ли система нормам Антитеррор?",
+        answer:
+          "Да, наши решения соответствуют требованиям постановлений по защите мест массового пребывания людей.",
+        schemaInclude: true,
+        intentTag: "legal",
+      },
+      {
+        id: "skud-faq-10",
+        question: "Как разблокируются двери при пожаре?",
+        answer:
+          "СКУД обязательно подключается к пожарной сигнализации для автоматического разблокирования всех эвакуационных путей.",
+        schemaInclude: true,
+        intentTag: "safety",
+      },
+      {
+        id: "skud-faq-11",
+        question: "Можно ли управлять доступом удаленно?",
+        answer:
+          "Да, можно открывать двери или блокировать доступ через защищенный веб-интерфейс или приложение на смартфоне.",
+        schemaInclude: true,
+        intentTag: "ops",
+      },
+      {
+        id: "skud-faq-12",
+        question: "Сколько хранится архив проходов?",
+        answer:
+          "Срок настраивается индивидуально. Обычно от 30 до 90 дней, в зависимости от требований безопасности и объема диска.",
+        schemaInclude: true,
+        intentTag: "it",
+      },
+    ],
+    eo: [
+      {
+        id: "eo-faq-1",
+        question: "Какое освещение в офисе считается оптимальным?",
+        answer:
+          "Рекомендуется уровень 500 люкс на рабочих местах с нейтральной цветовой температурой (4000K) для снижения утомляемости.",
+        schemaInclude: true,
+        intentTag: "standards",
+      },
+      {
+        id: "eo-faq-2",
+        question: "Что дает протокол DALI?",
+        answer:
+          "Это цифровой протокол управления, позволяющий диммировать, группировать и настраивать сценарии света программно без переделки проводки.",
+        schemaInclude: true,
+        intentTag: "tech",
+      },
+      {
+        id: "eo-faq-3",
+        question: "Какая реальная экономия при переходе на LED?",
+        answer:
+          "Светодиоды снижают потребление энергии в 3-5 раз по сравнению с люминесцентными лампами при той же освещенности.",
+        schemaInclude: true,
+        intentTag: "efficiency",
+      },
+      {
+        id: "eo-faq-4",
+        question: "Как проверяется соответствие нормам?",
+        answer:
+          "Мы проводим замеры люксметром и работаем строго по СанПиН и СП 52.13330 (Естественное и искусственное освещение).",
+        schemaInclude: true,
+        intentTag: "legal",
+      },
+      {
+        id: "eo-faq-5",
+        question: "Нужно ли ставить аварийное освещение?",
+        answer:
+          "Да, это обязательное требование для путей эвакуации. Мы ставим светильники с встроенными АКБ на 1-3 часа работы.",
+        schemaInclude: true,
+        intentTag: "safety",
+      },
+      {
+        id: "eo-faq-6",
+        question: "Как выбрать цветовую температуру?",
+        answer:
+          "3000K — теплый (отдых/уют), 4000K — нейтральный (офис/работа), 5000K+ — холодный (склады/производство).",
+        schemaInclude: true,
+        intentTag: "design",
+      },
+      {
+        id: "eo-faq-7",
+        question: "Какой срок службы у светодиодных панелей?",
+        answer:
+          "Качественные модули рассчитаны на 50 000+ часов работы, что составляет около 10-15 лет в режиме офисного дня.",
+        schemaInclude: true,
+        intentTag: "efficiency",
+      },
+      {
+        id: "eo-faq-8",
+        question: "Можно ли интегрировать свет в Умный дом/здание?",
+        answer:
+          "Да, через протоколы KNX или Modbus освещение связывается с климатом и безопасностью в единую систему.",
+        schemaInclude: true,
+        intentTag: "integration",
+      },
+      {
+        id: "eo-faq-9",
+        question: "Управление светом со смартфона доступно?",
+        answer:
+          "Да, через Bluetooth (Casambi) или Wi-Fi шлюзы можно управлять яркостью и цветом с любого мобильного устройства.",
+        schemaInclude: true,
+        intentTag: "ops",
+      },
+      {
+        id: "eo-faq-10",
+        question: "Нужны ли датчики движения в офисе?",
+        answer:
+          "Они идеальны для коридоров, лестниц и санузлов, позволяя экономить до 30% электроэнергии за счет автовыключения.",
+        schemaInclude: true,
+        intentTag: "efficiency",
+      },
+      {
+        id: "eo-faq-11",
+        question: "Как рассчитать количество светильников?",
+        answer:
+          "Мы делаем расчет в DIALux, учитывая высоту потолков, цвет стен и расстановку мебели для равномерного покрытия.",
+        schemaInclude: true,
+        intentTag: "design",
+      },
+      {
+        id: "eo-faq-12",
+        question: "Сколько времени занимает монтаж освещения?",
+        answer:
+          "Проектирование — 2-3 дня, монтаж зависит от объема. Обычно стандартный офис 200 м² зашивается за 4-5 дней.",
+        schemaInclude: true,
+        intentTag: "timeline",
+      },
+    ],
+  };
+
+  if (specializedFaq[service.id]) {
+    return specializedFaq[service.id];
+  }
+
   return [
-    { id: `${service.id}-faq-1`, question: `Сколько стоит ${service.shortName}?`, answer: "На странице показаны ориентиры. Точная стоимость рассчитывается после аудита объекта или по вашему ТЗ.", schemaInclude: true, intentTag: "price" },
-    { id: `${service.id}-faq-2`, question: "Можно ли начать с аудита без монтажа?", answer: "Да. Аудит выполняется как отдельный этап: обследование, риски, рекомендации, ориентир бюджета и этапность.", schemaInclude: true, intentTag: "audit" },
-    { id: `${service.id}-faq-3`, question: "Работаете ли вы с действующими объектами?", answer: "Да, планируем работы поэтапно и согласовываем окна, чтобы снизить простой и влияние на эксплуатацию.", schemaInclude: true, intentTag: "operations" },
-    { id: `${service.id}-faq-4`, question: "Что влияет на срок выполнения?", answer: "Площадь, количество зон/точек, готовность документации, режим доступа на объект и наличие оборудования.", schemaInclude: true, intentTag: "timeline" },
-    { id: `${service.id}-faq-5`, question: "Можно ли интегрировать со смежными системами?", answer: "Да, при аудите фиксируем зависимости и закладываем интеграцию с подходящими подсистемами в проектный план.", schemaInclude: true, intentTag: "integration" },
-    { id: `${service.id}-faq-6`, question: "Какие документы получает заказчик?", answer: "В зависимости от этапа: акт обследования, КП, договор, исполнительные документы, акты пусконаладки и рекомендации по ТО.", schemaInclude: true, intentTag: "docs" },
-    { id: `${service.id}-faq-7`, question: "Работаете ли вы по Москве и области?", answer: "Да, базовая география выездов: Москва и Московская область. Для других регионов формат согласуем отдельно.", schemaInclude: true, intentTag: "geo" },
-    { id: `${service.id}-faq-8`, question: "Можно ли добавить несколько услуг в один проект?", answer: "Да, используйте кнопку “Добавить в проект” в карточках и каталоге. Страница собирает состав работ в локальный проект-трей.", schemaInclude: true, intentTag: "project" },
+    {
+      id: `${service.id}-faq-1`,
+      question: `Сколько стоит ${service.shortName}?`,
+      answer:
+        "На странице показаны ориентиры. Точная стоимость рассчитывается после аудита объекта или по вашему ТЗ.",
+      schemaInclude: true,
+      intentTag: "price",
+    },
+    {
+      id: `${service.id}-faq-2`,
+      question: "Можно ли начать с аудита без монтажа?",
+      answer:
+        "Да. Аудит выполняется как отдельный этап: обследование, риски, рекомендации, ориентир бюджета и этапность.",
+      schemaInclude: true,
+      intentTag: "audit",
+    },
+    {
+      id: `${service.id}-faq-3`,
+      question: "Работаете ли вы с действующими объектами?",
+      answer:
+        "Да, планируем работы поэтапно и согласовываем окна, чтобы снизить простой и влияние на эксплуатацию.",
+      schemaInclude: true,
+      intentTag: "operations",
+    },
+    {
+      id: `${service.id}-faq-4`,
+      question: "Что влияет на срок выполнения?",
+      answer:
+        "Площадь, количество зон/точек, готовность документации, режим доступа на объект и наличие оборудования.",
+      schemaInclude: true,
+      intentTag: "timeline",
+    },
+    {
+      id: `${service.id}-faq-5`,
+      question: "Можно ли интегрировать со смежными системами?",
+      answer:
+        "Да, при аудите фиксируем зависимости и закладываем интеграцию с подходящими подсистемами в проектный план.",
+      schemaInclude: true,
+      intentTag: "integration",
+    },
+    {
+      id: `${service.id}-faq-6`,
+      question: "Какие документы получает заказчик?",
+      answer:
+        "В зависимости от этапа: акт обследования, КП, договор, исполнительные документы, акты пусконаладки и рекомендации по ТО.",
+      schemaInclude: true,
+      intentTag: "docs",
+    },
+    {
+      id: `${service.id}-faq-7`,
+      question: "Работаете ли вы по Москве и области?",
+      answer:
+        "Да, базовая география выездов: Москва и Московская область. Для других регионов формат согласуем отдельно.",
+      schemaInclude: true,
+      intentTag: "geo",
+    },
+    {
+      id: `${service.id}-faq-8`,
+      question: "Можно ли добавить несколько услуг в один проект?",
+      answer:
+        "Да, используйте кнопку “Добавить в проект” в карточках и каталоге. Страница собирает состав работ в локальный проект-трей.",
+      schemaInclude: true,
+      intentTag: "project",
+    },
   ];
 }
 
@@ -713,14 +1140,16 @@ function buildAiRules(service: LegacyLike): AiAssistRule[] {
     {
       id: `${service.id}-rule-open`,
       triggerType: "tray_empty",
-      messageText: "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
+      messageText:
+        "Начните с аудита объекта: это сократит риски по срокам и стоимости на следующих этапах.",
       priority: 100,
     },
     {
       id: `${service.id}-rule-stage`,
       triggerType: "missing_category",
       triggerValue: "Этапы проекта",
-      messageText: "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
+      messageText:
+        "В проекте нет базового этапа работ (аудит/проект/монтаж). Добавьте этап для корректного ориентирного расчета.",
       priority: 90,
     },
     ...related.slice(0, 2).map((slug, index) => ({
@@ -779,7 +1208,9 @@ function applySeedOverrides(model: ServicePageModel, seed?: ServicePageSeed): Se
       ...model.hero,
       ...(seed.hero ?? {}),
       title: seed.title ?? model.hero.title,
-      subtitle: seed.description ? `${seed.description} ${model.hero.subtitle}` : model.hero.subtitle,
+      subtitle: seed.description
+        ? `${seed.description} ${model.hero.subtitle}`
+        : model.hero.subtitle,
     },
   };
 }

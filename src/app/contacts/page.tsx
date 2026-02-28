@@ -8,34 +8,35 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { formatPhone } from "@/lib/phone";
 import { isValidRuPhone, type LeadApiResponse } from "@/lib/leads";
+import { MapPin, Phone, Mail, Clock, CheckCircle, Map, Copy, Check, Zap } from "lucide-react";
 
 const contactInfo = [
   {
-    icon: "location_on",
+    icon: MapPin,
     title: "Адрес",
-    content: "Москва, ул. Индустриальная 42,\nБЦ \"Технопарк\", оф. 304",
+    content: 'Москва, ул. Индустриальная 42,\nБЦ "Технопарк", оф. 304',
   },
   {
-    icon: "phone",
+    icon: Phone,
     title: "Телефон",
     content: "+7 (495) 123-45-67",
     href: "tel:+74951234567",
   },
   {
-    icon: "email",
+    icon: Mail,
     title: "Email",
     content: "info@electromax.ru",
     href: "mailto:info@electromax.ru",
   },
   {
-    icon: "schedule",
+    icon: Clock,
     title: "Часы работы",
     content: "Пн-Пт: 9:00 - 18:00\nСб-Вс: по записи",
   },
 ];
 
 const requisites = [
-  { label: "ООО", value: "\"ЭЛЕКТРОМАКС\"" },
+  { label: "ООО", value: '"ЭЛЕКТРОМАКС"' },
   { label: "ИНН", value: "7701234567" },
   { label: "КПП", value: "770101001" },
   { label: "ОГРН", value: "1157746123456" },
@@ -55,16 +56,16 @@ export default function ContactsPage() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [loadMap, setLoadMap] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    // Load map on interaction or after 3 seconds (whichever comes first)
     const timer = setTimeout(() => setLoadMap(true), 3000);
     return () => clearTimeout(timer);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!isValidRuPhone(formData.phone)) {
       setErrorMessage("Введите номер в формате +7 (999) 123-45-67");
       setStatus("error");
@@ -105,31 +106,55 @@ export default function ContactsPage() {
     }
   };
 
+  const copyToClipboard = (value: string, index: number) => {
+    navigator.clipboard.writeText(value.replace(/"/g, ""));
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
   return (
-    <main className="min-h-screen bg-background flex flex-col">
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50 flex flex-col">
       <Navbar />
 
-      {/* Hero */}
-      <section className="pt-28 pb-12 md:pt-32 md:pb-20 bg-muted/20 border-b border-border">
-        <div className="container mx-auto max-w-7xl">
-          <div className="space-y-6">
-            <div className="inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-black uppercase tracking-[0.2em] border border-primary/20">
-              КОНТАКТЫ
+      {/* Hero Section */}
+      <section className="relative pt-28 pb-12 md:pt-32 md:pb-20 overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 -left-40 w-[400px] h-[400px] bg-indigo-100/40 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-emerald-100/30 rounded-full blur-3xl" />
+        </div>
+
+        <div className="container relative z-10 mx-auto max-w-7xl px-4">
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-200 text-blue-700 text-sm font-semibold mb-6">
+              Контакты
             </div>
-            <h1 className="text-4xl md:text-6xl font-display font-black tracking-tight leading-[1.1]">
-              Свяжитесь с инженерной командой Electromax
+
+            <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-display font-black tracking-tight leading-[1.05] text-slate-900 mb-6">
+              Свяжитесь с командой{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Electromax
+              </span>
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed font-medium">
-              Поможем определить состав работ, сроки и ориентировочный бюджет. Для типовых задач даём предварительное КП в течение 24 часов, для срочных объектов — ускоренный разбор.
+
+            <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-8 max-w-2xl">
+              Поможем определить состав работ, сроки и ориентировочный бюджет. Для типовых задач
+              даём предварительное КП в течение 24 часов.
             </p>
-            <div className="grid sm:grid-cols-3 gap-4 pt-4">
+
+            <div className="flex flex-wrap gap-4">
               {[
-                "Ответ инженера в течение 15 минут",
-                "Предварительное КП до 24 часов",
-                "Работаем с действующими объектами без остановки бизнеса",
-              ].map((item) => (
-                <div key={item} className="rounded-2xl border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground">
-                  {item}
+                { icon: Zap, text: "Ответ за 15 минут" },
+                { icon: Clock, text: "КП до 24 часов" },
+                { icon: CheckCircle, text: "Работаем без остановки" },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/80 backdrop-blur-sm border border-slate-200 shadow-sm"
+                >
+                  <item.icon className="w-4 h-4 text-blue-600" />
+                  <span className="text-sm font-medium text-slate-700">{item.text}</span>
                 </div>
               ))}
             </div>
@@ -138,31 +163,29 @@ export default function ContactsPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <section className="py-16 md:py-20 relative z-10">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
             {contactInfo.map((item) => (
               <div
                 key={item.title}
-                className="group p-8 rounded-[2rem] border border-border bg-card hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+                className="group relative h-full rounded-2xl border-2 border-slate-100 bg-white p-6 hover:border-slate-200 hover:shadow-lg transition-all duration-200"
               >
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-                  <span className="material-icons-outlined text-primary group-hover:text-white text-3xl transition-colors">
-                    {item.icon}
-                  </span>
+                <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center mb-4 text-slate-600">
+                  <item.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-foreground mb-3">
-                  {item.title}
-                </h3>
+
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
+
                 {item.href ? (
                   <a
                     href={item.href}
-                    className="text-muted-foreground hover:text-primary transition-colors font-medium whitespace-pre-line"
+                    className="text-slate-600 hover:text-blue-600 transition-colors font-medium whitespace-pre-line text-sm leading-relaxed"
                   >
                     {item.content}
                   </a>
                 ) : (
-                  <p className="text-muted-foreground whitespace-pre-line font-medium">
+                  <p className="text-slate-600 whitespace-pre-line font-medium text-sm leading-relaxed">
                     {item.content}
                   </p>
                 )}
@@ -171,54 +194,58 @@ export default function ContactsPage() {
           </div>
 
           {/* Main Content */}
-          <div className="grid lg:grid-cols-12 gap-16">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-7">
-              <h2 className="text-3xl font-display font-black mb-8">
-                Отправить заявку
-              </h2>
-              <div className="mb-8 rounded-2xl border border-border bg-muted/40 p-6">
-                <div className="text-xs font-black uppercase tracking-[0.14em] text-muted-foreground mb-3">
+              <div className="mb-8">
+                <h2 className="text-2xl md:text-3xl font-display font-black text-slate-900 mb-2">
+                  Отправить заявку
+                </h2>
+                <p className="text-sm text-slate-500">Заполните форму, мы перезвоним</p>
+              </div>
+
+              <div className="mb-8 rounded-2xl border border-slate-200 bg-slate-50/50 p-6">
+                <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-500" />
                   Что ускорит расчёт
                 </div>
-                <ul className="space-y-2 text-sm text-foreground">
-                  <li className="flex gap-2">
-                    <span className="material-icons-outlined text-primary text-base">check_circle</span>
-                    Тип объекта и примерная площадь
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="material-icons-outlined text-primary text-base">check_circle</span>
-                    Какие системы нужны (АПС, СКУД, СОТ, ЭОМ и т.д.)
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="material-icons-outlined text-primary text-base">check_circle</span>
-                    Срок запуска объекта и ограничения по времени работ
-                  </li>
+                <ul className="space-y-3 text-sm text-slate-700">
+                  {[
+                    "Тип объекта и примерная площадь",
+                    "Какие системы нужны (АПС, СКУД, СОТ, ЭОМ и т.д.)",
+                    "Срок запуска объекта и ограничения по времени работ",
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
-              
+
               {status === "success" ? (
-                <div className="bg-primary/5 border-2 border-primary p-12 rounded-[2.5rem] text-center">
-                  <div className="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                    <span className="material-icons-outlined text-primary text-5xl">task_alt</span>
+                <div className="rounded-3xl bg-emerald-50 border-2 border-emerald-200 p-10 text-center">
+                  <div className="w-20 h-20 bg-emerald-500 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle className="w-10 h-10 text-white" />
                   </div>
-                  <h3 className="text-2xl font-display font-black text-foreground mb-4">
+                  <h3 className="text-2xl font-display font-black text-slate-900 mb-3">
                     Заявка принята!
                   </h3>
-                  <p className="text-muted-foreground font-medium mb-6">
+                  <p className="text-slate-600 font-medium mb-6">
                     Менеджер свяжется с вами в течение 15 минут
                   </p>
                   <button
                     onClick={() => setStatus("idle")}
-                    className="text-xs font-black uppercase tracking-[0.14em] text-primary hover:underline"
+                    className="text-sm font-bold uppercase tracking-wider text-emerald-600 hover:text-emerald-700 transition-colors"
                   >
                     Отправить ещё одну
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Name Input */}
                   <div>
-                    <label htmlFor="name" className="block text-xs font-black uppercase tracking-[0.14em] text-muted-foreground mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
                       Имя
                     </label>
                     <input
@@ -226,14 +253,18 @@ export default function ContactsPage() {
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-6 py-5 rounded-2xl border-2 border-border bg-background font-display font-bold text-lg focus:outline-none focus:border-primary transition-all"
-                      placeholder="Иван Петров"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 bg-white text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                      placeholder="Ваше имя"
                     />
                   </div>
 
+                  {/* Phone Input */}
                   <div>
-                    <label htmlFor="phone" className="block text-xs font-black uppercase tracking-[0.14em] text-muted-foreground mb-2">
-                      Телефон *
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-slate-700 mb-2"
+                    >
+                      Телефон <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="phone"
@@ -242,28 +273,26 @@ export default function ContactsPage() {
                       inputMode="tel"
                       autoComplete="tel"
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: formatPhone(e.target.value) })}
-                      aria-invalid={status === "error" && Boolean(errorMessage)}
-                      aria-describedby={errorMessage ? "contact-phone-error" : undefined}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: formatPhone(e.target.value) })
+                      }
                       className={cn(
-                        "w-full px-6 py-5 rounded-2xl border-2 bg-background font-display font-bold text-lg focus:outline-none transition-all",
-                        status === "error" ? "border-destructive" : "border-border focus:border-primary"
+                        "w-full px-4 py-3 rounded-xl border-2 bg-white text-slate-900 focus:outline-none focus:ring-2 transition-all",
+                        status === "error"
+                          ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
+                          : "border-slate-200 focus:border-blue-500 focus:ring-blue-500/20",
                       )}
                       placeholder="+7 (___) ___-__-__"
                     />
-                    {errorMessage && (
-                      <p
-                        id="contact-phone-error"
-                        className="text-destructive text-xs font-black uppercase tracking-[0.14em] mt-2"
-                        role="alert"
-                      >
-                        {errorMessage}
-                      </p>
-                    )}
+                    {errorMessage && <p className="text-red-500 text-sm mt-2">{errorMessage}</p>}
                   </div>
 
+                  {/* Email Input */}
                   <div>
-                    <label htmlFor="email" className="block text-xs font-black uppercase tracking-[0.14em] text-muted-foreground mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-slate-700 mb-2"
+                    >
                       Email
                     </label>
                     <input
@@ -271,13 +300,17 @@ export default function ContactsPage() {
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-6 py-5 rounded-2xl border-2 border-border bg-background font-display font-bold text-lg focus:outline-none focus:border-primary transition-all"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 bg-white text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                       placeholder="example@mail.ru"
                     />
                   </div>
 
+                  {/* Message Input */}
                   <div>
-                    <label htmlFor="message" className="block text-xs font-black uppercase tracking-[0.14em] text-muted-foreground mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-slate-700 mb-2"
+                    >
                       Сообщение
                     </label>
                     <textarea
@@ -285,71 +318,109 @@ export default function ContactsPage() {
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-6 py-5 rounded-2xl border-2 border-border bg-background font-display font-bold text-lg focus:outline-none focus:border-primary transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 bg-white text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
                       placeholder="Опишите вашу задачу..."
                     />
                   </div>
 
+                  {/* Submit Button */}
                   <Button
                     type="submit"
                     size="lg"
                     disabled={status === "loading"}
-                    className={cn(
-                      "w-full h-14 rounded-2xl text-base font-bold uppercase tracking-[0.2em]",
-                      status === "loading" && "opacity-50 cursor-not-allowed"
-                    )}
+                    className="w-full h-14 rounded-xl text-base font-bold bg-blue-600 hover:bg-blue-700 transition-colors"
                   >
-                    {status === "loading" ? "Отправка..." : "Отправить заявку"}
+                    {status === "loading" ? (
+                      <span className="flex items-center gap-2">
+                        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                            fill="none"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          />
+                        </svg>
+                        Отправка...
+                      </span>
+                    ) : (
+                      "Отправить заявку"
+                    )}
                   </Button>
 
-                  <div className="flex items-center justify-center gap-4 text-[9px] text-muted-foreground font-bold uppercase tracking-[0.14em]">
+                  <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-slate-400">
                     <span>Нажимая кнопку, вы соглашаетесь с</span>
-                    <Link href="/licenses" className="text-primary hover:underline">
+                    <Link
+                      href="/licenses"
+                      className="text-blue-600 hover:text-blue-700 hover:underline"
+                    >
                       политикой конфиденциальности
-                    </Link>
-                    <span>и</span>
-                    <Link href="/licenses" className="text-primary hover:underline">
-                      условиями обработки данных
                     </Link>
                   </div>
                 </form>
               )}
             </div>
 
-            {/* Map Placeholder */}
+            {/* Map Section */}
             <div className="lg:col-span-5">
-              <h2 className="text-3xl font-display font-black mb-8">
-                Как нас найти
-              </h2>
-              <div className="mb-6 rounded-2xl border border-border bg-card p-6">
-                <div className="text-xs font-black uppercase tracking-[0.14em] text-muted-foreground mb-3">
-                  Работа с объектами
+              <div className="mb-8">
+                <h2 className="text-2xl md:text-3xl font-display font-black text-slate-900 mb-2">
+                  Как нас найти
+                </h2>
+                <p className="text-sm text-slate-500">Москва и регионы</p>
+              </div>
+
+              <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-5">
+                <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                  Зона работы
                 </div>
-                <div className="space-y-3 text-sm font-medium text-foreground">
-                  <p>Москва и Московская область — выезд инженера по графику или в срочном режиме.</p>
-                  <p>Регионы — удалённый аудит + командировка инженерной группы по согласованию.</p>
+                <div className="space-y-3 text-sm text-slate-700">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
+                    <p>
+                      Москва и Московская область — выезд инженера по графику или в срочном режиме.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-blue-500 mt-1.5 shrink-0" />
+                    <p>
+                      Регионы — удалённый аудит + командировка инженерной группы по согласованию.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="rounded-[2rem] overflow-hidden border border-border bg-muted h-[600px] relative group">
+
+              <div className="rounded-3xl overflow-hidden border border-slate-200 bg-slate-100 h-[500px] relative">
                 {!loadMap ? (
                   <>
-                    {/* Preview Image / Placeholder */}
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
                       <div className="text-center p-8">
-                        <span className="material-icons-outlined text-6xl text-slate-400 mb-4">map</span>
-                        <p className="text-sm font-bold text-slate-500 uppercase tracking-[0.14em]">Карта загружается...</p>
+                        <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                          <Map className="w-8 h-8 text-slate-400" />
+                        </div>
+                        <p className="text-sm font-semibold text-slate-600 uppercase tracking-wider">
+                          Карта загружается...
+                        </p>
                       </div>
                     </div>
-                    {/* Click-to-load overlay */}
                     <button
                       onClick={() => setLoadMap(true)}
-                      className="absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300"
                       aria-label="Загрузить карту"
                     >
                       <div className="bg-white rounded-2xl px-8 py-6 shadow-2xl text-center">
-                        <span className="material-icons-outlined text-primary text-4xl mb-2">map</span>
-                        <p className="text-sm font-bold text-foreground uppercase tracking-[0.14em]">Показать карту</p>
-                        <p className="text-xs text-muted-foreground mt-1">Яндекс.Карты</p>
+                        <Map className="w-10 h-10 text-blue-600 mx-auto mb-2" />
+                        <p className="text-sm font-bold text-slate-900 uppercase tracking-wider">
+                          Показать карту
+                        </p>
+                        <p className="text-xs text-slate-500 mt-1">Яндекс.Карты</p>
                       </div>
                     </button>
                   </>
@@ -368,27 +439,45 @@ export default function ContactsPage() {
         </div>
       </section>
 
-      {/* Requisites */}
-      <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container mx-auto max-w-7xl">
-          <h2 className="text-3xl font-display font-black text-center mb-12">
-            Реквизиты компании
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {requisites.map((req) => (
+      {/* Requisites Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-100/50 to-slate-50">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-display font-black text-slate-900 mb-3">
+              Реквизиты компании
+            </h2>
+            <p className="text-slate-600">Для договоров и оплаты</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {requisites.map((req, index) => (
               <div
                 key={req.label}
-                className="p-6 rounded-2xl border border-border bg-card"
+                className="group relative rounded-xl border border-slate-200 bg-white p-5 hover:shadow-lg hover:border-slate-300 cursor-pointer transition-all"
+                onClick={() => copyToClipboard(req.value, index)}
               >
-                <div className="text-xs font-black uppercase tracking-[0.14em] text-muted-foreground mb-2">
-                  {req.label}
-                </div>
-                <div className="text-lg font-bold text-foreground">
-                  {req.value}
+                <div className="flex items-start justify-between">
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
+                      {req.label}
+                    </div>
+                    <div className="text-base font-bold text-slate-900 font-mono">{req.value}</div>
+                  </div>
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    {copiedIndex === index ? (
+                      <Check className="w-4 h-4 text-emerald-500" />
+                    ) : (
+                      <Copy className="w-4 h-4 text-slate-400" />
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
+
+          <p className="text-center text-xs text-slate-400 mt-6">
+            Нажмите на реквизит, чтобы скопировать
+          </p>
         </div>
       </section>
 

@@ -36,7 +36,6 @@ export function useProjectTray({ serviceSlug, catalogItems }: UseProjectTrayOpti
       // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate tray from persisted storage
       setTray(saved);
     } else {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- initialize tray when no saved state exists
       setTray(touchState(createEmptyProjectTrayState(serviceSlug)));
     }
     hasHydratedRef.current = true;
