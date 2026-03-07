@@ -9,7 +9,10 @@ let raw = "";
 try {
   raw = fs.readFileSync(briefsPath, "utf8");
 } catch (error) {
-  console.error(`[ContentOps] Failed to read briefs at ${briefsPath}. Check the path and cwd.`, error);
+  console.error(
+    `[ContentOps] Failed to read briefs at ${briefsPath}. Check the path and cwd.`,
+    error,
+  );
   process.exit(1);
 }
 
@@ -46,7 +49,10 @@ function getThemeColor(slug: string) {
 }
 
 function getSectionBlocks(text: string) {
-  const sections = text.split(/\n---\n/).map((s) => s.trim()).filter(Boolean);
+  const sections = text
+    .split(/\n---\n/)
+    .map((s) => s.trim())
+    .filter(Boolean);
   return sections;
 }
 
@@ -116,7 +122,9 @@ for (const section of sections) {
   const stats = parseStats(statsBlock);
   const faqList = parseList(faqBlock);
 
-  const trustFactors = stats.map((s) => `${s.value}${s.label ? " " + s.label : ""}`.trim()).slice(0, 4);
+  const trustFactors = stats
+    .map((s) => `${s.value}${s.label ? " " + s.label : ""}`.trim())
+    .slice(0, 4);
 
   services.push({
     id: slug,
@@ -145,23 +153,29 @@ function addSheet(name: string, rows: Record<string, unknown>[]) {
   xlsx.utils.book_append_sheet(wb, ws, name);
 }
 
-addSheet("services", services.map((s) => ({
-  id: s.id,
-  slug: s.slug,
-  title: s.title,
-  shortName: s.shortName,
-  themeColor: s.themeColor,
-  isActive: s.isActive,
-  sortOrder: s.sortOrder,
-})));
+addSheet(
+  "services",
+  services.map((s) => ({
+    id: s.id,
+    slug: s.slug,
+    title: s.title,
+    shortName: s.shortName,
+    themeColor: s.themeColor,
+    isActive: s.isActive,
+    sortOrder: s.sortOrder,
+  })),
+);
 
-addSheet("hero", services.map((s) => ({
-  service_slug: s.slug,
-  title: s.heroTitle,
-  subtitle: s.heroSubtitle,
-  trustFactors: s.trustFactors.join(", "),
-  disclaimer: s.disclaimer,
-})));
+addSheet(
+  "hero",
+  services.map((s) => ({
+    service_slug: s.slug,
+    title: s.heroTitle,
+    subtitle: s.heroSubtitle,
+    trustFactors: s.trustFactors.join(", "),
+    disclaimer: s.disclaimer,
+  })),
+);
 
 const statRows: Array<Record<string, string>> = [];
 services.forEach((s) => {
@@ -177,63 +191,66 @@ services.forEach((s) => {
 });
 addSheet("stats_cards", statRows);
 
-const catalogHeaders = [[
-  "service_slug",
-  "itemCode",
-  "itemName",
-  "category",
-  "unit",
-  "priceType",
-  "priceMin",
-  "priceMax",
-  "currency",
-  "leadTimeMinDays",
-  "leadTimeMaxDays",
-  "includes",
-  "excludes",
-]];
-const kitHeaders = [[
-  "service_slug",
-  "kitId",
-  "kitName",
-  "useCase",
-  "targetObject",
-  "includedItemCodes",
-  "budgetMin",
-  "budgetMax",
-  "durationText",
-  "ctaLabel",
-]];
-const processHeaders = [[
-  "service_slug",
-  "stepId",
-  "title",
-  "clientAction",
-  "contractorAction",
-  "artifact",
-  "leadTime",
-]];
-const aiRuleHeaders = [[
-  "service_slug",
-  "ruleId",
-  "triggerType",
-  "triggerValue",
-  "recommendItemCode",
-  "messageText",
-  "priority",
-]];
+const catalogHeaders = [
+  [
+    "service_slug",
+    "itemCode",
+    "itemName",
+    "category",
+    "unit",
+    "priceType",
+    "priceMin",
+    "priceMax",
+    "currency",
+    "leadTimeMinDays",
+    "leadTimeMaxDays",
+    "includes",
+    "excludes",
+  ],
+];
+const kitHeaders = [
+  [
+    "service_slug",
+    "kitId",
+    "kitName",
+    "useCase",
+    "targetObject",
+    "includedItemCodes",
+    "budgetMin",
+    "budgetMax",
+    "durationText",
+    "ctaLabel",
+  ],
+];
+const processHeaders = [
+  ["service_slug", "stepId", "title", "clientAction", "contractorAction", "artifact", "leadTime"],
+];
+const aiRuleHeaders = [
+  [
+    "service_slug",
+    "ruleId",
+    "triggerType",
+    "triggerValue",
+    "recommendItemCode",
+    "messageText",
+    "priority",
+  ],
+];
 
 xlsx.utils.book_append_sheet(wb, xlsx.utils.aoa_to_sheet(catalogHeaders), "catalog_items");
 xlsx.utils.book_append_sheet(wb, xlsx.utils.aoa_to_sheet(kitHeaders), "solution_kits");
 xlsx.utils.book_append_sheet(wb, xlsx.utils.aoa_to_sheet(processHeaders), "process_steps");
 xlsx.utils.book_append_sheet(wb, xlsx.utils.aoa_to_sheet(aiRuleHeaders), "ai_rules");
 
-addSheet("seo_blocks", services.map((s) => ({
-  service_slug: s.slug,
-  title: `${s.title} в Москве | Electromax`,
-  description: s.heroSubtitle,
-  textBlock: `${s.heroTitle} ${s.heroSubtitle} Полный цикл: аудит, проектирование, монтаж, обслуживание.`,
-})));
+addSheet(
+  "seo_blocks",
+  services.map((s) => ({
+    service_slug: s.slug,
+    title: `${s.title} в Москве | Electromax`,
+    description: s.heroSubtitle,
+    textBlock: `${s.heroTitle} ${s.heroSubtitle} Полный цикл: аудит, проектирование, монтаж, обслуживание.`,
+  })),
+);
 
 const faqRows: Array<Record<string, string>> = [];
 services.forEach((s) => {

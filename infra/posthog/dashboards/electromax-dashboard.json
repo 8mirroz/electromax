@@ -1,0 +1,24 @@
+{
+  "name": "Electromax Core Funnel",
+  "description": "Operational dashboard for event ingestion and conversion health.",
+  "insights": [
+    {
+      "name": "Funnel: CTA -> Lead -> Tray Submit",
+      "type": "funnel",
+      "steps": [
+        "service_cta_click",
+        "lead_form_submit",
+        "project_tray_submit"
+      ],
+      "breakdown": ["source", "page_path"],
+      "interval": "day"
+    },
+    {
+      "name": "Content Engagement",
+      "type": "trends",
+      "events": ["content_download", "video_play_25_50_75_100"],
+      "breakdown": ["source", "page_path"],
+      "interval": "day"
+    }
+  ]
+}

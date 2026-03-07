@@ -2,20 +2,24 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { defaultOgImage, getSiteUrl } from "@/lib/seo";
-import { getServicePageModel, getServicePageSlugs } from "@/lib/services-content";
+import { getServicePageModelFromCms, getServicePageSlugsFromCms } from "@/lib/cms/service-pages";
 import { ServicePageClient } from "./ServicePageClient";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { RelatedArticlesSection } from "@/components/sections/RelatedArticlesSection";
+import { RelatedServicesSection } from "@/components/sections/RelatedServicesSection";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return getServicePageSlugs().map((slug) => ({ slug }));
+  const slugs = await getServicePageSlugsFromCms({ locale: "ru" });
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const model = getServicePageModel(slug);
+  const model = await getServicePageModelFromCms(slug, { locale: "ru" });
 
   if (!model) {
     return { title: "Услуга не найдена" };
@@ -45,7 +49,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-function getOfferRange(model: NonNullable<ReturnType<typeof getServicePageModel>>) {
+function getOfferRange(model: {
+  catalog: Array<{ items: Array<{ priceMin?: number; priceMax?: number }> }>;
+}) {
   const pricedItems = model.catalog
     .flatMap((section) => section.items)
     .filter((item) => typeof item.priceMin === "number");
@@ -61,7 +67,7 @@ function getOfferRange(model: NonNullable<ReturnType<typeof getServicePageModel>
 
 export default async function ServicePage({ params }: PageProps) {
   const { slug } = await params;
-  const model = getServicePageModel(slug);
+  const model = await getServicePageModelFromCms(slug, { locale: "ru" });
 
   if (!model) {
     notFound();
@@ -157,6 +163,10 @@ export default async function ServicePage({ params }: PageProps) {
       </div>
 
       <ServicePageClient model={model} />
+
+      <RelatedServicesSection currentSlug={model.slug} />
+      <TestimonialsSection limit={3} />
+      <RelatedArticlesSection />
     </main>
   );
 }

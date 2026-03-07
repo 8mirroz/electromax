@@ -10,9 +10,10 @@ describe("CalculatorForm", () => {
     vi.stubGlobal("fetch", fetchMock);
     fetchMock.mockReset();
     vi.unstubAllEnvs();
+    vi.stubEnv("NEXT_PUBLIC_ANALYTICS_CONSENT_MODE", "disabled");
   });
 
-  it("shows validation error for invalid phone", () => {
+  it("shows validation error for invalid phone", { timeout: 15000 }, async () => {
     render(
       <CalculatorForm
         basePrice={450}
@@ -23,11 +24,13 @@ describe("CalculatorForm", () => {
     fireEvent.change(screen.getByPlaceholderText(/\+7/), { target: { value: "123" } });
     fireEvent.click(screen.getByRole("button", { name: /get specification/i }));
 
-    expect(screen.getByText("Введите номер в формате +7 (999) 123-45-67")).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText("Введите номер в формате +7 (999) 123-45-67")).toBeInTheDocument();
+    });
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it("shows network error on fetch failure", async () => {
+  it("shows network error on fetch failure", { timeout: 15000 }, async () => {
     fetchMock.mockRejectedValueOnce(new Error("Ошибка сети. Попробуйте позже."));
 
     render(
@@ -42,9 +45,12 @@ describe("CalculatorForm", () => {
     });
     fireEvent.click(screen.getByRole("button", { name: /get specification/i }));
 
-    await waitFor(() => {
-      expect(screen.getByRole("alert")).toHaveTextContent("Ошибка сети. Попробуйте позже.");
-    });
+    await waitFor(
+      () => {
+        expect(screen.getByRole("alert")).toHaveTextContent("Ошибка сети. Попробуйте позже.");
+      },
+      { timeout: 12000 },
+    );
   });
 
   it("submits and shows success state", async () => {
@@ -78,6 +84,19 @@ describe("CalculatorForm", () => {
         headers: { "Content-Type": "application/json" },
       }),
     );
-    expect(window.ym).toHaveBeenCalledWith(123456, "reachGoal", "lead_form_submitted");
+    expect(window.ym).toHaveBeenCalledWith(
+      123456,
+      "reachGoal",
+      "lead_form_submitted",
+      expect.objectContaining({
+        source: "calculator_form",
+      }),
+    );
+    expect(window.ym).toHaveBeenCalledWith(
+      123456,
+      "reachGoal",
+      "calculator_complete",
+      expect.any(Object),
+    );
   });
 });

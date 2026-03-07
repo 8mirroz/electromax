@@ -9,7 +9,9 @@ const buttonVariants = cva(
     "inline-flex items-center justify-center gap-2 whitespace-nowrap",
     "border border-transparent",
     "text-sm font-semibold tracking-tight",
-    "transition-all duration-300 ease-out",
+    "transition-all",
+    "duration-[var(--duration-normal)]",
+    "ease-[var(--ease-enter)]",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     "disabled:pointer-events-none disabled:opacity-50",
     "active:scale-[0.98]",
@@ -18,7 +20,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "relative rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold uppercase tracking-wider text-sm shadow-[0_4px_20px_-4px_rgba(59,130,246,0.4),0_8px_40px_-8px_rgba(79,70,229,0.3)] hover:shadow-[0_8px_30px_-4px_rgba(59,130,246,0.5),0_12px_50px_-8px_rgba(79,70,229,0.35)] hover:-translate-y-0.5",
+          "relative rounded-2xl bg-primary text-white font-bold uppercase tracking-wider text-[13px] hover:bg-primary/90 transition-all active:scale-95",
         destructive: "rounded-full bg-red-500 text-destructive-foreground hover:bg-red-500/90",
         outline: "rounded-2xl border border-input bg-background hover:bg-accent focus:bg-accent",
         secondary: "rounded-2xl bg-secondary text-secondary-foreground hover:bg-secondary/80",

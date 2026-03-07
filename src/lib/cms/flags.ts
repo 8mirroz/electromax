@@ -1,0 +1,4 @@
+export const FEATURE_FLAGS = {
+  CMS_MIGRATION_ACTIVE: process.env.NEXT_PUBLIC_CMS_MIGRATION_ACTIVE === "true",
+  ENABLE_POSTHOG: process.env.NEXT_PUBLIC_ENABLE_POSTHOG === "true",
+};

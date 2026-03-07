@@ -25,7 +25,12 @@ export function ServiceCard({ item, isActive, onClick }: ServiceCardProps) {
       aria-expanded={isActive}
       aria-label={`${item.name} — ${item.sectionTitle}. Нажмите для настройки`}
       onClick={onClick}
-      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(); } }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
       whileHover={!isActive && !noMotion ? { y: -8, scale: 1.02 } : {}}
       whileTap={!isActive && !noMotion ? { scale: 0.98 } : {}}
       transition={{ duration: noMotion ? 0 : 0.2, ease: "easeOut" }}

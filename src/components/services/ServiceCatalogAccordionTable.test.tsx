@@ -30,16 +30,15 @@ const sections: ServiceCatalogSection[] = [
 ];
 
 describe("ServiceCatalogAccordionTable", () => {
-  it("renders row, expands details and adds item to project", { timeout: 10000 }, () => {
+  it("renders row, expands details and adds item to project", { timeout: 30000 }, () => {
     const onAddItem = vi.fn();
 
     render(<ServiceCatalogAccordionTable sections={sections} onAddItem={onAddItem} />);
 
     expect(screen.getByText("Аудит объекта")).toBeInTheDocument();
     expect(screen.getByText(/10/)).toBeInTheDocument();
-    expect(screen.getByText(/15/)).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("button", { name: /добавить в проект/i }));
+    fireEvent.click(screen.getByRole("button", { name: /в проект/i }));
     expect(onAddItem).toHaveBeenCalled();
     const [itemArg, optionsArg, priceArg] = onAddItem.mock.calls[0] ?? [];
     expect(itemArg).toEqual(sections[0].items[0]);

@@ -1,4 +1,10 @@
-import type { CatalogItem, ProjectTrayItem, ProjectTrayRange, ProjectTrayState, SolutionKit } from "@/types";
+import type {
+  CatalogItem,
+  ProjectTrayItem,
+  ProjectTrayRange,
+  ProjectTrayState,
+  SolutionKit,
+} from "@/types";
 
 export const PROJECT_TRAY_STORAGE_KEY = "electromax-project-v1";
 
@@ -36,7 +42,8 @@ function itemRange(item: ProjectTrayItem): ProjectTrayRange | null {
     const max = typeof item.priceMax === "number" ? item.priceMax * qty : min;
     return { min, max, currency: item.currency ?? "RUB" };
   }
-  const inferredMax = typeof item.priceMax === "number" ? item.priceMax * qty : Math.round(min * 1.2);
+  const inferredMax =
+    typeof item.priceMax === "number" ? item.priceMax * qty : Math.round(min * 1.2);
   return { min, max: inferredMax, currency: item.currency ?? "RUB" };
 }
 
@@ -80,7 +87,9 @@ export function readProjectTrayState(storage: Storage | null): ProjectTrayState 
         ...item,
         qty: normalizeQty(item.qty),
       })) as ProjectTrayItem[],
-      selectedKitIds: Array.isArray(parsed.selectedKitIds) ? parsed.selectedKitIds.filter((v): v is string => typeof v === "string") : [],
+      selectedKitIds: Array.isArray(parsed.selectedKitIds)
+        ? parsed.selectedKitIds.filter((v): v is string => typeof v === "string")
+        : [],
       notes: typeof parsed.notes === "string" ? parsed.notes : "",
       estimatedRange: null,
       updatedAt: typeof parsed.updatedAt === "string" ? parsed.updatedAt : null,
@@ -124,7 +133,10 @@ export function createTrayItemFromCatalogItem(args: {
   };
 }
 
-export function addOrMergeTrayItem(state: ProjectTrayState, nextItem: ProjectTrayItem): ProjectTrayState {
+export function addOrMergeTrayItem(
+  state: ProjectTrayState,
+  nextItem: ProjectTrayItem,
+): ProjectTrayState {
   const existingIndex = state.items.findIndex(
     (item) => item.serviceSlug === nextItem.serviceSlug && item.itemCode === nextItem.itemCode,
   );
@@ -151,10 +163,16 @@ export function removeTrayItem(state: ProjectTrayState, itemId: string): Project
   });
 }
 
-export function updateTrayItemQty(state: ProjectTrayState, itemId: string, qty: number): ProjectTrayState {
+export function updateTrayItemQty(
+  state: ProjectTrayState,
+  itemId: string,
+  qty: number,
+): ProjectTrayState {
   return touchState({
     ...state,
-    items: state.items.map((item) => (item.id === itemId ? { ...item, qty: normalizeQty(qty) } : item)),
+    items: state.items.map((item) =>
+      item.id === itemId ? { ...item, qty: normalizeQty(qty) } : item,
+    ),
   });
 }
 

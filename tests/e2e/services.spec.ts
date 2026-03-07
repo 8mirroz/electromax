@@ -13,7 +13,9 @@ test.describe("Service pages / Project Tray", () => {
     }
   });
 
-  test("catalog item can be added to project and tray persists across service pages", async ({ page }) => {
+  test("catalog item can be added to project and tray persists across service pages", async ({
+    page,
+  }) => {
     await page.goto("http://localhost:3000/services/aps");
     await expect(page.getByTestId("hero-audit-cta")).toBeVisible();
 

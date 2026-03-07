@@ -6,21 +6,21 @@ import { Logo } from "@/components/layout/Logo";
 
 export function Footer() {
   const securityServices = [
-    { title: "Видеонаблюдение", href: "/services/sot" },
-    { title: "Контроль доступа", href: "/services/skud" },
-    { title: "Пожарная сигнализация", href: "/services/aps" },
-    { title: "Охранная сигнализация", href: "/services/os" },
-    { title: "Система оповещения", href: "/services/soue" },
+    { title: "Видеонаблюдение", abbr: "СОТ", href: "/services/sot" },
+    { title: "Контроль доступа", abbr: "СКУД", href: "/services/skud" },
+    { title: "Пожарная сигнализация", abbr: "АПС", href: "/services/aps" },
+    { title: "Охранная сигнализация", abbr: "ОС", href: "/services/os" },
+    { title: "Система оповещения", abbr: "СОУЭ", href: "/services/soue" },
   ];
 
   const engineeringServices = [
-    { title: "Электроснабжение", href: "/services/eom" },
-    { title: "Освещение", href: "/services/eo" },
-    { title: "Вентиляция", href: "/services/ov" },
-    { title: "Кабельные системы", href: "/services/sks" },
-    { title: "Проектирование", href: "/services/p" },
-    { title: "Пусконаладка", href: "/services/pnr" },
-    { title: "Техобслуживание", href: "/services/to" },
+    { title: "Электроснабжение", abbr: "ЭОМ", href: "/services/eom" },
+    { title: "Освещение", abbr: "ЭО", href: "/services/eo" },
+    { title: "Вентиляция", abbr: "ОВ", href: "/services/ov" },
+    { title: "Кабельные системы", abbr: "СКС", href: "/services/sks" },
+    { title: "Проектирование", abbr: "ПРОЕКТ", href: "/services/p" },
+    { title: "Пусконаладка", abbr: "ПНР", href: "/services/pnr" },
+    { title: "Техобслуживание", abbr: "ТО", href: "/services/to" },
   ];
 
   const companyLinks = [
@@ -42,7 +42,7 @@ export function Footer() {
       <div className="container relative z-10 mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8 pb-16">
           {/* Column 1: Info & Contact CTA */}
-          <div className="lg:col-span-4 space-y-8">
+          <div className="lg:col-span-3 space-y-8">
             <div className="invert brightness-0">
               <Logo />
             </div>
@@ -56,10 +56,10 @@ export function Footer() {
                 href="https://t.me/electromax_support"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative h-11 inline-flex items-center justify-center gap-3 rounded-2xl border-2 border-[#24A1DE] bg-white px-8 text-[14px] font-bold tracking-tight text-[#24A1DE] transition-all duration-300 hover:bg-[#24A1DE] hover:text-white hover:shadow-[0_10px_30px_-5px_rgba(36,161,222,0.4)] active:scale-95"
+                className="group relative h-11 inline-flex items-center justify-center gap-3 rounded-2xl border-2 border-[#24A1DE] bg-white px-8 text-[14px] font-bold tracking-tight text-[#24A1DE] transition-all duration-[var(--duration-normal)] hover:bg-[#24A1DE] hover:text-white hover:shadow-[0_10px_30px_-5px_rgba(36,161,222,0.4)] active:scale-95"
               >
                 <svg
-                  className="h-4 w-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"
+                  className="h-4 w-4 transition-transform duration-[var(--duration-normal)] group-hover:scale-110 group-hover:rotate-12"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -72,7 +72,7 @@ export function Footer() {
           </div>
 
           {/* Column 2: Security Services */}
-          <div className="lg:col-span-2 lg:col-start-6">
+          <div className="lg:col-span-2 lg:col-start-5">
             <h4 className="text-[10px] font-black text-slate-500 tracking-[0.2em] uppercase mb-8">
               Безопасность
             </h4>
@@ -81,9 +81,9 @@ export function Footer() {
                 <li key={item.title}>
                   <Link
                     href={item.href}
-                    className="group flex items-center text-sm text-slate-400 hover:text-white transition-colors duration-200"
+                    className="group flex items-center text-sm text-slate-400 hover:text-white transition-colors duration-[var(--duration-fast)]"
                   >
-                    <ArrowRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 text-blue-500 transition-all duration-300" />
+                    <ArrowRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 text-blue-500 transition-all duration-[var(--duration-normal)]" />
                     {item.title}
                   </Link>
                 </li>
@@ -92,7 +92,7 @@ export function Footer() {
           </div>
 
           {/* Column 3: Engineering Services */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 lg:col-start-8">
             <h4 className="text-[10px] font-black text-slate-500 tracking-[0.2em] uppercase mb-8">
               Инженерия
             </h4>
@@ -101,9 +101,9 @@ export function Footer() {
                 <li key={item.title}>
                   <Link
                     href={item.href}
-                    className="group flex items-center text-sm text-slate-400 hover:text-white transition-colors duration-200"
+                    className="group flex items-center text-sm text-slate-400 hover:text-white transition-colors duration-[var(--duration-fast)]"
                   >
-                    <ArrowRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 text-blue-500 transition-all duration-300" />
+                    <ArrowRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 text-blue-500 transition-all duration-[var(--duration-normal)]" />
                     {item.title}
                   </Link>
                 </li>
@@ -112,7 +112,7 @@ export function Footer() {
           </div>
 
           {/* Column 4: Company & Contacts */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2 lg:col-start-11">
             <h4 className="text-[10px] font-black text-slate-500 tracking-[0.2em] uppercase mb-8">
               Компания
             </h4>
@@ -131,11 +131,11 @@ export function Footer() {
 
             <div className="space-y-5">
               <a href="tel:+74951234567" className="group flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/50 border border-slate-700/50 group-hover:bg-blue-900/30 group-hover:border-blue-500/30 transition-all duration-300">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/50 border border-slate-700/50 group-hover:bg-blue-900/30 group-hover:border-blue-500/30 transition-all duration-[var(--duration-normal)]">
                   <Phone className="h-4 w-4 text-blue-400" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">
+                  <div className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors duration-[var(--duration-fast)]">
                     +7 (495) 123-45-67
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5">Пн–Пт 09:00–20:00</div>
@@ -143,10 +143,10 @@ export function Footer() {
               </a>
 
               <a href="mailto:info@electromax.ru" className="group flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/50 border border-slate-700/50 group-hover:bg-blue-900/30 group-hover:border-blue-500/30 transition-all duration-300">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/50 border border-slate-700/50 group-hover:bg-blue-900/30 group-hover:border-blue-500/30 transition-all duration-[var(--duration-normal)]">
                   <Mail className="h-4 w-4 text-blue-400" />
                 </div>
-                <div className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">
+                <div className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors duration-[var(--duration-fast)]">
                   info@electromax.ru
                 </div>
               </a>

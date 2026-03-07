@@ -9,14 +9,7 @@ interface SkeletonProps {
  * Prevents layout shift, improves perceived performance
  */
 export function Skeleton({ className }: SkeletonProps) {
-  return (
-    <div
-      className={cn(
-        "animate-pulse rounded-full bg-muted",
-        className
-      )}
-    />
-  );
+  return <div className={cn("animate-pulse rounded-full bg-muted", className)} />;
 }
 
 /**
@@ -86,13 +79,7 @@ export function SkeletonText({ lines = 3 }: { lines?: number }) {
   return (
     <div className="space-y-3">
       {Array.from({ length: lines }).map((_, i) => (
-        <Skeleton
-          key={i}
-          className={cn(
-            "h-4 w-full",
-            i === lines - 1 && "w-2/3"
-          )}
-        />
+        <Skeleton key={i} className={cn("h-4 w-full", i === lines - 1 && "w-2/3")} />
       ))}
     </div>
   );

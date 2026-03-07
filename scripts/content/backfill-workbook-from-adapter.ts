@@ -181,4 +181,6 @@ try {
   console.error(`[ContentOps] Failed to write workbook at ${workbookPath}`, error);
   process.exit(1);
 }
-console.log(`[ContentOps] Backfilled workbook sheets: catalog_items (${catalogRows.length}), solution_kits (${kitRows.length}), process_steps (${processRows.length}), ai_rules (${aiRows.length})`);
+console.log(
+  `[ContentOps] Backfilled workbook sheets: catalog_items (${catalogRows.length}), solution_kits (${kitRows.length}), process_steps (${processRows.length}), ai_rules (${aiRows.length})`,
+);

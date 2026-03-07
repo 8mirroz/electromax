@@ -7,16 +7,18 @@ import { defaultOgImage, getSiteUrl } from "@/lib/seo";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { GlobalProjectTray } from "@/components/services/GlobalProjectTray";
+import { Analytics } from "@/components/Analytics";
+import { AnalyticsConsentBanner } from "@/components/AnalyticsConsentBanner";
 
 const fontSans = Inter({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-inter",
+  variable: "--font-sans",
   display: "swap",
 });
 
 const fontDisplay = Montserrat({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-montserrat",
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -58,7 +60,7 @@ export default function RootLayout({
   const siteUrl = getSiteUrl();
   const organizationJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "LocalBusiness"],
     name: "Electromax",
     url: siteUrl || undefined,
     logo: siteUrl ? `${siteUrl}/logo.png` : undefined,
@@ -76,6 +78,18 @@ export default function RootLayout({
       addressLocality: "Москва",
       addressCountry: "RU",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 55.7558,
+      longitude: 37.6173,
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+    priceRange: "₽₽₽",
   };
 
   return (
@@ -85,6 +99,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="alternate" type="application/rss+xml" title="Electromax — База знаний" href="/feed.xml" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
@@ -95,6 +110,8 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <AdaptiveProvider>
+          <AnalyticsConsentBanner />
+          <Analytics />
           <ScrollProgress />
           <a
             href="#main-content"

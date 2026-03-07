@@ -1,0 +1,12 @@
+{
+  "slug": "ru-b2b-material-19",
+  "locale": "ru",
+  "type": "article",
+  "title": "B2B инженерный материал #19",
+  "intent": "informational",
+  "targetKeyword": "инженерные системы b2b 19",
+  "cta": "Заказать аудит объекта",
+  "audience": "Техдиректор, эксплуатация, закупка",
+  "serviceFocus": "aps,soue,skud,sot,eom",
+  "mustInclude": ["SLA", "сроки", "риски", "этапы внедрения"]
+}

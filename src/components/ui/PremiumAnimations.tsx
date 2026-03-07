@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { motion, useInView, useScroll, useTransform, type Variants } from "motion/react";
 import { usePerformanceTier } from "@/components/AdaptiveProvider";
 
@@ -170,7 +170,9 @@ export function GlassCard({
 
   if (isLite) {
     return (
-      <div className={`relative overflow-hidden rounded-2xl border border-border bg-white shadow-sm ${className}`}>
+      <div
+        className={`relative overflow-hidden rounded-2xl border border-border bg-white shadow-sm ${className}`}
+      >
         {children}
       </div>
     );
@@ -214,10 +216,7 @@ export function PremiumButton({
 
   if (isLite) {
     return (
-      <button
-        onClick={onClick}
-        className={`${baseStyles} ${variantStyles[variant]} ${className}`}
-      >
+      <button onClick={onClick} className={`${baseStyles} ${variantStyles[variant]} ${className}`}>
         {children}
       </button>
     );

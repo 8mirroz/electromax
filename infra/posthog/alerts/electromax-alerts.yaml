@@ -1,0 +1,13 @@
+alerts:
+  - name: no_events_15m
+    condition: "events_total == 0"
+    window: "15m"
+    severity: critical
+  - name: api_events_5xx_rate
+    condition: "api_events_5xx_rate > 0.02"
+    window: "15m"
+    severity: high
+  - name: funnel_drop_30pct
+    condition: "funnel_lead_conversion_drop > 0.30"
+    window: "24h"
+    severity: high

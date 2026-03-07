@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion, useInView, type Variants } from "motion/react";
 import { CheckCircle2, Search } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import { trackClientEvent } from "@/lib/analytics/events";
 
 const AUDIT_CHECKLIST = [
   {
@@ -31,6 +32,10 @@ export function AuditSection() {
   const router = useRouter();
 
   const handleOrderAudit = () => {
+    void trackClientEvent("service_cta_click", {
+      source: "audit_section",
+      cta: "order_audit",
+    });
     router.push("/contacts");
   };
 
@@ -106,11 +111,11 @@ export function AuditSection() {
             </motion.p>
 
             {/* CTA Button */}
-            <motion.div variants={itemVariants} className="mt-6">
+            <motion.div variants={itemVariants} className="mt-8 flex flex-wrap items-center gap-4">
               <button
                 type="button"
                 onClick={handleOrderAudit}
-                className="relative h-11 inline-flex items-center justify-center px-7 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold tracking-tight text-[13px] rounded-2xl shadow-[0_4px_20px_-4px_rgba(59,130,246,0.4),0_8px_40px_-8px_rgba(79,70,229,0.3)] hover:shadow-[0_8px_30px_-4px_rgba(59,130,246,0.5),0_12px_50px_-8px_rgba(79,70,229,0.35)] transition-[box-shadow,filter] duration-200 hover:brightness-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2"
+                className="h-11 inline-flex items-center justify-center px-8 bg-primary text-white font-bold uppercase tracking-wider text-[13px] rounded-2xl hover:bg-primary/90 transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
               >
                 Заказать аудит
               </button>
@@ -118,7 +123,7 @@ export function AuditSection() {
                 href="https://t.me/electromax_support"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-4 h-11 inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-[#24A1DE] bg-white px-7 text-[13px] font-bold tracking-tight text-[#24A1DE] transition-colors duration-200 hover:bg-[#24A1DE] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24A1DE]/40 focus-visible:ring-offset-2"
+                className="h-11 inline-flex items-center justify-center gap-3 rounded-2xl border-2 border-primary/20 bg-white px-8 text-[13px] font-bold uppercase tracking-wider text-primary transition-all duration-200 hover:bg-primary/5 hover:border-primary/40 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />

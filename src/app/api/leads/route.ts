@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { isValidRuPhone, type LeadApiResponse, type LeadPayload } from "@/lib/leads";
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
+
+import { getLeadMode, isValidRuPhone, type LeadApiResponse, type LeadPayload } from "@/lib/leads";
 
 function errorResponse(
   status: number,
@@ -25,8 +28,71 @@ type DeliveryStatus = {
   deliveredChannels: string[];
 };
 
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+
+// In-Memory Fallback
+const rateLimitMap = new Map<string, { count: number; timestamp: number }>();
+
+// Upstash Initialization if ENVs are present
+const redis =
+  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+    ? new Redis({
+        url: process.env.UPSTASH_REDIS_REST_URL,
+        token: process.env.UPSTASH_REDIS_REST_TOKEN,
+      })
+    : null;
+
+const upstashRatelimit = redis
+  ? new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(RATE_LIMIT_MAX_REQUESTS, "1 m"),
+      analytics: true,
+    })
+  : null;
+
+async function isRateLimitedAsync(ip: string): Promise<boolean> {
+  try {
+    // 1. Try Upstash if configured
+    if (upstashRatelimit) {
+      const { success } = await upstashRatelimit.limit(`ratelimit_${ip}`);
+      return !success;
+    }
+
+    // 2. Fallback to In-Memory Map
+    const now = Date.now();
+    const entry = rateLimitMap.get(ip);
+    if (!entry) {
+      rateLimitMap.set(ip, { count: 1, timestamp: now });
+      return false; // Not limited
+    }
+    if (now - entry.timestamp > RATE_LIMIT_WINDOW_MS) {
+      rateLimitMap.set(ip, { count: 1, timestamp: now });
+      return false; // Reset, not limited
+    }
+    if (entry.count >= RATE_LIMIT_MAX_REQUESTS) {
+      return true; // Rate Limited
+    }
+    entry.count += 1;
+    return false; // Not limited
+  } catch (error) {
+    // Fail-open: if the rate limiter throws an internal error, allow the request
+    console.warn("[RateLimiterError] Fail-open implemented. Proceeding.", error);
+    return false;
+  }
+}
+
 export async function POST(req: Request) {
   try {
+    const mode = getLeadMode();
+    const ip = req.headers.get("x-forwarded-for") || "127.0.0.1";
+
+    // Check Rate Limiter dynamically
+    const isLimited = await isRateLimitedAsync(ip);
+    if (isLimited) {
+      return errorResponse(429, "Слишком много запросов. Попробуйте позже.", "rate_limited");
+    }
+
     const body = (await req.json()) as LeadPayload;
     const hasRequiredNumericFields =
       Number.isFinite(body.estimatedPrice) &&
@@ -40,6 +106,10 @@ export async function POST(req: Request) {
 
     if (!isValidRuPhone(body.contactPhone)) {
       return errorResponse(400, "Некорректный формат телефона", "validation_error");
+    }
+
+    if (mode === "disabled") {
+      return errorResponse(503, "Прием заявок временно отключен", "lead_disabled", { mode });
     }
 
     const projectSummaryText = (() => {
@@ -98,7 +168,7 @@ export async function POST(req: Request) {
 
     // Turnstile Verification
     const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
-    if (turnstileSecret && body.turnstileToken) {
+    if (mode === "live" && turnstileSecret && body.turnstileToken) {
       const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -108,7 +178,7 @@ export async function POST(req: Request) {
       if (!verifyData.success) {
         return errorResponse(400, "Подтвердите, что вы не робот", "captcha_failed");
       }
-    } else if (turnstileSecret && !body.turnstileToken) {
+    } else if (mode === "live" && turnstileSecret && !body.turnstileToken) {
       return errorResponse(400, "Требуется токен проверки", "captcha_failed");
     }
 
@@ -132,6 +202,15 @@ export async function POST(req: Request) {
       attemptedChannels: [],
       deliveredChannels: [],
     };
+
+    if (mode === "mock") {
+      return NextResponse.json<LeadApiResponse>({
+        success: true,
+        message: "Демо-режим: заявка сохранена для проверки интерфейса",
+        mode,
+        delivery,
+      });
+    }
 
     // 1. Send via Telegram (if token exists)
     const tgToken = process.env.TELEGRAM_BOT_TOKEN;
@@ -214,7 +293,7 @@ export async function POST(req: Request) {
     const hasAnyDelivered = delivery.deliveredChannels.length > 0;
 
     if (!hasAnyChannelConfigured) {
-      return errorResponse(503, "Каналы доставки не настроены", "upstream_error", { delivery });
+      return errorResponse(503, "Каналы доставки не настроены", "upstream_error", { delivery, mode });
     }
 
     if (!hasAnyDelivered) {
@@ -224,6 +303,7 @@ export async function POST(req: Request) {
           error: "Не удалось доставить заявку",
           code: "upstream_error",
           delivery,
+          mode,
         },
         { status: 502 },
       );
@@ -233,6 +313,7 @@ export async function POST(req: Request) {
       success: true,
       message: "Заявка успешно обработана",
       delivery,
+      mode,
     });
   } catch (error) {
     console.error("[Lead API Error]:", error);

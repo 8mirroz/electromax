@@ -1,0 +1,1582 @@
+
+> electromax@0.1.0 build /Users/user/projects/electromax
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 3.5min
+  Running TypeScript ...
+  Collecting page data using 7 workers ...
+[19:50:46] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+              at async aW (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:13780)
+              at async e (/Users/user/projects/electromax/.next/server/chunks/ssr/[root-of-the-server]__a453aed1._.js:1:8584)
+              at async Object.g [as generateStaticParams] (/Users/user/projects/electromax/.next/server/chunks/ssr/[root-of-the-server]__5bb451ed._.js:1:9483)
+              at async generateRouteStaticParams (/Users/user/projects/electromax/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_babel-p_67eba437877d1b83879948dfd687a99f/node_modules/next/dist/build/static-paths/app.js:459:28)
+              at async buildAppStaticPaths (/Users/user/projects/electromax/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_babel-p_67eba437877d1b83879948dfd687a99f/node_modules/next/dist/build/static-paths/app.js:536:25)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[19:50:46] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+              at async aW (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:13780)
+              at async e (/Users/user/projects/electromax/.next/server/chunks/ssr/[root-of-the-server]__2b22011b._.js:1:8584)
+              at async q (/Users/user/projects/electromax/.next/server/chunks/ssr/src_lib_cms_service-pages_ts_f856cf9b._.js:1:52344)
+              at async Object.h [as generateStaticParams] (/Users/user/projects/electromax/.next/server/chunks/ssr/[root-of-the-server]__81006328._.js:1:10476)
+              at async generateRouteStaticParams (/Users/user/projects/electromax/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_babel-p_67eba437877d1b83879948dfd687a99f/node_modules/next/dist/build/static-paths/app.js:459:28)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659)
+    at async e (.next/server/chunks/ssr/[root-of-the-server]__2b22011b._.js:1:8584)
+    at async q (.next/server/chunks/ssr/src_lib_cms_service-pages_ts_f856cf9b._.js:1:52344)
+    at async Object.h [as generateStaticParams] (.next/server/chunks/ssr/[root-of-the-server]__81006328._.js:1:10476) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659)
+    at async e (.next/server/chunks/ssr/[root-of-the-server]__a453aed1._.js:1:8584)
+    at async Object.g [as generateStaticParams] (.next/server/chunks/ssr/[root-of-the-server]__5bb451ed._.js:1:9483) {
+  payloadInitError: true
+}
+undefined
+undefined
+[19:50:47] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+              at async aW (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:13780)
+              at async e (/Users/user/projects/electromax/.next/server/chunks/ssr/[root-of-the-server]__89e3bf34._.js:1:8584)
+              at async Object.f [as generateStaticParams] (/Users/user/projects/electromax/.next/server/chunks/ssr/[root-of-the-server]__89e3bf34._.js:1:9469)
+              at async generateRouteStaticParams (/Users/user/projects/electromax/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_babel-p_67eba437877d1b83879948dfd687a99f/node_modules/next/dist/build/static-paths/app.js:459:28)
+              at async buildAppStaticPaths (/Users/user/projects/electromax/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_babel-p_67eba437877d1b83879948dfd687a99f/node_modules/next/dist/build/static-paths/app.js:536:25)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to list collection industries via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659)
+    at async e (.next/server/chunks/ssr/[root-of-the-server]__89e3bf34._.js:1:8584)
+    at async Object.f [as generateStaticParams] (.next/server/chunks/ssr/[root-of-the-server]__89e3bf34._.js:1:9469) {
+  payloadInitError: true
+}
+undefined
+  Generating static pages using 7 workers (0/57) ...
+[19:50:50] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+[19:50:50] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to get item ru-9-%D0%BF%D0%BB%D0%B0%D0%BD-%D0%BC%D0%BE%D0%B4%D0%B5%D1%80%D0%BD%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8-%D0%B8%D0%BD%D0%B6%D0%B5%D0%BD%D0%B5%D1%80%D0%BD%D0%BE%D0%B9-%D0%B8%D0%BD%D1%84%D1%80%D0%B0%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D1%8B-%D0%BD%D0%B0-12-%D0%BC%D0%B5%D1%81%D1%8F%D1%86%D0%B5%D0%B2 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-9-%D0%BF%D0%BB%D0%B0%D0%BD-%D0%BC%D0%BE%D0%B4%D0%B5%D1%80%D0%BD%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8-%D0%B8%D0%BD%D0%B6%D0%B5%D0%BD%D0%B5%D1%80%D0%BD%D0%BE%D0%B9-%D0%B8%D0%BD%D1%84%D1%80%D0%B0%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D1%8B-%D0%BD%D0%B0-12-%D0%BC%D0%B5%D1%81%D1%8F%D1%86%D0%B5%D0%B2 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-11-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B8-%D1%8D%D0%B2%D0%B0%D0%BA%D1%83%D0%B0%D1%86%D0%B8%D0%B8-%D0%B8-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8-%D1%81%D0%BE%D1%83%D1%8D-%D0%B4%D0%BB%D1%8F-%D0%B1%D1%86 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-11-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B8-%D1%8D%D0%B2%D0%B0%D0%BA%D1%83%D0%B0%D1%86%D0%B8%D0%B8-%D0%B8-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8-%D1%81%D0%BE%D1%83%D1%8D-%D0%B4%D0%BB%D1%8F-%D0%B1%D1%86 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-8-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%BE%D0%B9%D1%82%D0%B8-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D1%83-%D0%BD%D0%B0%D0%B4%D0%B7%D0%BE%D1%80%D0%BD%D1%8B%D1%85-%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%BE%D0%B2-%D0%B1%D0%B5%D0%B7-%D0%B0%D0%B2%D1%80%D0%B0%D0%BB%D0%B0 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-8-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%BE%D0%B9%D1%82%D0%B8-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D1%83-%D0%BD%D0%B0%D0%B4%D0%B7%D0%BE%D1%80%D0%BD%D1%8B%D1%85-%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%BE%D0%B2-%D0%B1%D0%B5%D0%B7-%D0%B0%D0%B2%D1%80%D0%B0%D0%BB%D0%B0 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-12-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0-%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%B0-%D0%B3%D0%B4%D0%B5-%D0%BE%D0%BD%D0%B0-%D1%80%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D0%BE%D0%BA%D1%83%D0%BF%D0%B0%D0%B5%D1%82%D1%81%D1%8F from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-12-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0-%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%B0-%D0%B3%D0%B4%D0%B5-%D0%BE%D0%BD%D0%B0-%D1%80%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D0%BE%D0%BA%D1%83%D0%BF%D0%B0%D0%B5%D1%82%D1%81%D1%8F from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-10-faq-%D0%B4%D0%BB%D1%8F-%D0%B7%D0%B0%D0%BA%D1%83%D0%BF%D0%BA%D0%B8-%D0%BA%D0%B0%D0%BA-%D1%81%D1%80%D0%B0%D0%B2%D0%BD%D0%B8%D0%B2%D0%B0%D1%82%D1%8C-%D0%BF%D1%80%D0%B5%D0%B4%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D0%B4%D1%80%D1%8F%D0%B4%D1%87%D0%B8%D0%BA%D0%BE%D0%B2 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-10-faq-%D0%B4%D0%BB%D1%8F-%D0%B7%D0%B0%D0%BA%D1%83%D0%BF%D0%BA%D0%B8-%D0%BA%D0%B0%D0%BA-%D1%81%D1%80%D0%B0%D0%B2%D0%BD%D0%B8%D0%B2%D0%B0%D1%82%D1%8C-%D0%BF%D1%80%D0%B5%D0%B4%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D0%B4%D1%80%D1%8F%D0%B4%D1%87%D0%B8%D0%BA%D0%BE%D0%B2 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-14-%D0%BF%D0%BE%D0%B6%D0%B0%D1%80%D0%BD%D0%B0%D1%8F-%D1%81%D0%B8%D0%B3%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B2-%D0%BF%D1%80%D0%BE%D0%BC%D1%8B%D1%88%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D1%8B from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-14-%D0%BF%D0%BE%D0%B6%D0%B0%D1%80%D0%BD%D0%B0%D1%8F-%D1%81%D0%B8%D0%B3%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B2-%D0%BF%D1%80%D0%BE%D0%BC%D1%8B%D1%88%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D1%8B from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-13-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%BA%D0%B0%D0%B1%D0%B5%D0%BB%D1%8C%D0%BD%D1%83%D1%8E-%D0%B8%D0%BD%D1%84%D1%80%D0%B0%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D1%83-%D0%BF%D0%BE%D0%B4-%D1%80%D0%BE%D1%81%D1%82-%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-13-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%BA%D0%B0%D0%B1%D0%B5%D0%BB%D1%8C%D0%BD%D1%83%D1%8E-%D0%B8%D0%BD%D1%84%D1%80%D0%B0%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D1%83-%D0%BF%D0%BE%D0%B4-%D1%80%D0%BE%D1%81%D1%82-%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-15-%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B5%D0%B3%D0%B8%D1%8F-%D0%BF%D0%BE%D1%8D%D1%82%D0%B0%D0%BF%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D1%81%D0%BA%D1%83%D0%B4-%D0%BD%D0%B0-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%89%D0%B5%D0%BC-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B5 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-15-%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B5%D0%B3%D0%B8%D1%8F-%D0%BF%D0%BE%D1%8D%D1%82%D0%B0%D0%BF%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D1%81%D0%BA%D1%83%D0%B4-%D0%BD%D0%B0-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%89%D0%B5%D0%BC-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B5 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+  Generating static pages using 7 workers (14/57) 
+[19:50:54] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+[19:50:55] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to get item ru-16-%D1%81%D1%80%D0%B0%D0%B2%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80-%D1%85%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%D0%B0%D1%80%D1%85%D0%B8%D0%B2%D0%B0 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-16-%D1%81%D1%80%D0%B0%D0%B2%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80-%D1%85%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%D0%B0%D1%80%D1%85%D0%B8%D0%B2%D0%B0 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-17-%D0%BF%D0%B0%D1%81%D0%BF%D0%BE%D1%80%D1%82-%D0%B8%D0%BD%D0%B6%D0%B5%D0%BD%D0%B5%D1%80%D0%BD%D0%BE%D0%B9-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D1%87%D1%82%D0%BE-%D0%B4%D0%BE%D0%BB%D0%B6%D0%BD%D0%BE-%D0%B1%D1%8B%D1%82%D1%8C-%D0%B2-%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-17-%D0%BF%D0%B0%D1%81%D0%BF%D0%BE%D1%80%D1%82-%D0%B8%D0%BD%D0%B6%D0%B5%D0%BD%D0%B5%D1%80%D0%BD%D0%BE%D0%B9-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D1%87%D1%82%D0%BE-%D0%B4%D0%BE%D0%BB%D0%B6%D0%BD%D0%BE-%D0%B1%D1%8B%D1%82%D1%8C-%D0%B2-%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-18-%D0%B0%D1%83%D0%B4%D0%B8%D1%82-%D1%8D%D0%BD%D0%B5%D1%80%D0%B3%D0%BE%D0%BF%D0%BE%D1%82%D1%80%D0%B5%D0%B1%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%D1%85-%D0%BE%D1%81%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D1%8F from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-18-%D0%B0%D1%83%D0%B4%D0%B8%D1%82-%D1%8D%D0%BD%D0%B5%D1%80%D0%B3%D0%BE%D0%BF%D0%BE%D1%82%D1%80%D0%B5%D0%B1%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%D1%85-%D0%BE%D1%81%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D1%8F from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-19-%D0%BA%D0%B0%D0%BA-%D0%B2%D1%8B%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%BF%D0%BE%D0%B4%D1%80%D1%8F%D0%B4%D1%87%D0%B8%D0%BA%D0%BE%D0%B2-%D0%BD%D0%B0-%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BF%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D0%BE%D1%87%D0%BD%D1%8B%D1%85-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B0%D1%85 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-19-%D0%BA%D0%B0%D0%BA-%D0%B2%D1%8B%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%BF%D0%BE%D0%B4%D1%80%D1%8F%D0%B4%D1%87%D0%B8%D0%BA%D0%BE%D0%B2-%D0%BD%D0%B0-%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BF%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D0%BE%D1%87%D0%BD%D1%8B%D1%85-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B0%D1%85 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-20-%D0%BA%D0%B5%D0%B9%D1%81-%D0%BA%D0%B0%D1%80%D1%82%D0%B0-%D1%80%D0%B8%D1%81%D0%BA%D0%BE%D0%B2-%D0%BE%D1%82-%D0%B0%D1%83%D0%B4%D0%B8%D1%82%D0%B0-%D0%B4%D0%BE-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B0 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-20-%D0%BA%D0%B5%D0%B9%D1%81-%D0%BA%D0%B0%D1%80%D1%82%D0%B0-%D1%80%D0%B8%D1%81%D0%BA%D0%BE%D0%B2-%D0%BE%D1%82-%D0%B0%D1%83%D0%B4%D0%B8%D1%82%D0%B0-%D0%B4%D0%BE-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B0 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+[19:50:56] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+[19:50:56] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to get item asuz from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item asuz from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item eom from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item eom from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item eo from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item eo from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item aps from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item aps from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item os from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item os from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item sks from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item sks from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item skud from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item skud from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item sot from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item sot from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+[19:50:59] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to list collection industries via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection industries via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection industries via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection industries via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection industries via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+  Generating static pages using 7 workers (28/57) 
+[19:50:59] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to get item office-centers from industries via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item office-centers from industries via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item warehouses from industries via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item warehouses from industries via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-1-%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-%D0%BA-%D0%B0%D1%83%D0%B4%D0%B8%D1%82%D1%83-%D0%B0%D0%BF%D1%81-%D0%B8-%D1%81%D0%BE%D1%83%D1%8D from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-1-%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-%D0%BA-%D0%B0%D1%83%D0%B4%D0%B8%D1%82%D1%83-%D0%B0%D0%BF%D1%81-%D0%B8-%D1%81%D0%BE%D1%83%D1%8D from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-2-%D1%81%D0%BA%D1%83%D0%B4-%D0%B4%D0%BB%D1%8F-%D0%BE%D1%84%D0%B8%D1%81%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%B0-%D1%82%D0%B8%D0%BF%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B8-%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D1%8F from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-2-%D1%81%D0%BA%D1%83%D0%B4-%D0%B4%D0%BB%D1%8F-%D0%BE%D1%84%D0%B8%D1%81%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%B0-%D1%82%D0%B8%D0%BF%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B8-%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D1%8F from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-4-%D0%BA%D0%B0%D0%BA-%D1%81%D0%BD%D0%B8%D0%B7%D0%B8%D1%82%D1%8C-%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0-%D1%8D%D0%BE%D0%BC-%D0%B1%D0%B5%D0%B7-%D0%BF%D0%BE%D1%82%D0%B5%D1%80%D0%B8-%D0%BD%D0%B0%D0%B4%D0%B5%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D0%B8 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-4-%D0%BA%D0%B0%D0%BA-%D1%81%D0%BD%D0%B8%D0%B7%D0%B8%D1%82%D1%8C-%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0-%D1%8D%D0%BE%D0%BC-%D0%B1%D0%B5%D0%B7-%D0%BF%D0%BE%D1%82%D0%B5%D1%80%D0%B8-%D0%BD%D0%B0%D0%B4%D0%B5%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D0%B8 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-3-%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%D0%BD%D0%B0%D0%B1%D0%BB%D1%8E%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BD%D0%B0-%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D0%B5-12-%D0%BA%D1%80%D0%B8%D1%82%D0%B8%D1%87%D0%BD%D1%8B%D1%85-%D0%B7%D0%BE%D0%BD-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8F from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-3-%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%D0%BD%D0%B0%D0%B1%D0%BB%D1%8E%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BD%D0%B0-%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D0%B5-12-%D0%BA%D1%80%D0%B8%D1%82%D0%B8%D1%87%D0%BD%D1%8B%D1%85-%D0%B7%D0%BE%D0%BD-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8F from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+  Generating static pages using 7 workers (42/57) 
+[19:51:02] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection authors via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+[19:51:02] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to get item ru-5-%D1%87%D0%B5%D0%BA%D0%BB%D0%B8%D1%81%D1%82-%D0%BF%D1%80%D0%B8%D0%B5%D0%BC%D0%BA%D0%B8-%D0%B8%D0%BD%D0%B6%D0%B5%D0%BD%D0%B5%D1%80%D0%BD%D1%8B%D1%85-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC-%D0%BE%D1%82-%D0%BF%D0%BE%D0%B4%D1%80%D1%8F%D0%B4%D1%87%D0%B8%D0%BA%D0%B0 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-5-%D1%87%D0%B5%D0%BA%D0%BB%D0%B8%D1%81%D1%82-%D0%BF%D1%80%D0%B8%D0%B5%D0%BC%D0%BA%D0%B8-%D0%B8%D0%BD%D0%B6%D0%B5%D0%BD%D0%B5%D1%80%D0%BD%D1%8B%D1%85-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC-%D0%BE%D1%82-%D0%BF%D0%BE%D0%B4%D1%80%D1%8F%D0%B4%D1%87%D0%B8%D0%BA%D0%B0 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-6-sla-%D0%B2-%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%BC-%D0%BE%D0%B1%D1%81%D0%BB%D1%83%D0%B6%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B8-%D1%87%D1%82%D0%BE-%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B0%D1%82%D1%8C-%D0%B2-%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-6-sla-%D0%B2-%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%BC-%D0%BE%D0%B1%D1%81%D0%BB%D1%83%D0%B6%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B8-%D1%87%D1%82%D0%BE-%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B0%D1%82%D1%8C-%D0%B2-%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-7-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC-%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D1%81-erp-%D0%B8-1%D1%81 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ru-7-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC-%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D1%81-erp-%D0%B8-1%D1%81 from articles via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[19:51:03] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+[19:51:03] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to get item soue from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item soue from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item to from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item to from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ov from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ov from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item p from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item p from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item pnr from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item pnr from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+[19:51:03] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ETIMEDOUT ::1:5432",
+          "stack":
+              Error: connect ETIMEDOUT ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at Timeout.internalConnectMultipleTimeout (node:net:1737:38)
+                  at listOnTimeout (node:internal/timers:607:11)
+                  at process.processTimers (node:internal/timers:541:7)
+          "errno": -60,
+          "code": "ETIMEDOUT",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ETIMEDOUT"
+    }
+[CMS] Failed to get item aps from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item asuz from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item eo from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item eom from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item os from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item sks from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item skud from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item sot from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item soue from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item to from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item ov from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item p from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to get item pnr from services via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+[19:51:06] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: [39m
+    err: {
+      "type": "AggregateError",
+      "message": "",
+      "stack":
+          AggregateError: 
+              at /Users/user/projects/electromax/node_modules/.pnpm/pg-pool@3.12.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51284)
+              at async Object.h [as connect] (/Users/user/projects/electromax/.next/server/chunks/ssr/_ab06a8e3._.js:125:51526)
+              at async aS.init (/Users/user/projects/electromax/.next/server/chunks/ssr/node_modules__pnpm_fe374088._.js:7:9478)
+      "aggregateErrors": [
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED ::1:5432",
+          "stack":
+              Error: connect ECONNREFUSED ::1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "::1",
+          "port": 5432
+        },
+        {
+          "type": "Error",
+          "message": "connect ECONNREFUSED 127.0.0.1:5432",
+          "stack":
+              Error: connect ECONNREFUSED 127.0.0.1:5432
+                  at createConnectionError (node:net:1678:14)
+                  at afterConnectMultiple (node:net:1708:16)
+          "errno": -61,
+          "code": "ECONNREFUSED",
+          "syscall": "connect",
+          "address": "127.0.0.1",
+          "port": 5432
+        }
+      ],
+      "code": "ECONNREFUSED"
+    }
+[CMS] Failed to list collection testimonials via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+[CMS] Failed to list collection videos via Payload local API Error: Error: cannot connect to Postgres: 
+    at Object.h [as connect] (.next/server/chunks/ssr/_ab06a8e3._.js:125:52659) {
+  payloadInitError: true
+}
+undefined
+✓ Generating static pages using 7 workers (57/57) in 18.7s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /api/content/[collection]
+├ ƒ /api/content/[collection]/[slug]
+├ ƒ /api/csp-report
+├ ƒ /api/events
+├ ƒ /api/leads
+├ ƒ /api/revalidate
+├ ○ /contacts
+├ ○ /industries
+├ ● /industries/[slug]
+│ ├ /industries/office-centers
+│ └ /industries/warehouses
+├ ○ /knowledge
+├ ● /knowledge/[slug]
+│ ├ /knowledge/ru-1-как-подготовить-объект-к-аудиту-апс-и-соуэ
+│ ├ /knowledge/ru-2-скуд-для-офисного-центра-типовые-ошибки-внедрения
+│ ├ /knowledge/ru-3-видеонаблюдение-на-складе-12-критичных-зон-контроля
+│ └ [+17 more paths]
+├ ○ /licenses
+├ ○ /privacy
+├ ○ /projects
+├ ○ /robots.txt
+├ ○ /services
+├ ● /services/[slug]
+│ ├ /services/aps
+│ ├ /services/asuz
+│ ├ /services/eo
+│ └ [+10 more paths]
+├ ○ /sitemap.xml
+├ ○ /solutions
+├ ○ /terms
+├ ○ /testimonials
+└ ○ /videos
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

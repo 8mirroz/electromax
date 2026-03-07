@@ -35,8 +35,31 @@ jobs:
       - name: Unit tests
         run: pnpm test
 
+      - name: Generate content drafts
+        run: pnpm content:generate:drafts
+
+      - name: Generate EN/KZ draft localization
+        run: pnpm content:localize:drafts
+
+      - name: Validate content drafts
+        run: pnpm content:validate:drafts
+
+      - name: Promptfoo quality gate (optional)
+        if: ${{ secrets.OPENAI_API_KEY != '' }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: pnpm content:qa
+
       - name: E2E tests
         run: pnpm test:e2e
 
       - name: Build
         run: pnpm build
+
+      - name: Lighthouse CI
+        if: github.event_name == 'pull_request'
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          budgetPath: ./lighthouse-budget.json
+          uploadArtifacts: true
+          configPath: .lighthouserc.json

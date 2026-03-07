@@ -1,0 +1,12 @@
+{
+  email {$ACME_EMAIL}
+}
+
+{$POSTHOG_DOMAIN} {
+  encode zstd gzip
+  reverse_proxy posthog-web:8000
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options "nosniff"
+  }
+}

@@ -17,8 +17,12 @@ export function EquipmentList({ items }: EquipmentListProps) {
 
       <div className="container relative z-10 mx-auto max-w-7xl">
         <div className="flex flex-col gap-2 mb-16">
-          <div className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Technical Bill of Materials</div>
-          <h2 className="text-3xl font-display font-black tracking-tight uppercase">Спецификация компонентов</h2>
+          <div className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">
+            Technical Bill of Materials
+          </div>
+          <h2 className="text-3xl font-display font-black tracking-tight uppercase">
+            Спецификация компонентов
+          </h2>
           <div className="h-1 w-20 bg-primary mt-2" />
         </div>
 

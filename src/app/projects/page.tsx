@@ -102,7 +102,7 @@ export default function ProjectsPage() {
                 type="button"
                 aria-pressed={activeType === type.id}
                 className={cn(
-                  "inline-flex items-center gap-2 px-6 py-3 rounded-full text-[12px] font-bold lowercase first-letter:uppercase tracking-tight whitespace-nowrap transition-all",
+                  "inline-flex items-center gap-2 px-6 py-3 min-h-[44px] min-w-[44px] rounded-full text-[12px] font-bold lowercase first-letter:uppercase tracking-tight whitespace-nowrap transition-all",
                   activeType === type.id
                     ? "bg-primary text-white shadow-lg shadow-primary/25"
                     : "bg-muted text-muted-foreground hover:bg-muted/80",

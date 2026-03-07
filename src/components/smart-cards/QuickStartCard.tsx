@@ -31,10 +31,13 @@ const difficultyConfig = {
 
 export function QuickStartCard({
   card,
-  serviceSlug,
-  serviceTitle,
-  onAddToTray,
+  serviceSlug: _serviceSlug,
+  serviceTitle: _serviceTitle,
+  onAddToTray: _onAddToTray,
 }: QuickStartCardProps) {
+  void _serviceSlug;
+  void _serviceTitle;
+  void _onAddToTray;
   const DifficultyIcon = difficultyConfig[card.difficulty].icon;
 
   return (

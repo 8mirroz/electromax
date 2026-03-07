@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
-import { SERVICES_DB } from "@/data/services";
 import { getSiteUrl } from "@/lib/seo";
+import { listCmsCollection } from "@/lib/cms/client";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = getSiteUrl();
   if (!siteUrl) return [];
 
@@ -15,6 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contacts",
     "/licenses",
     "/services",
+    "/knowledge",
+    "/videos",
+    "/testimonials",
     "/privacy",
     "/terms",
   ];
@@ -24,10 +27,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified,
   }));
 
-  const serviceEntries = Object.keys(SERVICES_DB).map((slug) => ({
-    url: `${siteUrl}/services/${slug}`,
+  const [articles, services] = await Promise.all([
+    listCmsCollection("articles", { locale: "ru", limit: 200 }),
+    listCmsCollection("services", { locale: "ru", limit: 200 }),
+  ]);
+
+  const serviceEntries = services.map((service) => ({
+    url: `${siteUrl}/services/${service.slug}`,
     lastModified,
   }));
 
-  return [...staticEntries, ...serviceEntries];
+  const articleEntries = articles.map((article) => ({
+    url: `${siteUrl}/knowledge/${article.slug}`,
+    lastModified: new Date(article.updatedAt || lastModified),
+  }));
+
+  return [...staticEntries, ...serviceEntries, ...articleEntries];
 }

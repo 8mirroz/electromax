@@ -1,0 +1,94 @@
+{
+  "name": "electromax-content-autopublish",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "content-publish",
+        "httpMethod": "POST",
+        "responseMode": "responseNode"
+      },
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 280]
+    },
+    {
+      "parameters": {
+        "functionCode": "return items.map((item) => {\n  const payload = item.json || {};\n  const path = typeof payload.path === 'string' ? payload.path : '/knowledge';\n  const tag = typeof payload.tag === 'string' ? payload.tag : null;\n  return {\n    json: {\n      source: payload.source || 'n8n',\n      path,\n      tag,\n      secret: $env.REVALIDATE_SECRET,\n      requestedAt: new Date().toISOString()\n    }\n  };\n});"
+      },
+      "name": "Normalize Payload",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [500, 280]
+    },
+    {
+      "parameters": {
+        "url": "={{$env.N8N_REVALIDATE_URL || 'https://app.electromax.local/api/revalidate'}}",
+        "method": "POST",
+        "jsonParameters": true,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        },
+        "bodyParametersJson": "={{ { path: $json.path, tag: $json.tag, secret: $json.secret } }}"
+      },
+      "name": "Revalidate Site",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [760, 280]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ok: $json.statusCode >= 200 && $json.statusCode < 300, statusCode: $json.statusCode, body: $json.body } }}",
+        "options": {}
+      },
+      "name": "Webhook Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1020, 280]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Normalize Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Payload": {
+      "main": [
+        [
+          {
+            "node": "Revalidate Site",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revalidate Site": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

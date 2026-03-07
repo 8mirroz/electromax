@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { defaultOgImage, getSiteUrl } from "@/lib/seo";
-import { getServicePageModel, getServicePageSlugs } from "@/lib/services-content";
+import { getAllServicePageModelsFromCms } from "@/lib/cms/service-pages";
 
 export async function generateMetadata(): Promise<Metadata> {
   const siteUrl = getSiteUrl();
@@ -33,12 +33,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function ServicesIndexPage() {
-  const services = getServicePageSlugs()
-    .map((slug) => getServicePageModel(slug))
-    .filter((model): model is NonNullable<ReturnType<typeof getServicePageModel>> =>
-      Boolean(model),
-    );
+export default async function ServicesIndexPage() {
+  const services = await getAllServicePageModelsFromCms({ locale: "ru" });
 
   return (
     <main className="min-h-screen bg-background text-foreground">

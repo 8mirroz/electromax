@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.vscode
+coverage
+test-results
+playwright-report
+pnpm-debug.log
+*.local
+.env
+.env.*

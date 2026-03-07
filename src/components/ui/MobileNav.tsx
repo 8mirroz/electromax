@@ -8,8 +8,9 @@ import { Menu, X, Phone, ChevronRight } from "lucide-react";
 import { Logo } from "@/components/layout/Logo";
 
 const NAV_ITEMS = [
-  { label: "Решения", href: "/#services" },
+  { label: "Услуги", href: "/#services" },
   { label: "Проекты", href: "/projects" },
+  { label: "База знаний", href: "/knowledge" },
   { label: "О компании", href: "/about" },
   { label: "Контакты", href: "/contacts" },
   { label: "Лицензии", href: "/licenses" },
@@ -59,7 +60,7 @@ export function MobileNav() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-white text-text-primary shadow-sm transition hover:bg-surface-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-white text-text-primary shadow-sm transition hover:bg-surface-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         aria-label="Открыть меню"
         aria-expanded={isOpen}
         aria-controls="mobile-nav-drawer"
@@ -119,7 +120,7 @@ export function MobileNav() {
                     type="button"
                     ref={closeButtonRef}
                     onClick={() => setIsOpen(false)}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-text-secondary transition hover:bg-surface-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-text-secondary transition hover:bg-surface-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     aria-label="Закрыть меню"
                   >
                     <X className="h-5 w-5" />

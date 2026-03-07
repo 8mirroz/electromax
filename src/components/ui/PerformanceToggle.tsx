@@ -21,7 +21,7 @@ export function PerformanceToggle() {
         "relative flex h-10 w-10 items-center justify-center rounded-xl border transition-all duration-300",
         isLite
           ? "bg-surface-secondary border-border text-text-muted hover:border-primary/30 hover:text-primary"
-          : "bg-white border-border text-text-primary hover:border-primary/30 hover:text-primary shadow-sm"
+          : "bg-white border-border text-text-primary hover:border-primary/30 hover:text-primary shadow-sm",
       )}
       title={isLite ? "Включить полный режим" : "Включить производительный режим"}
     >

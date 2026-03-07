@@ -1,0 +1,12 @@
+{
+  "slug": "ru-b2b-material-15",
+  "locale": "ru",
+  "type": "checklist",
+  "title": "B2B инженерный материал #15",
+  "intent": "informational",
+  "targetKeyword": "инженерные системы b2b 15",
+  "cta": "Заказать аудит объекта",
+  "audience": "Техдиректор, эксплуатация, закупка",
+  "serviceFocus": "aps,soue,skud,sot,eom",
+  "mustInclude": ["SLA", "сроки", "риски", "этапы внедрения"]
+}

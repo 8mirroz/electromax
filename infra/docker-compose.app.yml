@@ -1,0 +1,120 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: electromax-app
+    restart: unless-stopped
+    env_file:
+      - ../.env
+      - ../.env.app
+    expose:
+      - "3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/api/content/services?limit=1 >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 6
+      start_period: 60s
+
+  postgres:
+    image: postgres:16.4-alpine
+    container_name: electromax-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${APP_POSTGRES_DB:-electromax}
+      POSTGRES_USER: ${APP_POSTGRES_USER:-electromax}
+      POSTGRES_PASSWORD: ${APP_POSTGRES_PASSWORD:-electromax}
+    expose:
+      - "5432"
+    volumes:
+      - electromax_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${APP_POSTGRES_USER:-electromax} -d ${APP_POSTGRES_DB:-electromax}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: electromax-redis
+    restart: unless-stopped
+    expose:
+      - "6379"
+    volumes:
+      - electromax_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  n8n:
+    image: n8nio/n8n:1.77.3
+    container_name: electromax-n8n
+    restart: unless-stopped
+    env_file:
+      - ../.env
+      - ../.env.app
+    environment:
+      N8N_HOST: ${N8N_HOST:-n8n.electromax.local}
+      N8N_PORT: 5678
+      WEBHOOK_URL: ${N8N_WEBHOOK_URL:-https://n8n.electromax.local/}
+      GENERIC_TIMEZONE: ${N8N_TIMEZONE:-Europe/Moscow}
+      REVALIDATE_SECRET: ${REVALIDATE_SECRET}
+      N8N_REVALIDATE_URL: ${N8N_REVALIDATE_URL:-https://app.electromax.local/api/revalidate}
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
+    expose:
+      - "5678"
+    depends_on:
+      app:
+        condition: service_healthy
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ../n8n/workflows:/workflows
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:5678/healthz >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+
+  proxy:
+    image: caddy:2.8.4-alpine
+    container_name: electromax-app-proxy
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_healthy
+      n8n:
+        condition: service_healthy
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:-app.electromax.local}
+      N8N_DOMAIN: ${N8N_DOMAIN:-n8n.electromax.local}
+      ACME_EMAIL: ${ACME_EMAIL:-devops@electromax.local}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile.app:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    healthcheck:
+      test: ["CMD", "caddy", "version"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  electromax_pg_data:
+  electromax_redis_data:
+  n8n_data:
+  caddy_data:
+  caddy_config:

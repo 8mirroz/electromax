@@ -26,10 +26,10 @@ const STORAGE_KEY = "electromax_perf_tier";
  * This persists through the first navigation but NOT through reloads.
  */
 async function seedStorage(page: Page, value: "lite" | "full") {
-  await page.addInitScript(
-    ({ key, val }) => localStorage.setItem(key, val),
-    { key: STORAGE_KEY, val: value }
-  );
+  await page.addInitScript(({ key, val }) => localStorage.setItem(key, val), {
+    key: STORAGE_KEY,
+    val: value,
+  });
 }
 
 /**
@@ -53,7 +53,7 @@ async function waitForPerfClass(page: Page, expected: "lite" | "full", timeout =
         ? document.documentElement.classList.contains(cls)
         : !document.documentElement.classList.contains(cls),
     { cls: "perf-lite", isLite: expected === "lite" },
-    { timeout }
+    { timeout },
   );
 }
 
@@ -70,8 +70,8 @@ test.describe("TC-1: Lite Mode triggered by slow-2g network + 2GB RAM", () => {
         effectiveType: "slow-2g",
         downlink: 0.1,
         saveData: false,
-        addEventListener: () => { },
-        removeEventListener: () => { },
+        addEventListener: () => {},
+        removeEventListener: () => {},
       };
       Object.defineProperty(navigator, "connection", {
         get: () => conn,
@@ -105,8 +105,8 @@ test.describe("TC-1: Lite Mode triggered by slow-2g network + 2GB RAM", () => {
         effectiveType: "slow-2g",
         downlink: 0.1,
         saveData: false,
-        addEventListener: () => { },
-        removeEventListener: () => { },
+        addEventListener: () => {},
+        removeEventListener: () => {},
       };
       Object.defineProperty(navigator, "connection", { get: () => conn, configurable: true });
       Object.defineProperty(navigator, "deviceMemory", { get: () => 2, configurable: true });
@@ -156,7 +156,7 @@ test.describe("TC-2: Lite Mode forced by prefers-reduced-motion: reduce", () => 
     const htmlClass = await page.locator("html").getAttribute("class");
     expect(
       htmlClass,
-      "prefers-reduced-motion should force perf-lite even on fast hardware"
+      "prefers-reduced-motion should force perf-lite even on fast hardware",
     ).toContain("perf-lite");
   });
 
@@ -233,7 +233,13 @@ test.describe("TC-3: Manual URL override", () => {
     await seedStorage(page, "full");
 
     await page.addInitScript(() => {
-      const conn = { effectiveType: "slow-2g", downlink: 0.1, saveData: false, addEventListener: () => { }, removeEventListener: () => { } };
+      const conn = {
+        effectiveType: "slow-2g",
+        downlink: 0.1,
+        saveData: false,
+        addEventListener: () => {},
+        removeEventListener: () => {},
+      };
       Object.defineProperty(navigator, "connection", { get: () => conn, configurable: true });
       Object.defineProperty(navigator, "deviceMemory", { get: () => 2, configurable: true });
     });
@@ -243,11 +249,10 @@ test.describe("TC-3: Manual URL override", () => {
     // Give the hook time to run; if it incorrectly sets lite class this will time out
     await page.waitForTimeout(1500);
 
-    const htmlClass = await page.locator("html").getAttribute("class") ?? "";
-    expect(
-      htmlClass,
-      "localStorage=full should suppress perf-lite even on slow-2g"
-    ).not.toContain("perf-lite");
+    const htmlClass = (await page.locator("html").getAttribute("class")) ?? "";
+    expect(htmlClass, "localStorage=full should suppress perf-lite even on slow-2g").not.toContain(
+      "perf-lite",
+    );
   });
 });
 
@@ -278,9 +283,7 @@ test.describe("TC-4: Responsive layouts", () => {
     await expect(page.locator("h1")).toContainText("СИСТЕМЫ");
   });
 
-  test("Mobile (375px): Hero CTA button is visible and within viewport width", async ({
-    page,
-  }) => {
+  test("Mobile (375px): Hero CTA button is visible and within viewport width", async ({ page }) => {
     await forceFullTier(page);
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto(BASE);
@@ -294,7 +297,7 @@ test.describe("TC-4: Responsive layouts", () => {
     expect(box!.x, "CTA button left edge should not be negative").toBeGreaterThanOrEqual(0);
     expect(
       box!.x + box!.width,
-      "CTA button right edge should not overflow 375px viewport"
+      "CTA button right edge should not overflow 375px viewport",
     ).toBeLessThanOrEqual(375 + 2);
   });
 
@@ -338,13 +341,13 @@ test.describe("TC-4: Responsive layouts", () => {
     // Both links in the first grid row must share the same vertical position (±4px)
     expect(
       Math.abs(firstRect.top - secondRect.top),
-      "First two footer service links should be on the same row (grid-cols-2)"
+      "First two footer service links should be on the same row (grid-cols-2)",
     ).toBeLessThanOrEqual(4);
 
     // Second link must be positioned to the right of the first
     expect(
       secondRect.left,
-      "Second link should be to the right of first link in 2-col grid"
+      "Second link should be to the right of first link in 2-col grid",
     ).toBeGreaterThan(firstRect.left + firstRect.width * 0.5);
   });
 
@@ -359,7 +362,7 @@ test.describe("TC-4: Responsive layouts", () => {
     for (const abbr of expected) {
       await expect(
         page.locator(`footer >> text="${abbr}"`).first(),
-        `Footer should contain abbreviation: ${abbr}`
+        `Footer should contain abbreviation: ${abbr}`,
       ).toBeVisible();
     }
   });
@@ -375,7 +378,7 @@ test.describe("TC-4: Responsive layouts", () => {
     expect(footerBox, "Footer must be visible with a bounding box").not.toBeNull();
     expect(
       footerBox!.width,
-      "Footer must not overflow the 375px mobile viewport"
+      "Footer must not overflow the 375px mobile viewport",
     ).toBeLessThanOrEqual(375 + 2);
   });
 });

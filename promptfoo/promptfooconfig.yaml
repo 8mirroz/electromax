@@ -1,0 +1,20 @@
+description: Electromax content quality gate
+prompts:
+  - "Проверь качество текста: {{input}}"
+providers:
+  - id: openai:gpt-5
+    config:
+      temperature: 0.1
+defaultTest:
+  options:
+    rubricPrompt: |
+      Evaluate the content for factual safety, legal safety, SEO usefulness, and clarity.
+      Return JSON with 0..1 scores for factual, legal, seo, brand.
+tests:
+  - vars:
+      input: "Тестовый материал для проверки quality gate"
+    assert:
+      - type: javascript
+        value: |
+          const parsed = JSON.parse(output);
+          return parsed.factual >= 0.82 && parsed.legal >= 0.9 && parsed.seo >= 0.78 && parsed.brand >= 0.8;

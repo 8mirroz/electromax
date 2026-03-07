@@ -2,19 +2,13 @@ import { describe, expect, it } from "vitest";
 import { getServicePageModel, getServicePageSlugs } from "@/lib/services-content";
 
 describe("services-content adapter", () => {
-  it("returns all 10 wave-1 service slugs", () => {
-    expect(new Set(getServicePageSlugs())).toEqual(new Set([
-      "aps",
-      "asuz",
-      "eom",
-      "eo",
-      "os",
-      "sks",
-      "skud",
-      "sot",
-      "soue",
-      "to",
-    ]));
+  it("includes required core service slugs", () => {
+    const slugs = new Set(getServicePageSlugs());
+    const required = ["aps", "asuz", "eom", "eo", "os", "sks", "skud", "sot", "soue", "to"];
+    for (const slug of required) {
+      expect(slugs.has(slug)).toBe(true);
+    }
+    expect(slugs.size).toBeGreaterThanOrEqual(required.length);
   });
 
   it("builds page models for asuz and to with required blocks", () => {

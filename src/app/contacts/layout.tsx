@@ -1,10 +1,6 @@
 import { contactsMetadata } from "./metadata";
 
-export default function ContactsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ContactsLayout({ children }: { children: React.ReactNode }) {
   return children;
 }
 

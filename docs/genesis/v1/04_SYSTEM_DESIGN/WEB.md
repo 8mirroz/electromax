@@ -1,248 +1,100 @@
-# WEB System Design Document
+# System Design: WEB (Frontend System)
 
-**System ID**: WEB
+**System ID**: `WEB`
 **Project**: Electromax
-**Version**: 1.0
-**Status**: Draft
-**Author**: Antigravity Genesis
-**Date**: 2026-02-24
+**Architecture Base**: Next.js App Router (React 19, Tailwind CSS 4)
 
 ---
 
 ## 1. Overview
 
-### 1.1 System Purpose
-
-To provide a highly interactive, extremely performant, and SEO-optimized B2B marketing website for Electromax engineering systems. It captures B2B leads by demonstrating expertise through cases, providing an interactive cost calculator, and clearly presenting services (APS, SOUE, SOT, etc.).
-
-### 1.2 System Boundary
-
-- **Input**: User interactions (Clicks, Form submissions on landing pages, Calculator dynamic inputs).
-- **Output**: API calls to Next.js server actions / API routes (`/api/leads`).
-- **Dependencies**:
-  - 21st.dev UI components (Breadcrumb, Navigation Tabs, Dotted Surface, Pricing, Footer).
-  - Stitch UI layout structures.
-  - Next.js API Routes for backend handling.
-- **Dependents**: None (End-user facing).
-
-### 1.3 System Responsibilities
-
-**Responsible for**:
-
-- Server-Side Rendering (SSR) / Static Site Generation (SSG) of service landing pages.
-- Client-side interactivity (Calculator logic, animations, form validation).
-- Integration and rendering of premium UI components using Tailwind CSS.
-- Initial lead data collection and validation.
-
-**Not responsible for**:
-
-- Finalizing CRM insertion (handled by backend integration).
-- Storing long-term analytical data (handled by Yandex Metrika/Google Analytics).
-
----
+The WEB system is responsible for rendering the full user interface, managing client-side interactions, and securely submitting data to the API system. It serves as the primary touchpoint for users and search engines, thus holding strict requirements for Performance (Core Web Vitals), Accessibility (WCAG 2.2 AA), and Security.
 
 ## 2. Goals & Non-Goals
 
-### 2.1 Goals
+**Goals**:
 
-- **[G1]**: Achieve near-instant LCP (Largest Contentful Paint) < 1.5s via Next.js App Router (SSG).
-- **[G2]**: Establish a high-conversion calculator form component that recalculates estimates in < 50ms locally.
-- **[G3]**: Maintain 100% adherence to Stitch's provided UI design parameters for Engineering Security Integrator landing pages.
+- Deliver rapid Largest Contentful Paint (LCP < 2.5s)
+- Ensure full keyboard predictability and screen reader compatibility.
+- Ensure type-safe client-side logic using strict TypeScript.
+- Provide secure form submissions with visual feedback.
 
-### 2.2 Non-Goals
+**Non-Goals**:
 
-- **[NG1]**: Building a full customer portal or dashboard. The system is strictly marketing and lead generation.
-
----
+- Processing logic (Delegated to API).
+- Storing user state across long sessions without explicitly required local storage.
+- A fully decoupled CSR SPA (Next.js is the chosen SSR mechanism).
 
 ## 3. Background & Context
 
-### 3.1 Why This System?
+Based on the `COMPREHENSIVE_AUDIT_REPORT_2026.md` and subsequent `/task-blueprint-selection` execution, the application currently suffers from 66 compliance violations impacting performance, security, and accessibility.
 
-The company needs a distinct, premium digital presence to capture B2B engineering leads. The previous or non-existent solution is failing to provide a clear funnel.
+**Key constraints inherited**:
 
-**Related PRD Reqs**:
-
-- [REQ-001] Landing Page Architecture
-- [REQ-002] Interactive Cost Calculator
-- [REQ-004] Component-Driven UI
-
-### 3.2 Constraints
-
-- **Performance**: Must pass Core Web Vitals (SEO requirement).
-- **Tech Stack**: Must use Next.js, React 19, Tailwind CSS 4.
-- **Visuals**: Must use "quiet luxury" / high-end B2B styling via 21st.dev components.
-
----
+- Next.js 16 + React 19 + Tailwind CSS + Typescript.
+- Must eliminate FOIT/FOUT.
+- Must provide content security (CSP).
 
 ## 4. Architecture
 
-### 4.1 Architecture Diagram
+### Pattern
 
-```mermaid
-graph TD
-    A[B2B User] -->|HTTP GET/POST| B[Next.js App Router]
+The system employs the **App Router Architecture** natively supported by Next.js, leveraging Server Components (RSC) for initial HTML payload and Client Components ( `"use client"` directives) selectively for user interactions and state tracking.
 
-    subgraph WEB System
-        B --> C[Service Landing Pages /services/:slug]
-        B --> D[Calculator Client Component]
-        B --> E[Premium UI Blocks 21st.dev / Stitch]
-    end
+### Core Components
 
-    D -->|Client-side Calculation| D
-    D -->|JSON Payload| F[Next.js Server Actions / API]
-    C -->|Static Props| B
-
-    style B fill:#e1f5ff
-    style D fill:#e1f5ff
-    style E fill:#fff4e1
-```
-
-### 4.2 Core Components
-
-| Component Name    | Responsibility                             | Tech Stack                       |
-| ----------------- | ------------------------------------------ | -------------------------------- |
-| `HeroBanner`      | Landing page entry with CTA and value prop | React, Tailwind, Stitch UI       |
-| `CalculatorForm`  | Multi-step interactive estimator           | React (useActionState), Tailwind |
-| `PricingSection`  | Display tier packages                      | React, 21st.dev Pricing Block    |
-| `AnimatedNavTabs` | Service category switching                 | Framer Motion, 21st.dev          |
-| `DottedSurface`   | Background aesthetic pattern               | SVG, 21st.dev                    |
-
-### 4.3 Data Flow
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant Calculator Component
-    participant Server Action
-
-    User->>Calculator Component: Inputs area & selects service
-    Calculator Component-->>User: Displays live dynamic estimate
-    User->>Calculator Component: Fills phone & submits
-    Calculator Component->>Server Action: POST Lead payload
-    Server Action-->>Calculator Component: Success State
-    Calculator Component-->>User: Confirms submission
-```
-
----
+1. **Edge Middleware (`middleware.ts`)**: Injects CSP Headers, strict transport security, and configures cache-control dynamically.
+2. **Server Root Layout (`layout.tsx`)**: Sets up structural HTML, configures `next/font/google`, and initializes context or providers.
+3. **Optimized Presentational Components (`Image`, `Link`)**: Next.js provided primitives to handle priority fetching and asynchronous hydration.
+4. **Interactive Primitives (`QuizModal.tsx`, `ProjectsGallery`)**: Stateful modules bound to UI state (Zustand/useState) managing User Inputs and focus traps.
 
 ## 5. Interface Design
 
-### 5.1 Component Interface
+- **Input**: User actions (click, tab, scroll), query params, API responses.
+- **Output**: Rendered HTML/CSS fragments, Client-side transitions, structured logs.
+- **Dependencies Interface**: The client calls `/api/leads` and expects `{ success: boolean, message: string }`.
 
-#### 5.1.1 CalculatorForm Component [REQ-002]
+## 6. Technology Stack
 
-**Props**:
+- **Framework**: Next.js 16, React 19
+- **Styling**: Tailwind CSS 4
+- **State**: React hooks built-in (Jotai or Zustand recommended for cross-component state)
+- **Validation**: Zod (for client-side form validation before API dispatch)
+- **Accessibility Engine**: Radix UI Primitives (Optional but highly recommended)
 
-```typescript
-interface CalculatorFormProps {
-  basePrice: number;
-  serviceSlug: string;
-  onLeadCapture: (payload: LeadPayload) => Promise<{ success: boolean; error?: string }>;
-}
+## 7. Trade-offs & Alternatives
 
-interface LeadPayload {
-  objectType: "office" | "warehouse" | "retail" | "industrial";
-  areaSquareMeters: number;
-  complexityCoef: number;
-  estimatedPrice: number;
-  contactPhone: string;
-}
-```
+### Trade-off 1: `next/image` vs Native `<img>`
 
----
+- **Current problem**: `<img>` tags load synchronously, blocking rendering, or do not resize.
+- **Decision**: Wrap all images with `next/image`.
+- **Trade-off**: Requires strictly defining `width` and `height`, which makes responsive design slightly more verbose, but significantly helps CLS and LCP metrics.
 
-## 6. Data Model
+### Trade-off 2: Headless Custom UI vs Pure Custom UI
 
-### 6.1 Data Structures
+- **Current problem**: Building A11Y compatible components from scratch causes numerous issues.
+- **Decision**: Adopt Radix UI for complex interactive widgets (e.g. Modals).
+- **Trade-off**: Increases bundle size slightly vs raw HTML, but guarantees WCAG 2.2 AA compliance natively (focus-traps, keyboard nav).
 
-#### Service Configuration (Static JSON/MD)
+### Trade-off 3: Client vs Server Rendering (App Router)
 
-```typescript
-interface ServiceConfig {
-  id: string; // e.g., 'aps', 'soue'
-  title: string;
-  description: string;
-  basePricePerSqm: number;
-  packages: PricingPackage[];
-  includedSteps: ProcessStep[];
-}
-```
+- **Decision**: Render content as deeply as possible on the server.
+- **Trade-off**: Harder to implement complex reactive data flows but vastly superior for fast Time to First Byte (TTFB) and SEO. Only nodes starting with `use client` should be stateful.
 
----
+## 8. Security Considerations
 
-## 7. Technology Stack
+- **Content Security Policy (CSP)**: Handled at Edge in `middleware.ts`.
+- **Form Abuse**: Rate-limiter (Upstash) should block repeated requests at the server level.
+- **Data Exposure**: Strict enforcement to never leak sensitive variables (`process.env.SECRET` instead of `NEXT_PUBLIC_SECRET`).
 
-### 7.1 Core Technologies
+## 9. Performance Considerations
 
-| Domain        | Choice                  | Rationale                                             |
-| ------------- | ----------------------- | ----------------------------------------------------- |
-| Framework     | Next.js 16 (App Router) | Best SEO, SSR/SSG, File-based routing                 |
-| Styling       | Tailwind CSS v4         | Rapid utility-first component styling                 |
-| UI Primitives | 21st.dev & Magic UI     | High-end visual impact, minimal boilerplate           |
-| Animations    | Framer Motion           | Smooth interactions for Tabs and interactive elements |
+- Use `loading="lazy"` on below-the-fold components and images.
+- Refactor large client bundles (e.g., `QuizModal`) using `next/dynamic`.
+- Centralize fonts via `next/font`.
 
----
+## 10. Testing Strategy
 
-## 8. Trade-offs & Alternatives
-
-### 8.1 Decision 1: Next.js SSG vs SSR for Landing Pages
-
-**Option A: SSG (Static Site Generation) (✅ Selected)**
-
-- ✅ **Pros**: Lightning-fast TTFB (Time to First Byte), inherently scalable, cheap to host.
-- ❌ **Cons**: Requires rebuild to update static pricing or text.
-  **Option B: SSR (Server-Side Rendering)**
-- ✅ **Pros**: Real-time content updates.
-- ❌ **Cons**: Slower response times compared to pre-rendered HTML; overkill for rarely changing marketing copy.
-  **Decision**: Use SSG. Marketing content for engineering systems changes infrequently. Lead forms will be handled by dynamic API endpoints unconditionally.
-
-### 8.2 Decision 2: Context API vs Local State for Calculator
-
-**Option A: Local State (useState/useReducer) (✅ Selected)**
-
-- ✅ **Pros**: Keeps component isolated and perfectly portable.
-- ❌ **Cons**: Harder to share state outside the bounds of the component.
-  **Option B: Global State (Zustand / Redux)**
-- ✅ **Pros**: Accessible anywhere.
-- ❌ **Cons**: Massive overkill for a single-page calculator.
-  **Decision**: Local state. The calculator data doesn't strongly affect global layout outside its direct container.
-
----
-
-## 9. Security Considerations
-
-### 9.1 Data Protection
-
-- **XSS**: Handled naturally by React's DOM escaping.
-- **CSRF**: Next.js Server Actions inherently validate origins.
-- **Lead Spam**: Must implement invisible ReCaptcha v3 or Turnstile on the `CalculatorForm` to prevent bot spam.
-
----
-
-## 10. Performance Considerations
-
-### 10.1 Optimization Strategies
-
-1. **Asset Optimization**:
-   - Optimize all Stitch reference images using `next/image` with WebP format.
-   - Serve `DottedSurface` natively as SVG rather than raster images.
-2. **Bundle Size**:
-   - Lazy-load heavy components (like 3D viewers or heavy map frames, if any) below the fold.
-
----
-
-## 11. Testing Strategy
-
-### 11.1 Component Testing
-
-- **Tool**: Vitest + React Testing Library.
-- **Scenarios**:
-  - Calculator mathematical assertions (does basePrice \* area accurately calculate?).
-  - Form validation blocks submission on invalid phone numbers.
-
-### 11.2 End-to-End Testing
-
-- **Tool**: Playwright.
-- **Scenarios**:
-  - Full critical path: User lands on page -> interacts with Tabs -> fills Calculator -> Submits Lead -> sees Thank You state.
+- Unit Tests (Vitest) for complex pure functions.
+- Accessibility Audits (Axe-core) via CLI to prevent regressions.
+- Visual Regression (Chromatic).

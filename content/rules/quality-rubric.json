@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "autoPublish": {
+    "enabled": true,
+    "maxRewriteIterations": 3,
+    "quarantineOnFail": true
+  },
+  "thresholds": {
+    "factual": 0.82,
+    "seo": 0.78,
+    "brand": 0.8,
+    "legal": 0.9
+  },
+  "requiredSignals": [
+    "contains_risk_disclaimer",
+    "contains_cta",
+    "contains_sla_or_timing",
+    "contains_scope_boundaries"
+  ],
+  "rejectIf": ["hallucinated_certifications", "unsafe_claims", "missing_contact_disclaimer"]
+}

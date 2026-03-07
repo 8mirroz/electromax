@@ -4,7 +4,22 @@ import { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { ShieldCheck, FileCheck, Clock3, CheckCircle2, Sparkles } from "lucide-react";
 import { usePerformanceTier } from "@/components/AdaptiveProvider";
-import { QuizModal } from "@/components/ui/QuizModal";
+import dynamic from "next/dynamic";
+import { Loader2 } from "lucide-react";
+import { trackClientEvent } from "@/lib/analytics/events";
+
+// Dynamically import QuizModal to drastically reduce the initial JS bundle size
+const QuizModal = dynamic(() => import("@/components/ui/QuizModal").then((mod) => mod.QuizModal), {
+  ssr: false,
+  loading: () => (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm">
+      <div className="bg-white p-4 rounded-xl shadow-xl flex items-center gap-3">
+        <Loader2 className="w-6 h-6 text-primary animate-spin" />
+        <span className="text-sm font-medium text-foreground">Загрузка модуля...</span>
+      </div>
+    </div>
+  ),
+});
 
 const TRUST_ITEMS = [
   { icon: ShieldCheck, value: "500+", label: "объектов сдано" },
@@ -25,6 +40,13 @@ export function Hero() {
   }, []);
 
   const noMotion = !mounted || prefersReducedMotion || isLite;
+  const openQuiz = () => {
+    void trackClientEvent("service_cta_click", {
+      source: "hero",
+      cta: "get_estimate",
+    });
+    setQuizOpen(true);
+  };
 
   const fadeUp = (delay = 0) =>
     noMotion
@@ -61,7 +83,7 @@ export function Hero() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
               <button
                 type="button"
-                onClick={() => setQuizOpen(true)}
+                onClick={openQuiz}
                 className="flex h-11 flex-1 items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 text-sm text-white/80 shadow-inner hover:bg-white/15 transition-colors text-left"
               >
                 <Sparkles className="h-4 w-4 text-white/80 shrink-0" />
@@ -70,8 +92,8 @@ export function Hero() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => setQuizOpen(true)}
-                className="h-11 px-7 rounded-2xl bg-white text-blue-600 font-bold text-[13px] tracking-tight shadow-lg shadow-blue-900/20 hover:bg-slate-50 transition-colors"
+                onClick={openQuiz}
+                className="h-11 px-7 rounded-2xl bg-white text-blue-600 font-bold uppercase tracking-wider text-[13px] hover:bg-slate-50 transition-all active:scale-95"
               >
                 Получить расчёт
               </motion.button>

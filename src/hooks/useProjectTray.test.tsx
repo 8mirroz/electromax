@@ -47,9 +47,7 @@ describe("useProjectTray", () => {
   });
 
   it("adds, updates, removes and clears items with persistence", async () => {
-    const { result } = renderHook(() =>
-      useProjectTray({ serviceSlug: "aps", catalogItems }),
-    );
+    const { result } = renderHook(() => useProjectTray({ serviceSlug: "aps", catalogItems }));
 
     await waitFor(() => {
       expect(result.current.tray.serviceSlug).toBe("aps");
@@ -134,9 +132,7 @@ describe("useProjectTray", () => {
       }),
     );
 
-    const { result } = renderHook(() =>
-      useProjectTray({ serviceSlug: "aps", catalogItems }),
-    );
+    const { result } = renderHook(() => useProjectTray({ serviceSlug: "aps", catalogItems }));
 
     await waitFor(() => {
       expect(result.current.tray.items[0]?.qty).toBe(2);

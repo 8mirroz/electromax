@@ -1,0 +1,21 @@
+{
+  "slug": "ru-b2b-material-7-kz",
+  "locale": "kz",
+  "type": "article",
+  "title": "[KZ] B2B инженерный материал #7",
+  "excerpt": "[KZ] Практический материал: инженерные системы b2b 7",
+  "body": "# KZ localization draft\n\n## Контекст\nМатериал ориентирован на сегмент: Техдиректор, эксплуатация, закупка.\n\n## Рекомендованный подход\n1. Провести аудит текущего состояния.\n2. Согласовать KPI и SLA.\n3. Реализовать поэтапный rollout.\n\n## Контроль качества\nПроверить риски, сроки, budget-range и требования эксплуатации.\n\n## CTA\nЗаказать аудит объекта",
+  "tags": ["b2b", "electromax", "engineering"],
+  "targetKeyword": "инженерные системы b2b 7",
+  "intent": "informational",
+  "quality": {
+    "factual": "pending",
+    "legal": "pending",
+    "seo": "pending",
+    "localization": "pending"
+  },
+  "createdAt": "2026-02-28T23:55:24.828Z",
+  "updatedAt": "2026-02-28T23:55:24.828Z",
+  "sourceLocale": "ru",
+  "localizedAt": "2026-02-28T23:55:29.912Z"
+}

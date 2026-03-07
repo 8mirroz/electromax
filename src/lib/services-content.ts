@@ -45,6 +45,7 @@ type Agent2AltCatalogItem = {
   includes?: string[];
   excludes?: string[];
   objectTypes?: string[];
+  priceDependsOn?: string[];
   addToProjectDefaultQty?: number;
 };
 

@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { formatPhone } from "@/lib/phone";
-import { isValidRuPhone, type LeadApiResponse, type LeadPayload } from "@/lib/leads";
+import { isLeadDemoMode, isValidRuPhone, type LeadApiResponse, type LeadPayload } from "@/lib/leads";
 import { formatProjectTrayRange } from "@/lib/project-tray";
 import type { ProjectTrayState } from "@/types";
+import { trackClientEvent } from "@/lib/analytics/events";
 
 interface Props {
   isOpen: boolean;
@@ -23,6 +24,17 @@ export function ProjectTrayDrawer(props: Props) {
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
+  const isDemoMode = isLeadDemoMode();
+
+  useEffect(() => {
+    if (props.isOpen) {
+      void trackClientEvent("project_tray_open", {
+        source: "project_tray_drawer",
+        service_slug: props.serviceSlug,
+        items_count: props.tray.items.length,
+      });
+    }
+  }, [props.isOpen, props.serviceSlug, props.tray.items.length]);
 
   const submitLead = async () => {
     if (!isValidRuPhone(phone)) {
@@ -71,6 +83,12 @@ export function ProjectTrayDrawer(props: Props) {
         throw new Error(data.error || "Не удалось отправить заявку");
       }
       setStatus("success");
+      await trackClientEvent("project_tray_submit", {
+        source: "project_tray_drawer",
+        service_slug: props.serviceSlug,
+        items_count: props.tray.items.length,
+        selected_kits_count: props.tray.selectedKitIds.length,
+      });
     } catch (err) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Ошибка сети");
@@ -196,6 +214,11 @@ export function ProjectTrayDrawer(props: Props) {
                 Отправим состав проекта в текущую лид-форму API как summary. Данные не
                 синхронизируются на сервер до отправки заявки.
               </p>
+              {isDemoMode ? (
+                <p className="mt-2 text-xs font-semibold text-amber-700">
+                  Demo mode: заявка подтверждается в интерфейсе, но не уходит менеджеру.
+                </p>
+              ) : null}
               <input
                 type="tel"
                 value={phone}
@@ -206,7 +229,9 @@ export function ProjectTrayDrawer(props: Props) {
               {error ? <p className="mt-2 text-xs text-rose-600">{error}</p> : null}
               {status === "success" ? (
                 <p className="mt-2 text-xs text-emerald-700">
-                  Заявка по проекту отправлена. Инженер свяжется с вами.
+                  {isDemoMode
+                    ? "Демо-режим: проектная заявка сохранена только для предпросмотра."
+                    : "Заявка по проекту отправлена. Инженер свяжется с вами."}
                 </p>
               ) : null}
               <button

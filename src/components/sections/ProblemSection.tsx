@@ -35,7 +35,8 @@ export function ProblemSection({ problems }: ProblemSectionProps) {
             ВЕКТОРЫ <span className="text-primary">УЯЗВИМОСТИ</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl font-medium tracking-tight">
-            Анализ критических рисков современных коммерческих объектов и методология их нейтрализации.
+            Анализ критических рисков современных коммерческих объектов и методология их
+            нейтрализации.
           </p>
         </div>
 
@@ -54,7 +55,9 @@ export function ProblemSection({ problems }: ProblemSectionProps) {
                   <ShieldAlert className="w-6 h-6" />
                 </div>
                 <div className="h-[1px] flex-grow bg-border/50" />
-                <div className="text-[10px] font-black text-muted-foreground opacity-30">0{idx + 1}</div>
+                <div className="text-[10px] font-black text-muted-foreground opacity-30">
+                  0{idx + 1}
+                </div>
               </div>
 
               <div className="flex-grow">

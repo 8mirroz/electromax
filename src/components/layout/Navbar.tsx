@@ -11,11 +11,12 @@ export function Navbar() {
       <div className="container mx-auto h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
 
-        <nav className="hidden md:flex items-center gap-1">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-1" aria-label="Основная навигация">
           {[
             { label: "Услуги", href: "/#services" },
-            { label: "Решения", href: "/solutions" },
             { label: "Проекты", href: "/projects" },
+            { label: "База знаний", href: "/knowledge" },
             { label: "О компании", href: "/about" },
             { label: "Контакты", href: "/contacts" },
           ].map((item) => (
@@ -42,7 +43,7 @@ export function Navbar() {
             href="https://t.me/electromax_support"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden lg:flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-[#24A1DE] hover:bg-[#24A1DE] hover:text-white transition-all duration-300 shadow-sm"
+            className="hidden lg:flex items-center justify-center w-11 h-11 rounded-full bg-slate-100 text-[#24A1DE] hover:bg-[#24A1DE] hover:text-white transition-all duration-[var(--duration-normal)]"
             aria-label="Telegram"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -59,12 +60,15 @@ export function Navbar() {
                 window.location.href = "/contacts";
               }
             }}
-            className="hidden sm:inline-flex items-center justify-center h-11 px-6 rounded-2xl bg-primary text-[13px] font-bold uppercase tracking-wider text-white hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/20"
+            className="hidden sm:inline-flex items-center justify-center h-11 px-6 rounded-2xl bg-primary text-[14px] font-bold uppercase tracking-wider text-white hover:bg-primary/90 transition-all active:scale-95"
           >
             ПРОЕКТ
           </button>
 
-          <MobileNav />
+          {/* Mobile Navigation - Always rendered for mobile users */}
+          <div className="md:hidden" aria-label="Мобильная навигация">
+            <MobileNav />
+          </div>
         </div>
       </div>
     </header>

@@ -66,7 +66,7 @@ export interface ServiceHeroModel {
   trustItems?: string[];
   trustFactors?: string[]; // Alias for trustItems in some data sources
   priceDisclaimer?: string;
-  disclaimer?: string;      // Alias for priceDisclaimer in some data sources
+  disclaimer?: string; // Alias for priceDisclaimer in some data sources
 }
 
 export interface ServiceStatCard {
@@ -129,12 +129,7 @@ export interface ProcessRoadmapStep {
 
 export interface AiAssistRule {
   id: string;
-  triggerType:
-    | "service_open"
-    | "tray_empty"
-    | "has_item"
-    | "missing_category"
-    | "selected_kit";
+  triggerType: "service_open" | "tray_empty" | "has_item" | "missing_category" | "selected_kit";
   triggerValue?: string;
   recommendItemCode?: string;
   recommendServiceSlug?: string;

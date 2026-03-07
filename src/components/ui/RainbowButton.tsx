@@ -43,7 +43,9 @@ export function RainbowButton({
         "hover:shadow-[0_8px_30px_-4px_rgba(59,130,246,0.5),0_12px_50px_-8px_rgba(79,70,229,0.35)]",
         "hover:-translate-y-0.5",
         "active:scale-[0.98]",
-        "transition-all duration-300",
+        "transition-all",
+        "duration-[var(--duration-normal)]",
+        "ease-[var(--ease-enter)]",
         "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",
         "overflow-hidden",
@@ -52,7 +54,7 @@ export function RainbowButton({
       {...props}
     >
       {children}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[var(--duration-normal)]" />
     </button>
   );
 }

@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Turnstile } from "@marsidev/react-turnstile";
-import { isValidRuPhone, type LeadApiResponse, type LeadPayload } from "@/lib/leads";
+import { isLeadDemoMode, isValidRuPhone, type LeadApiResponse, type LeadPayload } from "@/lib/leads";
 import { formatPhone } from "@/lib/phone";
+import { trackClientEvent } from "@/lib/analytics/events";
 import {
   Building2,
   Warehouse,
@@ -38,6 +39,7 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
   const [token, setToken] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const isDemoMode = isLeadDemoMode();
 
   useEffect(() => {
     setMounted(true);
@@ -45,9 +47,6 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
 
   const complexityCoef = complexityMap[objectType] || 1.0;
   const estimatedPrice = Math.round(area * basePrice * complexityCoef);
-  const ymId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
-  const ymLeadGoal = process.env.NEXT_PUBLIC_YANDEX_METRIKA_GOAL_LEAD_FORM || "lead_form_submitted";
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isValidRuPhone(phone)) {
@@ -85,9 +84,17 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
 
       if (res.ok && data.success) {
         setStatus("success");
-        if (ymId && typeof window !== "undefined" && typeof window.ym === "function") {
-          window.ym(Number(ymId), "reachGoal", ymLeadGoal);
-        }
+        await trackClientEvent("lead_form_submit", {
+          source: "calculator_form",
+          object_type: objectType,
+          area: area,
+          estimated_price: estimatedPrice,
+        });
+        await trackClientEvent("calculator_complete", {
+          object_type: objectType,
+          area: area,
+          estimated_price: estimatedPrice,
+        });
       } else {
         throw new Error(data.error || "Не удалось отправить заявку. Попробуйте позже.");
       }
@@ -109,7 +116,9 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
           ПРОТОКОЛ ИНИЦИИРОВАН
         </h2>
         <p className="text-muted-foreground font-medium mb-12 leading-relaxed relative z-10">
-          Инженерный отдел получил ваши данные. Связь будет установлена в течение 15 минут.
+          {isDemoMode
+            ? "Демо-режим Vercel: сценарий подтвержден, но заявка не отправляется менеджеру."
+            : "Инженерный отдел получил ваши данные. Связь будет установлена в течение 15 минут."}
         </p>
         <button
           type="button"
@@ -226,6 +235,11 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
 
         {/* Lead Capture Form */}
         <div className="space-y-8 pt-4">
+          {isDemoMode ? (
+            <div className="rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 text-xs font-bold uppercase tracking-[0.18em] text-amber-700">
+              Demo mode: форма показывает успешный сценарий, но не отправляет заявку менеджеру.
+            </div>
+          ) : null}
           <div className="relative">
             <div className="absolute left-6 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors">
               <Phone className="w-5 h-5" />
@@ -287,10 +301,4 @@ export function CalculatorForm({ basePrice, complexityMap }: CalculatorFormProps
       </form>
     </div>
   );
-}
-
-declare global {
-  interface Window {
-    ym?: (id: number, action: string, goal: string) => void;
-  }
 }

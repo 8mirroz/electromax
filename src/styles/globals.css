@@ -40,14 +40,13 @@
   --color-bg-card-alt: #fbfcff;
   --color-bg-hover: #f3f6ff;
 
-  /* Исправлено: контраст 4.5:1 минимум */
+  /* Muted (fixed: contrast 4.5:1 minimum for WCAG 2.2 AA) */
   --color-muted: #eef1f6;
   --color-muted-foreground: #475569;
 
+  /* Accent & Interactive */
   --color-accent: #e7eeff;
   --color-accent-foreground: #2f5bff;
-
-  --color-border: #dde3ef;
   --color-input: #dde3ef;
   --color-ring: #2f5bff;
 
@@ -134,7 +133,7 @@
   h1 {
     font-family: var(--font-display);
     font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.08;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     font-weight: 800;
   }
@@ -142,7 +141,7 @@
   h2 {
     font-family: var(--font-display);
     font-size: clamp(1.5rem, 3vw, 2.5rem);
-    line-height: 1.1;
+    line-height: 1.2;
     font-weight: 700;
   }
 
@@ -239,11 +238,14 @@
     }
   }
 
-  /* Governance: Mobile Tap Targets (Apple HIG) */
+  /* Governance: Mobile Tap Targets (Apple HIG + WCAG 2.2) */
   @media (max-width: 768px) {
     button,
     a,
-    [role="button"] {
+    [role="button"],
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"] {
       min-height: 44px;
       min-width: 44px;
     }

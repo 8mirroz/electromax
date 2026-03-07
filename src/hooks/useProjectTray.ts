@@ -69,6 +69,8 @@ export function useProjectTray({ serviceSlug, catalogItems = [] }: UseProjectTra
     _options?: Record<string, string>,
     _calculatedPrice?: { min: number; max: number },
   ) => {
+    void _options;
+    void _calculatedPrice;
     if (!serviceSlug) return;
     apply((current) =>
       addOrMergeTrayItem(

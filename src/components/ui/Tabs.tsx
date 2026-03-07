@@ -59,7 +59,7 @@ export function AnimatedTabs({
                   transition={{
                     type: "spring",
                     bounce: 0.2,
-                    duration: shouldReduceMotion ? 0 : 0.6,
+                    duration: shouldReduceMotion ? 0 : parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--duration-slow')) || 0.6,
                   }}
                 />
               )}

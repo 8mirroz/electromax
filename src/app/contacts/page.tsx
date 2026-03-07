@@ -7,7 +7,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { formatPhone } from "@/lib/phone";
-import { isValidRuPhone, type LeadApiResponse } from "@/lib/leads";
+import { isLeadDemoMode, isValidRuPhone, type LeadApiResponse } from "@/lib/leads";
 import { MapPin, Phone, Mail, Clock, CheckCircle, Map, Copy, Check, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 
@@ -59,6 +59,7 @@ export default function ContactsPage() {
   const [loadMap, setLoadMap] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [copyError, setCopyError] = useState<string | null>(null);
+  const isDemoMode = isLeadDemoMode();
 
   useEffect(() => {
     const timer = setTimeout(() => setLoadMap(true), 3000);
@@ -210,6 +211,11 @@ export default function ContactsPage() {
                   Отправить заявку
                 </h2>
                 <p className="text-sm text-slate-500">Заполните форму, мы перезвоним</p>
+                {isDemoMode ? (
+                  <p className="mt-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs font-semibold text-amber-700">
+                    Demo mode: форма подтверждает сценарий, но не отправляет заявку менеджеру.
+                  </p>
+                ) : null}
               </div>
 
               <div className="mb-8 rounded-2xl border border-slate-200 bg-slate-50/50 p-6">
@@ -240,7 +246,9 @@ export default function ContactsPage() {
                     Заявка принята!
                   </h3>
                   <p className="text-slate-600 font-medium mb-6">
-                    Менеджер свяжется с вами в течение 15 минут
+                    {isDemoMode
+                      ? "Демо-режим Vercel: сценарий проверен, но заявка не отправлена менеджеру."
+                      : "Менеджер свяжется с вами в течение 15 минут"}
                   </p>
                   <button
                     onClick={() => setStatus("idle")}

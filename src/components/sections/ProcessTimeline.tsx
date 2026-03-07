@@ -29,7 +29,8 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps) {
             ЦИКЛ <span className="text-primary">РЕАЛИЗАЦИИ</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl font-medium tracking-tight">
-            Протоколированный процесс внедрения: от первичной диагностики до сдачи в промышленную эксплуатацию.
+            Протоколированный процесс внедрения: от первичной диагностики до сдачи в промышленную
+            эксплуатацию.
           </p>
         </div>
 

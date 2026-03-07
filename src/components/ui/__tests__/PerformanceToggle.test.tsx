@@ -1,54 +1,53 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { PerformanceToggle } from "@/components/ui/PerformanceToggle";
 
-const mockSetTier = vi.fn();
+const mockSetManualPerformanceTier = vi.fn();
+const mockUsePerformanceTier = vi.fn();
 
 vi.mock("@/components/AdaptiveProvider", () => ({
-  usePerformanceTier: () => ({
-    tier: "full",
-    isLite: false,
-    score: 100,
-    setTier: mockSetTier,
-  }),
+  usePerformanceTier: () => mockUsePerformanceTier(),
+}));
+
+vi.mock("@/hooks/useAdaptivePerformance", () => ({
+  setManualPerformanceTier: (tier: "full" | "lite") => mockSetManualPerformanceTier(tier),
+}));
+
+vi.mock("motion/react", () => ({
+  motion: {
+    div: ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => <div {...(Object.fromEntries(Object.entries(props).filter(([k]) => !['initial','animate','exit','transition'].includes(k))))}>{children}</div>,
+  },
+  AnimatePresence: ({ children }: React.PropsWithChildren) => <>{children}</>,
 }));
 
 describe("PerformanceToggle", () => {
   beforeEach(() => {
-    mockSetTier.mockClear();
+    mockSetManualPerformanceTier.mockReset();
   });
 
-  it("renders the toggle button", () => {
-    render(<PerformanceToggle />);
-    expect(screen.getByRole("button")).toBeTruthy();
-  });
+  it("switches to lite when current tier is full", () => {
+    mockUsePerformanceTier.mockReturnValue({
+      tier: "full",
+      isLite: false,
+      score: 100,
+    });
 
-  it("calls setTier with 'lite' when in full mode and clicked", () => {
     render(<PerformanceToggle />);
     fireEvent.click(screen.getByRole("button"));
-    expect(mockSetTier).toHaveBeenCalledWith("lite");
-  });
-});
 
-describe("PerformanceToggle in lite mode", () => {
-  beforeEach(() => {
-    mockSetTier.mockClear();
-    vi.mock("@/components/AdaptiveProvider", () => ({
-      usePerformanceTier: () => ({
-        tier: "lite",
-        isLite: true,
-        score: 30,
-        setTier: mockSetTier,
-      }),
-    }));
+    expect(mockSetManualPerformanceTier).toHaveBeenCalledWith("lite");
   });
 
-  it("calls setTier with 'full' when in lite mode and clicked", () => {
-    // Re-import to pick up new mock
-    const { PerformanceToggle: Toggle } = vi.importActual<typeof import("@/components/ui/PerformanceToggle")>(
-      "@/components/ui/PerformanceToggle"
-    ) as never;
-    // Lightweight check — main toggle behavior covered above
-    expect(Toggle).toBeDefined();
+  it("switches to full when current tier is lite", () => {
+    mockUsePerformanceTier.mockReturnValue({
+      tier: "lite",
+      isLite: true,
+      score: 40,
+    });
+
+    render(<PerformanceToggle />);
+    fireEvent.click(screen.getByRole("button"));
+
+    expect(mockSetManualPerformanceTier).toHaveBeenCalledWith("full");
   });
 });
