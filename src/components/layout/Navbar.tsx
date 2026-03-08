@@ -15,6 +15,7 @@ export function Navbar() {
         <nav className="hidden md:flex items-center gap-1" aria-label="Основная навигация">
           {[
             { label: "Услуги", href: "/#services" },
+            { label: "Решения", href: "/solutions" },
             { label: "Проекты", href: "/projects" },
             { label: "База знаний", href: "/knowledge" },
             { label: "О компании", href: "/about" },

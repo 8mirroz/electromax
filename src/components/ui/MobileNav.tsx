@@ -9,6 +9,7 @@ import { Logo } from "@/components/layout/Logo";
 
 const NAV_ITEMS = [
   { label: "Услуги", href: "/#services" },
+  { label: "Решения", href: "/solutions" },
   { label: "Проекты", href: "/projects" },
   { label: "База знаний", href: "/knowledge" },
   { label: "О компании", href: "/about" },
