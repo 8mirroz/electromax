@@ -24,6 +24,7 @@ import type { LucideIcon } from "lucide-react";
 import { Footer } from "@/components/sections/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { SolutionsGallery } from "@/components/smart-cards/SolutionsGallery";
+import { QuizModal } from "@/components/ui/QuizModal";
 import { SERVICES_DB } from "@/data/services";
 import type { QuickStartCard } from "@/types";
 
@@ -64,8 +65,13 @@ const BASE_SERVICE_TAGS = Object.values(SERVICES_DB).map((service) => ({
   title: TAG_TEXT_OVERRIDES[service.id]?.title ?? service.title,
 }));
 
-const SERVICE_TAGS = [{ id: "all", shortName: "Все", title: "Готовые решения" }, ...BASE_SERVICE_TAGS];
-const FILTER_ROWS = [SERVICE_TAGS.slice(0, 6), SERVICE_TAGS.slice(6)];
+const SERVICE_TAGS = (() => {
+  const tags = [{ id: "all", shortName: "Все", title: "Готовые решения" }, ...BASE_SERVICE_TAGS];
+  const customTag = { id: "custom", shortName: "Под ключ", title: "Получить расчет" };
+  const insertIndex = Math.min(7, tags.length);
+  tags.splice(insertIndex, 0, customTag);
+  return tags;
+})();
 
 const stripTrailingAbbreviation = (title: string) =>
   title
@@ -76,6 +82,7 @@ const stripTrailingAbbreviation = (title: string) =>
 export default function SolutionsPage() {
   const [notification, setNotification] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState("all");
+  const [quizOpen, setQuizOpen] = useState(false);
 
   const handleAddToTray = (card: QuickStartCard, serviceSlug: string) => {
     setNotification(`"${card.title}" добавлено в проект-трей`);
@@ -92,8 +99,12 @@ export default function SolutionsPage() {
     <main className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="bg-gradient-to-b from-muted/50 to-background pt-32 pb-12 md:pt-40 md:pb-16">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative overflow-hidden bg-surface-secondary/60 pt-32 pb-12 md:pt-40 md:pb-16">
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(37,99,235,0.08),transparent_70%)]"
+        />
+        <div className="container relative mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -111,60 +122,64 @@ export default function SolutionsPage() {
             </p>
           </motion.div>
 
-          <div className="mt-10 space-y-3">
-            {FILTER_ROWS.map((row, rowIndex) => (
-              <div
-                key={`row-${rowIndex + 1}`}
-                className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6"
-              >
-                {row.map((service) => {
-                  const isAll = service.id === "all";
-                  const isActive = activeFilter === service.id;
-                  const Icon = ICON_MAP[service.id] || Settings2;
+          <div className="mt-12 mb-0 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-7 md:mt-16 md:mb-0">
+            {SERVICE_TAGS.map((service) => {
+              const isAll = service.id === "all";
+              const isCustom = service.id === "custom";
+              const isActive = activeFilter === service.id;
+              const Icon = ICON_MAP[service.id] || Settings2;
 
-                  return (
-                    <button
-                      key={service.id}
-                      type="button"
-                      onClick={() => setActiveFilter(service.id)}
-                      className={`flex h-[86px] items-center justify-between rounded-2xl border px-4 py-3 text-left transition-all duration-300 ${
-                        isActive
-                          ? "border-primary bg-primary text-white shadow-[0_16px_34px_-28px_rgba(37,99,235,0.6)]"
-                          : isAll
-                            ? "border-blue-200 bg-blue-50 text-blue-800 hover:border-blue-300 shadow-sm"
-                            : "border-border bg-white text-foreground shadow-[0_16px_34px_-28px_rgba(15,23,42,0.25)] hover:border-primary/60 hover:shadow-md"
+              return (
+                <button
+                  key={service.id}
+                  type="button"
+                  onClick={() => {
+                    if (service.id === "custom") {
+                      setQuizOpen(true);
+                    } else {
+                      setActiveFilter(service.id);
+                    }
+                  }}
+                  className={`flex h-[80px] items-center justify-between rounded-2xl border px-4 py-3 text-left transition-all duration-300 ${
+                    isActive
+                      ? "border-primary bg-primary text-white shadow-[0_16px_34px_-28px_rgba(37,99,235,0.6)]"
+                      : isAll
+                        ? "border-blue-200 bg-blue-50 text-blue-800 hover:border-blue-300 shadow-sm"
+                        : isCustom
+                          ? "border-emerald-200 bg-emerald-50 text-emerald-800 hover:border-emerald-300 shadow-sm"
+                          : "border-border bg-white text-foreground shadow-[0_16px_34px_-28px_rgba(15,23,42,0.25)] hover:border-primary/60 hover:shadow-md"
+                  }`}
+                >
+                  <div className="mr-2 flex min-w-0 flex-1 flex-col justify-center">
+                    <p
+                      className={`truncate text-sm font-black leading-tight ${isActive ? "text-white" : "text-foreground"}`}
+                    >
+                      {service.shortName}
+                    </p>
+                    <p
+                      className={`mt-0.5 min-h-[2.4em] line-clamp-2 text-[10px] font-semibold lowercase first-letter:uppercase leading-snug tracking-tight opacity-70 ${
+                        isActive ? "text-white/80" : "text-text-muted"
                       }`}
                     >
-                      <div className="mr-2 flex min-w-0 flex-1 flex-col justify-center">
-                        <p
-                          className={`truncate text-sm font-black leading-tight ${isActive ? "text-white" : "text-foreground"}`}
-                        >
-                          {service.shortName}
-                        </p>
-                        <p
-                          className={`mt-0.5 line-clamp-2 text-[10px] font-semibold uppercase leading-snug tracking-tight opacity-70 ${
-                            isActive ? "text-white/80" : "text-text-muted"
-                          }`}
-                        >
-                          {stripTrailingAbbreviation(service.title)}
-                        </p>
-                      </div>
-                      <div
-                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-colors ${
-                          isActive
-                            ? "bg-white/20 text-white"
-                            : isAll
-                              ? "bg-blue-100 text-blue-700"
-                              : "bg-primary/10 text-primary"
-                        }`}
-                      >
-                        <Icon className="h-4 w-4" aria-hidden />
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            ))}
+                      {stripTrailingAbbreviation(service.title)}
+                    </p>
+                  </div>
+                  <div
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-colors ${
+                      isActive
+                        ? "bg-white/20 text-white"
+                        : isAll
+                          ? "bg-blue-100 text-blue-700"
+                          : isCustom
+                            ? "bg-emerald-100 text-emerald-700"
+                            : "bg-primary/10 text-primary"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" aria-hidden />
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -185,6 +200,8 @@ export default function SolutionsPage() {
           {notification}
         </motion.div>
       ) : null}
+
+      {quizOpen ? <QuizModal isOpen={quizOpen} onClose={() => setQuizOpen(false)} /> : null}
 
       <Footer />
     </main>
