@@ -66,7 +66,7 @@ export const PROJECTS_DB: Project[] = [
     duration: "8 месяцев",
     budget: 24000000,
     image:
-      "https://images.unsplash.com/photo-1565008447742-9c814f5f6a33?w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&auto=format&fit=crop",
     description: "ИНЖЕНЕРНАЯ МОДЕРНИЗАЦИЯ МАШИНОСТРОИТЕЛЬНОГО ЗАВОДА.",
     year: 2024,
     features: [
@@ -79,7 +79,7 @@ export const PROJECTS_DB: Project[] = [
   },
   {
     id: "galaxy-mall",
-    title: 'Торговый центр "Галактика"',
+    title: 'ТОРГОВЫЙ ЦЕНТР "ГАЛАКТИКА"',
     location: "Москва, Пресненская набережная",
     area: 85000,
     type: "mall",
@@ -87,8 +87,8 @@ export const PROJECTS_DB: Project[] = [
     duration: "6 месяцев",
     budget: 18500000,
     image:
-      "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&auto=format&fit=crop",
-    description: "Интегрированная система безопасности и оповещения для крупного торгового центра.",
+      "https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=1200&auto=format&fit=crop",
+    description: "ИНТЕГРИРОВАННАЯ СИСТЕМА БЕЗОПАСНОСТИ И ОПОВЕЩЕНИЯ ДЛЯ КРУПНОГО ТОРГОВОГО ЦЕНТРА.",
     year: 2024,
     features: [
       "СОУЭ 5 типа с речевым оповещением",
@@ -100,7 +100,7 @@ export const PROJECTS_DB: Project[] = [
   },
   {
     id: "north-office",
-    title: 'Офисный центр "Северная башня"',
+    title: 'ОФИСНЫЙ ЦЕНТР "СЕВЕРНАЯ БАШНЯ"',
     location: "Москва, Ленинградский проспект",
     area: 18000,
     type: "office",
@@ -109,7 +109,7 @@ export const PROJECTS_DB: Project[] = [
     budget: 6200000,
     image:
       "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop",
-    description: "Модернизация ИТ-инфраструктуры и систем безопасности бизнес-центра класса B+.",
+    description: "МОДЕРНИЗАЦИЯ ИТ-ИНФРАСТРУКТУРЫ И СИСТЕМ БЕЗОПАСНОСТИ БИЗНЕС-ЦЕНТРА КЛАССА B+.",
     year: 2024,
     features: [
       "СКС Cat.6A на 1200 портов",
@@ -121,16 +121,16 @@ export const PROJECTS_DB: Project[] = [
   },
   {
     id: "auto-logistic",
-    title: 'Логистический центр "Автозапчасти"',
+    title: 'ЛОГИСТИЧЕСКИЙ ЦЕНТР "АВТОЗАПЧАСТИ"',
     location: "г. Домодедово, Московская область",
     area: 35000,
     type: "warehouse",
     services: ["sot", "skud", "aps", "eom"],
     duration: "5 месяцев",
     budget: 11200000,
-    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=1200&auto=format&fit=crop",
     description:
-      "Системы безопасности и электроснабжения для распределительного центра автозапчастей.",
+      "СИСТЕМЫ БЕЗОПАСНОСТИ И ЭЛЕКТРОСНАБЖЕНИЯ ДЛЯ РАСПРЕДЕЛИТЕЛЬНОГО ЦЕНТРА АВТОЗАПЧАСТЕЙ.",
     year: 2023,
     features: [
       "Видеоаналитика погрузочных зон",

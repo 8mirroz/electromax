@@ -33,9 +33,9 @@ const hexToRgba = (hex: string, alpha: number) => {
   const isShort = normalized.length === 3;
   const full = isShort
     ? normalized
-        .split("")
-        .map((char) => char + char)
-        .join("")
+      .split("")
+      .map((char) => char + char)
+      .join("")
     : normalized;
   const value = parseInt(full, 16);
   const r = (value >> 16) & 255;
@@ -274,15 +274,15 @@ function ServicesSection() {
       shouldReduceMotion
         ? { opacity: 1, y: 0, scale: 1, transition: { duration: 0 } }
         : {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: {
-              delay: i * 0.08,
-              duration: 0.5,
-              ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-            },
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: {
+            delay: i * 0.08,
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
           },
+        },
   };
 
   return (
@@ -482,47 +482,47 @@ function ProjectsSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={staggerContainer}
-          className="grid md:grid-cols-2 gap-6"
+          className="grid md:grid-cols-2 gap-8"
         >
           {featuredProjects.map((project) => (
             <motion.div key={project.id} variants={shouldReduceMotion ? undefined : staggerItem}>
               <Link href={`/projects`}>
-                <div className="group relative overflow-hidden rounded-2xl bg-white border border-border hover:shadow-xl transition-all duration-300">
-                  <div className="aspect-[16/10] relative overflow-hidden">
+                <div className="group relative overflow-hidden rounded-[2rem] bg-white border border-slate-200/60 shadow-sm hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/20 transition-all duration-500 will-change-transform hover:-translate-y-1 flex flex-col h-full">
+                  <div className="aspect-[16/10] relative overflow-hidden bg-slate-100">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       sizes="(max-width: 767px) 100vw, 50vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute top-4 left-4">
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-white/90 text-[10px] font-bold text-text-primary backdrop-blur-sm">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute top-5 left-5">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/95 text-[11px] font-black tracking-tight text-slate-900 shadow-sm backdrop-blur-md">
                         {project.year}
                       </span>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-display font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  <div className="p-7 md:p-8 flex flex-col flex-1">
+                    <h3 className="text-xl md:text-2xl font-display font-black text-slate-900 mb-3 group-hover:text-primary transition-colors duration-300">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-text-muted mb-4 line-clamp-2">
+                    <p className="text-sm font-medium text-slate-500 mb-6 leading-relaxed flex-1">
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-4 text-xs text-text-muted">
-                      <span className="flex items-center gap-1">
-                        <MapPin className="h-3.5 w-3.5" />
-                        {project.location}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Target className="h-3.5 w-3.5" />
-                        <span suppressHydrationWarning>{project.area.toLocaleString()}</span> м²
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Calendar className="h-3.5 w-3.5" />
-                        {project.duration}
-                      </span>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-6 border-t border-slate-100">
+                      <div className="flex items-center gap-2 text-xs font-semibold text-slate-600">
+                        <MapPin className="h-4 w-4 text-slate-400 group-hover:text-primary/70 transition-colors" />
+                        <span className="truncate max-w-[150px] sm:max-w-xs">{project.location}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs font-semibold text-slate-600">
+                        <Target className="h-4 w-4 text-slate-400 group-hover:text-primary/70 transition-colors" />
+                        <span suppressHydrationWarning>{project.area.toLocaleString()} м²</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs font-semibold text-slate-600">
+                        <Calendar className="h-4 w-4 text-slate-400 group-hover:text-primary/70 transition-colors" />
+                        <span>{project.duration}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
