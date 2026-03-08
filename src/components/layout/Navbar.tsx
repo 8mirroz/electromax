@@ -8,7 +8,7 @@ import Link from "next/link";
 export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 w-[min(1280px,calc(100%-2rem))] items-center justify-between sm:w-[min(1280px,calc(100%-3rem))]">
         <Logo />
 
         {/* Desktop Navigation */}

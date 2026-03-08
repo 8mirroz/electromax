@@ -64,7 +64,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_10%_0%,rgba(37,99,235,0.08),transparent)] perf-lite:opacity-0"
       />
 
-      <div className="relative container mx-auto max-w-7xl pt-10 pb-2 md:pt-14 md:pb-4">
+      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] pt-10 pb-2 sm:w-[min(1280px,calc(100%-3rem))] md:pt-14 md:pb-4">
         <div className="rounded-[28px] border border-border bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-700 p-6 text-white shadow-[0_24px_50px_-28px_rgba(30,64,175,0.65)] sm:p-8">
           <motion.div {...fadeUp(0)} className="max-w-4xl">
             <h1
