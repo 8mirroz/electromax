@@ -2,6 +2,24 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
+import {
+  BadgeCheck,
+  Cable,
+  DoorOpen,
+  FileCheck,
+  Flame,
+  Layers,
+  Lightbulb,
+  Settings2,
+  ShieldCheck,
+  Sparkles,
+  Target,
+  Video,
+  Volume2,
+  Wind,
+  Zap,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 import { Footer } from "@/components/sections/Footer";
 import { Navbar } from "@/components/layout/Navbar";
@@ -9,8 +27,54 @@ import { SolutionsGallery } from "@/components/smart-cards/SolutionsGallery";
 import { SERVICES_DB } from "@/data/services";
 import type { QuickStartCard } from "@/types";
 
+const ICON_MAP: Record<string, LucideIcon> = {
+  all: Layers,
+  aps: Flame,
+  soue: Volume2,
+  sot: Video,
+  os: ShieldCheck,
+  skud: DoorOpen,
+  sks: Cable,
+  eom: Zap,
+  eo: Lightbulb,
+  to: BadgeCheck,
+  ov: Wind,
+  p: FileCheck,
+  pnr: Target,
+  custom: Sparkles,
+};
+
+const TAG_TEXT_OVERRIDES: Record<string, { shortName: string; title: string }> = {
+  eom: { shortName: "ЭОМ", title: "Электро и силовые" },
+  aps: { shortName: "АПС", title: "Пожарные системы" },
+  eo: { shortName: "ЭО", title: "Системы освещения" },
+  soue: { shortName: "СОУЭ", title: "Система оповещения" },
+  sot: { shortName: "СОТ", title: "Системы видеонаблюдения" },
+  ov: { shortName: "ОВ", title: "Системы вентиляции" },
+  p: { shortName: "ПРОЕКТ", title: "Проектирование систем" },
+  skud: { shortName: "СКУД", title: "Системы контроля" },
+  sks: { shortName: "СКС", title: "Кабельные системы" },
+  to: { shortName: "ТО", title: "Техническое обслуживание" },
+  pnr: { shortName: "ПНР", title: "Настройка и запуск" },
+};
+
+const BASE_SERVICE_TAGS = Object.values(SERVICES_DB).map((service) => ({
+  id: service.id,
+  shortName: TAG_TEXT_OVERRIDES[service.id]?.shortName ?? service.shortName,
+  title: TAG_TEXT_OVERRIDES[service.id]?.title ?? service.title,
+}));
+
+const SERVICE_TAGS = [{ id: "all", shortName: "Все", title: "Готовые решения" }, ...BASE_SERVICE_TAGS];
+
+const stripTrailingAbbreviation = (title: string) =>
+  title
+    .replace(/\s*\[[^\]]+\]\s*$/, "")
+    .replace(/\s*\([^)]+\)\s*$/, "")
+    .trim();
+
 export default function SolutionsPage() {
   const [notification, setNotification] = useState<string | null>(null);
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const handleAddToTray = (card: QuickStartCard, serviceSlug: string) => {
     setNotification(`"${card.title}" добавлено в проект-трей`);
@@ -27,7 +91,7 @@ export default function SolutionsPage() {
     <main className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="bg-gradient-to-b from-muted/50 to-background pt-32 pb-16 md:pt-40 md:pb-24">
+      <section className="bg-gradient-to-b from-muted/50 to-background pt-32 pb-12 md:pt-40 md:pb-16">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -41,14 +105,67 @@ export default function SolutionsPage() {
               Галерея решений
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground md:text-lg">
-              Выберите готовое решение для вашей задачи. Каждое решение можно добавить в проект-трей
-              для детального расчета и настройки под ваш объект.
+              Выберите готовое решение для вашей задачи. Вверху можно быстро отфильтровать
+              направление и перейти к подходящим карточкам.
             </p>
           </motion.div>
+
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            {SERVICE_TAGS.map((service) => {
+              const isAll = service.id === "all";
+              const isActive = activeFilter === service.id;
+              const Icon = ICON_MAP[service.id] || Settings2;
+
+              return (
+                <button
+                  key={service.id}
+                  type="button"
+                  onClick={() => setActiveFilter(service.id)}
+                  className={`flex h-[86px] items-center justify-between rounded-2xl border px-4 py-3 text-left transition-all duration-300 ${
+                    isActive
+                      ? "border-primary bg-primary text-white shadow-[0_16px_34px_-28px_rgba(37,99,235,0.6)]"
+                      : isAll
+                        ? "border-blue-200 bg-blue-50 text-blue-800 hover:border-blue-300 shadow-sm"
+                        : "border-border bg-white text-foreground shadow-[0_16px_34px_-28px_rgba(15,23,42,0.25)] hover:border-primary/60 hover:shadow-md"
+                  }`}
+                >
+                  <div className="mr-2 flex min-w-0 flex-1 flex-col justify-center">
+                    <p
+                      className={`truncate text-sm font-black leading-tight ${isActive ? "text-white" : "text-foreground"}`}
+                    >
+                      {service.shortName}
+                    </p>
+                    <p
+                      className={`mt-0.5 line-clamp-2 text-[10px] font-semibold uppercase leading-snug tracking-tight opacity-70 ${
+                        isActive ? "text-white/80" : "text-text-muted"
+                      }`}
+                    >
+                      {stripTrailingAbbreviation(service.title)}
+                    </p>
+                  </div>
+                  <div
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-colors ${
+                      isActive
+                        ? "bg-white/20 text-white"
+                        : isAll
+                          ? "bg-blue-100 text-blue-700"
+                          : "bg-primary/10 text-primary"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" aria-hidden />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      <SolutionsGallery services={SERVICES_DB} onAddToTray={handleAddToTray} />
+      <SolutionsGallery
+        services={SERVICES_DB}
+        onAddToTray={handleAddToTray}
+        activeFilter={activeFilter}
+      />
 
       {notification ? (
         <motion.div
