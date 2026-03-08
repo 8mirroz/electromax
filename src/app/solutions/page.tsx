@@ -65,6 +65,7 @@ const BASE_SERVICE_TAGS = Object.values(SERVICES_DB).map((service) => ({
 }));
 
 const SERVICE_TAGS = [{ id: "all", shortName: "Все", title: "Готовые решения" }, ...BASE_SERVICE_TAGS];
+const FILTER_ROWS = [SERVICE_TAGS.slice(0, 6), SERVICE_TAGS.slice(6)];
 
 const stripTrailingAbbreviation = (title: string) =>
   title
@@ -110,53 +111,60 @@ export default function SolutionsPage() {
             </p>
           </motion.div>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {SERVICE_TAGS.map((service) => {
-              const isAll = service.id === "all";
-              const isActive = activeFilter === service.id;
-              const Icon = ICON_MAP[service.id] || Settings2;
+          <div className="mt-10 space-y-3">
+            {FILTER_ROWS.map((row, rowIndex) => (
+              <div
+                key={`row-${rowIndex + 1}`}
+                className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6"
+              >
+                {row.map((service) => {
+                  const isAll = service.id === "all";
+                  const isActive = activeFilter === service.id;
+                  const Icon = ICON_MAP[service.id] || Settings2;
 
-              return (
-                <button
-                  key={service.id}
-                  type="button"
-                  onClick={() => setActiveFilter(service.id)}
-                  className={`flex h-[86px] items-center justify-between rounded-2xl border px-4 py-3 text-left transition-all duration-300 ${
-                    isActive
-                      ? "border-primary bg-primary text-white shadow-[0_16px_34px_-28px_rgba(37,99,235,0.6)]"
-                      : isAll
-                        ? "border-blue-200 bg-blue-50 text-blue-800 hover:border-blue-300 shadow-sm"
-                        : "border-border bg-white text-foreground shadow-[0_16px_34px_-28px_rgba(15,23,42,0.25)] hover:border-primary/60 hover:shadow-md"
-                  }`}
-                >
-                  <div className="mr-2 flex min-w-0 flex-1 flex-col justify-center">
-                    <p
-                      className={`truncate text-sm font-black leading-tight ${isActive ? "text-white" : "text-foreground"}`}
-                    >
-                      {service.shortName}
-                    </p>
-                    <p
-                      className={`mt-0.5 line-clamp-2 text-[10px] font-semibold uppercase leading-snug tracking-tight opacity-70 ${
-                        isActive ? "text-white/80" : "text-text-muted"
+                  return (
+                    <button
+                      key={service.id}
+                      type="button"
+                      onClick={() => setActiveFilter(service.id)}
+                      className={`flex h-[86px] items-center justify-between rounded-2xl border px-4 py-3 text-left transition-all duration-300 ${
+                        isActive
+                          ? "border-primary bg-primary text-white shadow-[0_16px_34px_-28px_rgba(37,99,235,0.6)]"
+                          : isAll
+                            ? "border-blue-200 bg-blue-50 text-blue-800 hover:border-blue-300 shadow-sm"
+                            : "border-border bg-white text-foreground shadow-[0_16px_34px_-28px_rgba(15,23,42,0.25)] hover:border-primary/60 hover:shadow-md"
                       }`}
                     >
-                      {stripTrailingAbbreviation(service.title)}
-                    </p>
-                  </div>
-                  <div
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-colors ${
-                      isActive
-                        ? "bg-white/20 text-white"
-                        : isAll
-                          ? "bg-blue-100 text-blue-700"
-                          : "bg-primary/10 text-primary"
-                    }`}
-                  >
-                    <Icon className="h-4 w-4" aria-hidden />
-                  </div>
-                </button>
-              );
-            })}
+                      <div className="mr-2 flex min-w-0 flex-1 flex-col justify-center">
+                        <p
+                          className={`truncate text-sm font-black leading-tight ${isActive ? "text-white" : "text-foreground"}`}
+                        >
+                          {service.shortName}
+                        </p>
+                        <p
+                          className={`mt-0.5 line-clamp-2 text-[10px] font-semibold uppercase leading-snug tracking-tight opacity-70 ${
+                            isActive ? "text-white/80" : "text-text-muted"
+                          }`}
+                        >
+                          {stripTrailingAbbreviation(service.title)}
+                        </p>
+                      </div>
+                      <div
+                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-colors ${
+                          isActive
+                            ? "bg-white/20 text-white"
+                            : isAll
+                              ? "bg-blue-100 text-blue-700"
+                              : "bg-primary/10 text-primary"
+                        }`}
+                      >
+                        <Icon className="h-4 w-4" aria-hidden />
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
