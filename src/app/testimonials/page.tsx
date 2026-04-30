@@ -4,7 +4,7 @@ import { getSiteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Отзывы клиентов",
-  description: "Отзывы и рекомендации клиентов Electromax по внедрению инженерных систем.",
+  description: "Отзывы и рекомендации клиентов OneDim по внедрению инженерных систем.",
 };
 
 export default async function TestimonialsPage() {
@@ -17,7 +17,7 @@ export default async function TestimonialsPage() {
   const aggregateRatingJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Electromax",
+    name: "OneDim",
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: avgRating.toFixed(1),
@@ -37,8 +37,14 @@ export default async function TestimonialsPage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <section className="border-b border-border bg-muted/20 pt-28 pb-14">
         <div className="container mx-auto max-w-5xl px-6">
           <h1 className="text-4xl font-display font-black md:text-5xl">Отзывы и рекомендации</h1>

@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: model.description,
     alternates: url ? { canonical: url } : undefined,
     openGraph: {
-      title: `${model.title} | Electromax`,
+      title: `${model.title} | OneDim`,
       description: model.description,
       type: "website",
       locale: "ru_RU",
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: `${model.title} | Electromax`,
+      title: `${model.title} | OneDim`,
       description: model.description,
       images: [defaultOgImage],
     },

@@ -1,4 +1,4 @@
-# ELECTROMAX
+# ONEDIM
 
 Modern web site foundation built with Next.js, TypeScript, and Tailwind CSS.
 

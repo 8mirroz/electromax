@@ -26,8 +26,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    content: "info@electromax.ru",
-    href: "mailto:info@electromax.ru",
+    content: "info@onedim.ru",
+    href: "mailto:info@onedim.ru",
   },
   {
     icon: Clock,
@@ -37,7 +37,7 @@ const contactInfo = [
 ];
 
 const requisites = [
-  { label: "ООО", value: '"ЭЛЕКТРОМАКС"' },
+  { label: "ООО", value: '"УАНДИМ"' },
   { label: "ИНН", value: "7701234567" },
   { label: "КПП", value: "770101001" },
   { label: "ОГРН", value: "1157746123456" },
@@ -143,7 +143,7 @@ export default function ContactsPage() {
             <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-display font-black tracking-tight leading-[1.05] text-slate-900 mb-6">
               Свяжитесь с командой{" "}
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Electromax
+                OneDim
               </span>
             </h1>
 

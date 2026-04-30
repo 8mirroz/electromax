@@ -15,7 +15,7 @@ export interface AdaptivePerformanceResult {
   override: "none" | "url" | "localStorage" | "forced";
 }
 
-const STORAGE_KEY = "electromax_perf_tier";
+const STORAGE_KEY = "onedim_perf_tier";
 
 export function useAdaptivePerformance(): AdaptivePerformanceResult {
   const [result, setResult] = useState<AdaptivePerformanceResult>({

@@ -53,7 +53,7 @@ export function Footer() {
 
             <div className="space-y-4 pt-4">
               <a
-                href="https://t.me/electromax_support"
+                href="https://t.me/onedim_support"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative h-11 inline-flex items-center justify-center gap-3 rounded-2xl border-2 border-[#24A1DE] bg-white px-8 text-[14px] font-bold tracking-tight text-[#24A1DE] transition-all duration-[var(--duration-normal)] hover:bg-[#24A1DE] hover:text-white hover:shadow-[0_10px_30px_-5px_rgba(36,161,222,0.4)] active:scale-95"
@@ -142,12 +142,12 @@ export function Footer() {
                 </div>
               </a>
 
-              <a href="mailto:info@electromax.ru" className="group flex items-center gap-4">
+              <a href="mailto:info@onedim.ru" className="group flex items-center gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/50 border border-slate-700/50 group-hover:bg-blue-900/30 group-hover:border-blue-500/30 transition-all duration-[var(--duration-normal)]">
                   <Mail className="h-4 w-4 text-blue-400" />
                 </div>
                 <div className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors duration-[var(--duration-fast)]">
-                  info@electromax.ru
+                  info@onedim.ru
                 </div>
               </a>
 
@@ -168,7 +168,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-white/10">
           <p className="text-xs text-slate-500">
-            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> ELECTROMAX. Все права
+            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> ONEDIM. Все права
             защищены. <br className="hidden md:block" />
             Сайт носит информационный характер и не является публичной офертой.
           </p>

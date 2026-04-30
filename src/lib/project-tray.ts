@@ -6,7 +6,7 @@ import type {
   SolutionKit,
 } from "@/types";
 
-export const PROJECT_TRAY_STORAGE_KEY = "electromax-project-v1";
+export const PROJECT_TRAY_STORAGE_KEY = "onedim-project-v1";
 
 export function createEmptyProjectTrayState(serviceSlug: string | null = null): ProjectTrayState {
   return {

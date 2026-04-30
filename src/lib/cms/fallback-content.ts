@@ -77,7 +77,7 @@ export const cmsFallbackArticles: CmsArticle[] = ruArticleBlueprints.map((title,
     updatedAt: nowIso,
     locale: "ru",
     seo: {
-      title: `${title} | Electromax`,
+      title: `${title} | OneDim`,
       description: "Подробный гайд для инженеров, закупки и эксплуатации коммерческих объектов.",
     },
   };
@@ -99,7 +99,7 @@ export const cmsFallbackCaseStudies: CmsCaseStudy[] = [
     publishedAt: nowIso,
     locale: "ru",
     seo: {
-      title: "Кейс: модернизация бизнес-центра | Electromax",
+      title: "Кейс: модернизация бизнес-центра | OneDim",
       description: "Практика поэтапного внедрения без остановки эксплуатации.",
     },
   },
@@ -118,7 +118,7 @@ export const cmsFallbackCaseStudies: CmsCaseStudy[] = [
     publishedAt: nowIso,
     locale: "ru",
     seo: {
-      title: "Кейс: безопасность складского хаба | Electromax",
+      title: "Кейс: безопасность складского хаба | OneDim",
       description: "Видеоаналитика, СКУД и процессы эксплуатации в одном проекте.",
     },
   },
@@ -137,7 +137,7 @@ export const cmsFallbackCaseStudies: CmsCaseStudy[] = [
     publishedAt: nowIso,
     locale: "ru",
     seo: {
-      title: "Кейс: ЭОМ + АПС на производстве | Electromax",
+      title: "Кейс: ЭОМ + АПС на производстве | OneDim",
       description: "Как снизить риски на промышленном объекте через единую архитектуру.",
     },
   },
@@ -184,7 +184,7 @@ export const cmsFallbackVideos: CmsVideo[] = [
     durationSeconds: 420,
     locale: "ru",
     seo: {
-      title: "Видео: инженерный аудит | Electromax",
+      title: "Видео: инженерный аудит | OneDim",
       description: "Практический разбор этапов аудита для B2B объектов.",
     },
   },
@@ -197,7 +197,7 @@ export const cmsFallbackVideos: CmsVideo[] = [
     durationSeconds: 510,
     locale: "ru",
     seo: {
-      title: "Видео-кейс: модернизация БЦ | Electromax",
+      title: "Видео-кейс: модернизация БЦ | OneDim",
       description: "Пошаговая схема rollout и контроля рисков.",
     },
   },
@@ -230,7 +230,7 @@ export const cmsFallbackServices: CmsService[] = [
     shortName: "АПС",
     description: "Проектирование и монтаж АПС.",
     locale: "ru",
-    seo: { title: "АПС | Electromax", description: "Услуги по АПС для B2B объектов." },
+    seo: { title: "АПС | OneDim", description: "Услуги по АПС для B2B объектов." },
   },
   {
     id: "svc-2",
@@ -239,7 +239,7 @@ export const cmsFallbackServices: CmsService[] = [
     shortName: "СОУЭ",
     description: "Речевое и световое оповещение.",
     locale: "ru",
-    seo: { title: "СОУЭ | Electromax", description: "Услуги по СОУЭ для B2B объектов." },
+    seo: { title: "СОУЭ | OneDim", description: "Услуги по СОУЭ для B2B объектов." },
   },
   {
     id: "svc-3",
@@ -248,7 +248,7 @@ export const cmsFallbackServices: CmsService[] = [
     shortName: "СОТ",
     description: "Видеоаналитика и контроль событий.",
     locale: "ru",
-    seo: { title: "СОТ | Electromax", description: "Видеонаблюдение и аналитика." },
+    seo: { title: "СОТ | OneDim", description: "Видеонаблюдение и аналитика." },
   },
 ];
 
@@ -256,8 +256,8 @@ export const cmsFallbackSiteSettings: CmsSiteSettings[] = [
   {
     id: "settings-ru",
     locale: "ru",
-    siteName: "Electromax",
-    defaultTitle: "Electromax | Инженерная интеграция систем безопасности",
+    siteName: "OneDim",
+    defaultTitle: "OneDim | Инженерная интеграция систем безопасности",
     defaultDescription: "Контентная и инженерная платформа для B2B объектов.",
   },
 ];

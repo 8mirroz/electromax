@@ -41,7 +41,7 @@ export function Navbar() {
           </a>
 
           <a
-            href="https://t.me/electromax_support"
+            href="https://t.me/onedim_support"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden lg:flex items-center justify-center w-11 h-11 rounded-full bg-slate-100 text-[#24A1DE] hover:bg-[#24A1DE] hover:text-white transition-all duration-[var(--duration-normal)]"

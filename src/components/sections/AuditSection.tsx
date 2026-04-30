@@ -120,7 +120,7 @@ export function AuditSection() {
                 Заказать аудит
               </button>
               <a
-                href="https://t.me/electromax_support"
+                href="https://t.me/onedim_support"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-11 inline-flex items-center justify-center gap-3 rounded-2xl border-2 border-primary/20 bg-white px-8 text-[13px] font-bold uppercase tracking-wider text-primary transition-all duration-200 hover:bg-primary/5 hover:border-primary/40 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"

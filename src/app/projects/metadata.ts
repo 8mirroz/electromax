@@ -4,9 +4,9 @@ import { defaultOgImage } from "@/lib/seo";
 export const projectsMetadata: Metadata = {
   title: "Проекты",
   description:
-    "Реализованные проекты Electromax: инженерные системы безопасности, электромонтаж, интеграции и эксплуатационные сценарии. Параметры объектов, сроки, состав работ.",
+    "Реализованные проекты OneDim: инженерные системы безопасности, электромонтаж, интеграции и эксплуатационные сценарии. Параметры объектов, сроки, состав работ.",
   openGraph: {
-    title: "Проекты | Electromax",
+    title: "Проекты | OneDim",
     description:
       "Реализованные проекты: параметры объектов, сроки, состав систем и результаты внедрения.",
     type: "website",
@@ -15,9 +15,9 @@ export const projectsMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Проекты | Electromax",
+    title: "Проекты | OneDim",
     description:
-      "Реализованные проекты Electromax: параметры объектов, сроки, состав систем и результаты.",
+      "Реализованные проекты OneDim: параметры объектов, сроки, состав систем и результаты.",
     images: [defaultOgImage],
   },
 };

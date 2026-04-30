@@ -381,7 +381,7 @@ function normalizeProcessFromAlt(
     id: step.stepId || `${slug}-process-${index + 1}`,
     title: step.title || `Шаг ${index + 1}`,
     clientAction: step.clientAction || "Уточняется",
-    electromaxAction: step.contractorAction || "Уточняется",
+    oneDimAction: step.contractorAction || "Уточняется",
     artifact: step.artifact || "Документ/акт",
     durationText: step.leadTime || "по графику",
   }));
@@ -812,7 +812,7 @@ function buildProcess(service: LegacyLike): ProcessRoadmapStep[] {
         index === 0
           ? "Согласует время доступа на объект и контактное лицо"
           : "Подтверждает решения, доступ и окна работ",
-      electromaxAction: step.description,
+      oneDimAction: step.description,
       artifact: fallbackArtifacts[index] ?? "Акт/отчет по этапу",
       durationText:
         index === 0
@@ -1131,7 +1131,7 @@ function buildSeoBlock(service: LegacyLike): ServicePageSeoBlock {
     paragraphs: [
       `${capitalize(service.shortName)} для коммерческих и промышленных объектов требует точной привязки к фактической планировке, режиму эксплуатации и смежным системам. Поэтому базовый сценарий на странице начинается с аудита объекта и фиксации ограничений.`,
       "На странице указаны ориентиры цен и типовые наборы работ для предварительной оценки. Точный бюджет и сроки подтверждаются после аудита объекта или получения ТЗ, так как на итоговую стоимость влияют объем работ, доступ, бренд оборудования и сроки поставки.",
-      "Electromax выполняет работы поэтапно: обследование, подготовка КП/договора, реализация, пусконаладка и при необходимости техническое обслуживание. Для смежных задач можно собрать единый проект из нескольких услуг.",
+      "OneDim выполняет работы поэтапно: обследование, подготовка КП/договора, реализация, пусконаладка и при необходимости техническое обслуживание. Для смежных задач можно собрать единый проект из нескольких услуг.",
     ],
     relatedServiceSlugs: relatedServiceMap[service.id] ?? [],
     serviceArea: "Москва и Московская область",

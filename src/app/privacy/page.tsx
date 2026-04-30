@@ -11,12 +11,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Политика конфиденциальности",
     description:
-      "Политика конфиденциальности Electromax: какие данные мы собираем, как используем и защищаем.",
+      "Политика конфиденциальности OneDim: какие данные мы собираем, как используем и защищаем.",
     alternates: url ? { canonical: url } : undefined,
     openGraph: {
-      title: "Политика конфиденциальности | Electromax",
+      title: "Политика конфиденциальности | OneDim",
       description:
-        "Политика конфиденциальности Electromax: какие данные мы собираем, как используем и защищаем.",
+        "Политика конфиденциальности OneDim: какие данные мы собираем, как используем и защищаем.",
       type: "article",
       locale: "ru_RU",
       url,
@@ -24,9 +24,9 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Политика конфиденциальности | Electromax",
+      title: "Политика конфиденциальности | OneDim",
       description:
-        "Политика конфиденциальности Electromax: какие данные мы собираем, как используем и защищаем.",
+        "Политика конфиденциальности OneDim: какие данные мы собираем, как используем и защищаем.",
       images: [defaultOgImage],
     },
   };
@@ -56,10 +56,10 @@ export default function PrivacyPage() {
             <div className="space-y-3">
               <h2 className="text-xl font-bold">1. Общие положения</h2>
               <p>
-                ООО «Электромакс» (далее — «Компания») уважает вашу конфиденциальность и
-                обеспечивает защиту персональных данных в соответствии с требованиями
-                законодательства РФ. Настоящая политика описывает, какие данные мы собираем, как их
-                используем и какие права есть у пользователей.
+                ООО «УАНДИМ» (далее — «Компания») уважает вашу конфиденциальность и обеспечивает
+                защиту персональных данных в соответствии с требованиями законодательства РФ.
+                Настоящая политика описывает, какие данные мы собираем, как их используем и какие
+                права есть у пользователей.
               </p>
             </div>
 
@@ -120,9 +120,9 @@ export default function PrivacyPage() {
               <h2 className="text-xl font-bold">8. Контакты</h2>
               <p>
                 Вопросы по обработке данных направляйте на
-                <Link href="mailto:info@electromax.ru" className="text-primary font-semibold">
+                <Link href="mailto:info@onedim.ru" className="text-primary font-semibold">
                   {" "}
-                  info@electromax.ru
+                  info@onedim.ru
                 </Link>{" "}
                 или по телефону +7 (495) 123-45-67.
               </p>

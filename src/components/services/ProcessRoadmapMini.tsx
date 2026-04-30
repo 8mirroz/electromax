@@ -33,10 +33,8 @@ export function ProcessRoadmapMini({ steps }: { steps: ProcessRoadmapStep[] }) {
               <div className="text-sm text-foreground/90">{step.clientAction}</div>
             </div>
             <div>
-              <div className="text-xs uppercase tracking-wide text-muted-foreground">
-                Electromax
-              </div>
-              <div className="text-sm text-foreground/90">{step.electromaxAction}</div>
+              <div className="text-xs uppercase tracking-wide text-muted-foreground">OneDim</div>
+              <div className="text-sm text-foreground/90">{step.oneDimAction}</div>
               <div className="mt-1 text-xs text-muted-foreground">Артефакт: {step.artifact}</div>
             </div>
             <div>

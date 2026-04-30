@@ -19,7 +19,7 @@ function extractClientIp(req: Request) {
 }
 
 function hashIp(ip: string) {
-  const salt = process.env.REVALIDATE_IP_HASH_SALT || "electromax-revalidate-salt";
+  const salt = process.env.REVALIDATE_IP_HASH_SALT || "onedim-revalidate-salt";
   return createHash("sha256").update(`${ip}:${salt}`).digest("hex");
 }
 
@@ -45,14 +45,23 @@ export async function POST(req: Request) {
 
   if (!parsed.success) {
     return NextResponse.json(
-      { revalidated: false, error: "Invalid body", issues: parsed.error.issues, requestId, receivedAt },
+      {
+        revalidated: false,
+        error: "Invalid body",
+        issues: parsed.error.issues,
+        requestId,
+        receivedAt,
+      },
       { status: 400 },
     );
   }
 
   const expected = process.env.REVALIDATE_SECRET;
   if (!expected || parsed.data.secret !== expected) {
-    return NextResponse.json({ revalidated: false, error: "Unauthorized", requestId, receivedAt }, { status: 401 });
+    return NextResponse.json(
+      { revalidated: false, error: "Unauthorized", requestId, receivedAt },
+      { status: 401 },
+    );
   }
 
   if (!parsed.data.path && !parsed.data.tag) {

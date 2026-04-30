@@ -10,8 +10,8 @@ export function getSiteUrl() {
 
 export const defaultMetadata: Metadata = {
   title: {
-    default: "Electromax | Инженерная интеграция систем безопасности",
-    template: "%s | Electromax",
+    default: "OneDim | Инженерная интеграция систем безопасности",
+    template: "%s | OneDim",
   },
   description:
     "Проектирование, монтаж и обслуживание комплексных систем безопасности и инженерной инфраструктуры для коммерческих и промышленных объектов.",
@@ -28,5 +28,5 @@ export const defaultOgImage = {
   url: "/og/default.png",
   width: 1200,
   height: 630,
-  alt: "Electromax — инженерная интеграция систем безопасности",
+  alt: "OneDim — инженерная интеграция систем безопасности",
 };

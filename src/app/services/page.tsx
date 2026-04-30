@@ -12,12 +12,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Услуги",
     description:
-      "Каталог инженерных систем Electromax: проектирование, монтаж, пусконаладка и техническое обслуживание под ключ.",
+      "Каталог инженерных систем OneDim: проектирование, монтаж, пусконаладка и техническое обслуживание под ключ.",
     alternates: url ? { canonical: url } : undefined,
     openGraph: {
-      title: "Услуги | Electromax",
+      title: "Услуги | OneDim",
       description:
-        "Каталог инженерных систем Electromax: проектирование, монтаж, пусконаладка и техническое обслуживание под ключ.",
+        "Каталог инженерных систем OneDim: проектирование, монтаж, пусконаладка и техническое обслуживание под ключ.",
       type: "website",
       locale: "ru_RU",
       url,
@@ -25,9 +25,9 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Услуги | Electromax",
+      title: "Услуги | OneDim",
       description:
-        "Каталог инженерных систем Electromax: проектирование, монтаж, пусконаладка и техническое обслуживание под ключ.",
+        "Каталог инженерных систем OneDim: проектирование, монтаж, пусконаладка и техническое обслуживание под ключ.",
       images: [defaultOgImage],
     },
   };
@@ -44,7 +44,7 @@ export default async function ServicesIndexPage() {
         <div className="container mx-auto max-w-6xl px-6">
           <div className="max-w-3xl space-y-4">
             <p className="text-[10px] font-bold lowercase first-letter:uppercase tracking-tight text-muted-foreground">
-              Инженерные решения Electromax
+              Инженерные решения OneDim
             </p>
             <h1 className="text-balance text-4xl md:text-6xl font-display font-black leading-[1.05]">
               Каталог услуг и систем

@@ -72,7 +72,7 @@ export function ProblemSection({ problems }: ProblemSectionProps) {
               <div className="mt-10 pt-8 border-t border-border/50 flex items-center justify-between">
                 <div className="flex items-center gap-3 text-[10px] font-black tracking-widest text-primary uppercase">
                   <CheckCircle2 className="w-4 h-4" />
-                  <span>РЕШЕНИЕ ELECTROMAX</span>
+                  <span>РЕШЕНИЕ ONEDIM</span>
                 </div>
                 <div className="w-2 h-2 rounded-full bg-border group-hover:bg-primary transition-colors" />
               </div>

@@ -183,7 +183,7 @@ export async function POST(req: Request) {
     }
 
     const message = [
-      `🚨 *Новая заявка (Electromax)* 🚨`,
+      `🚨 *Новая заявка (OneDim)* 🚨`,
       `*Тип объекта*: ${body.objectType}`,
       `*Площадь*: ${body.areaSquareMeters} м²`,
       `*Коэффициент сложности*: ${body.complexityCoef}`,
@@ -293,7 +293,10 @@ export async function POST(req: Request) {
     const hasAnyDelivered = delivery.deliveredChannels.length > 0;
 
     if (!hasAnyChannelConfigured) {
-      return errorResponse(503, "Каналы доставки не настроены", "upstream_error", { delivery, mode });
+      return errorResponse(503, "Каналы доставки не настроены", "upstream_error", {
+        delivery,
+        mode,
+      });
     }
 
     if (!hasAnyDelivered) {

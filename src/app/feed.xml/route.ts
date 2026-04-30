@@ -2,7 +2,7 @@ import { listCmsCollection } from "@/lib/cms/client";
 import { getSiteUrl } from "@/lib/seo";
 
 export async function GET() {
-  const siteUrl = getSiteUrl() || "https://electromax.pro";
+  const siteUrl = getSiteUrl() || "https://onedim.ru";
   const articles = await listCmsCollection("articles", { locale: "ru", limit: 50 });
 
   const items = articles
@@ -20,7 +20,7 @@ export async function GET() {
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Electromax — База знаний</title>
+    <title>OneDim — База знаний</title>
     <link>${siteUrl}</link>
     <description>Статьи и материалы по инженерным системам безопасности</description>
     <language>ru</language>

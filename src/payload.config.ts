@@ -30,13 +30,13 @@ export default buildConfig({
     Authors,
   ],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || "fallback-secret-for-electromax-dev-only-not-for-prod",
+  secret: process.env.PAYLOAD_SECRET || "fallback-secret-for-onedim-dev-only-not-for-prod",
   typescript: {
     outputFile: path.resolve(process.cwd(), "src/payload-types.ts"),
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || "postgres://localhost:5432/electromax",
+      connectionString: process.env.DATABASE_URI || "postgres://localhost:5432/onedim",
     },
   }),
   sharp,

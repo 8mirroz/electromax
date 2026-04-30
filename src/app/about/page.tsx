@@ -1,6 +1,7 @@
-import { Info } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, ArrowRight, Info } from "lucide-react";
 
 const stats = [
   {
@@ -68,27 +69,24 @@ export default function AboutPage() {
           <div className="space-y-6">
             <Badge icon={Info}>О компании</Badge>
             <h1 className="text-4xl md:text-6xl font-display font-black tracking-tight leading-[1.05]">
-              Инженерный интегратор систем безопасности и электромонтажа
+              Инженерная интеграция систем безопасности и электромонтажа
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed font-medium">
-              Electromax проектирует, внедряет и обслуживает комплексные системы безопасности и
+              OneDim проектирует, внедряет и обслуживает комплексные системы безопасности и
               электротехнические решения для коммерческих и промышленных объектов. Мы работаем не
               только с оборудованием, но и с логикой эксплуатации объекта: режимами доступа,
               сценариями аварий, требованиями аудита и сдачи.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Link
-                href="/contacts"
-                className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-primary text-white font-bold shadow-lg shadow-primary/25 hover:bg-blue-700 transition"
-              >
-                Обсудить проект
-              </Link>
-              <Link
-                href="/projects"
-                className="inline-flex items-center justify-center h-14 px-8 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition"
-              >
-                Посмотреть кейсы
-              </Link>
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Button asChild size="lg">
+                <Link href="/contacts">
+                  Обсудить проект
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/projects">Посмотреть кейсы</Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -148,9 +146,7 @@ export default function AboutPage() {
                 <ul className="space-y-3 mb-8">
                   {sectors.map((sector) => (
                     <li key={sector} className="flex items-start gap-3">
-                      <span className="material-icons-outlined text-primary text-xl mt-0.5">
-                        check_circle
-                      </span>
+                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5" />
                       <span className="font-medium text-foreground">{sector}</span>
                     </li>
                   ))}
@@ -220,18 +216,12 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row lg:flex-col gap-4">
-              <Link
-                href="/contacts"
-                className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-primary text-white font-bold hover:bg-blue-700 transition"
-              >
-                Получить консультацию
-              </Link>
-              <Link
-                href="/projects"
-                className="inline-flex items-center justify-center h-14 px-8 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition"
-              >
-                Смотреть проекты
-              </Link>
+              <Button asChild size="lg">
+                <Link href="/contacts">Получить консультацию</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/projects">Смотреть проекты</Link>
+              </Button>
             </div>
           </div>
         </div>

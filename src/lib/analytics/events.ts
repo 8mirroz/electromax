@@ -35,13 +35,15 @@ const METRIKA_GOAL_BY_EVENT: Record<AnalyticsEventName, string> = {
   video_play_25_50_75_100: "video_play_progress",
 };
 
-const SESSION_KEY = "electromax.analytics.session-id";
+const SESSION_KEY = "onedim.analytics.session-id";
 
 function safeWindow() {
   return typeof window !== "undefined" ? window : undefined;
 }
 
-function sanitizeProperties(properties: AnalyticsEventPayload): Record<string, AnalyticsScalarValue> {
+function sanitizeProperties(
+  properties: AnalyticsEventPayload,
+): Record<string, AnalyticsScalarValue> {
   return Object.fromEntries(
     Object.entries(properties).filter(([, value]) => value !== undefined),
   ) as Record<string, AnalyticsScalarValue>;
@@ -52,7 +54,8 @@ function getSessionId(win: Window): string {
     const existing = win.sessionStorage.getItem(SESSION_KEY);
     if (existing) return existing;
 
-    const created = win.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const created =
+      win.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
     win.sessionStorage.setItem(SESSION_KEY, created);
     return created;
   } catch {
@@ -96,7 +99,10 @@ export function buildAnalyticsEnvelope(
   };
 }
 
-export async function trackClientEvent(name: AnalyticsEventName, properties: AnalyticsEventPayload = {}) {
+export async function trackClientEvent(
+  name: AnalyticsEventName,
+  properties: AnalyticsEventPayload = {},
+) {
   const win = safeWindow();
   if (!win) return;
 
@@ -138,7 +144,12 @@ export async function trackClientEvent(name: AnalyticsEventName, properties: Ana
 
 declare global {
   interface Window {
-    ym?: (id: number, action: string, goal: string, params?: Record<string, AnalyticsScalarValue>) => void;
+    ym?: (
+      id: number,
+      action: string,
+      goal: string,
+      params?: Record<string, AnalyticsScalarValue>,
+    ) => void;
     posthog?: {
       capture?: (event: string, properties?: Record<string, AnalyticsScalarValue>) => void;
     };

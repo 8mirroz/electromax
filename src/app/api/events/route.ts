@@ -21,7 +21,7 @@ function extractClientIp(req: Request) {
 }
 
 function hashIp(ip: string) {
-  const salt = process.env.ANALYTICS_IP_HASH_SALT || "electromax-default-salt";
+  const salt = process.env.ANALYTICS_IP_HASH_SALT || "onedim-default-salt";
   return createHash("sha256").update(`${ip}:${salt}`).digest("hex");
 }
 

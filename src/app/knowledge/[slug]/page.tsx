@@ -56,11 +56,11 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
     description: article.excerpt,
     author: {
       "@type": "Person",
-      name: author?.fullName || "Electromax Team",
+      name: author?.fullName || "OneDim Team",
     },
     publisher: {
       "@type": "Organization",
-      name: "Electromax",
+      name: "OneDim",
       logo: siteUrl ? { "@type": "ImageObject", url: `${siteUrl}/logo.png` } : undefined,
     },
     datePublished: article.updatedAt,
@@ -72,15 +72,26 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Главная", item: siteUrl || "/" },
-      { "@type": "ListItem", position: 2, name: "База знаний", item: siteUrl ? `${siteUrl}/knowledge` : "/knowledge" },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "База знаний",
+        item: siteUrl ? `${siteUrl}/knowledge` : "/knowledge",
+      },
       { "@type": "ListItem", position: 3, name: article.title },
     ],
   };
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <article className="container mx-auto max-w-4xl px-6 pt-28 pb-16">
         <Link href="/knowledge" className="text-sm font-semibold text-primary hover:underline">
           ← Все материалы

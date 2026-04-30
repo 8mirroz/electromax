@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Footer } from "@/components/sections/Footer";
 import { Navbar } from "@/components/layout/Navbar";
-import { FileCheck } from "lucide-react";
+import { FileCheck, ArrowRight, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/button";
 
 type LicenseDoc = {
   title: string;
@@ -123,10 +124,10 @@ export default function LicensesPage() {
                       </p>
                       <Link
                         href="/contacts"
-                        className="inline-flex items-center gap-2 text-sm font-black text-primary hover:text-blue-700 transition"
+                        className="inline-flex items-center gap-2 text-sm font-black text-primary hover:text-blue-700 transition group"
                       >
                         Запросить пакет документов
-                        <span className="material-icons-outlined text-base">arrow_forward</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                       </Link>
                     </div>
                   </article>
@@ -147,9 +148,7 @@ export default function LicensesPage() {
                       "Повышает предсказуемость сдачи и документооборота",
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-3">
-                        <span className="material-icons-outlined text-primary text-xl mt-0.5">
-                          verified
-                        </span>
+                        <ShieldCheck className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                         <span className="text-sm font-medium text-foreground leading-relaxed">
                           {item}
                         </span>
@@ -184,12 +183,9 @@ export default function LicensesPage() {
                     Напишите, какой комплект требуется: допуски, лицензии, карточка компании,
                     реквизиты, подтверждение опыта, сведения о работах и объектах.
                   </p>
-                  <Link
-                    href="/contacts"
-                    className="inline-flex items-center justify-center h-12 px-6 rounded-full bg-primary text-white font-bold hover:bg-blue-700 transition w-full"
-                  >
-                    Отправить запрос
-                  </Link>
+                  <Button asChild variant="default" className="w-full">
+                    <Link href="/contacts">Отправить запрос</Link>
+                  </Button>
                 </section>
               </div>
             </aside>

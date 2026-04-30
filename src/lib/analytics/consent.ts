@@ -1,8 +1,8 @@
 export type AnalyticsConsentState = "unknown" | "granted" | "denied";
 
-const CONSENT_STORAGE_KEY = "electromax.analytics.consent.v1";
+const CONSENT_STORAGE_KEY = "onedim.analytics.consent.v1";
 const CONSENT_VERSION = "v1";
-const CONSENT_EVENT = "electromax:analytics-consent-changed";
+const CONSENT_EVENT = "onedim:analytics-consent-changed";
 
 function safeWindow() {
   return typeof window !== "undefined" ? window : undefined;
@@ -40,7 +40,11 @@ export function setAnalyticsConsent(value: Exclude<AnalyticsConsentState, "unkno
   const win = safeWindow();
   if (!win) return;
 
-  const payload = JSON.stringify({ value, version: CONSENT_VERSION, updatedAt: new Date().toISOString() });
+  const payload = JSON.stringify({
+    value,
+    version: CONSENT_VERSION,
+    updatedAt: new Date().toISOString(),
+  });
   win.localStorage.setItem(CONSENT_STORAGE_KEY, payload);
   win.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: { value } }));
 }

@@ -76,7 +76,7 @@ export default async function KnowledgePage() {
                   </div>
 
                   <div className="mt-auto pt-8 text-xs text-muted-foreground">
-                    {author?.fullName || "Electromax Team"} •{" "}
+                    {author?.fullName || "OneDim Team"} •{" "}
                     {new Date(article.updatedAt).toLocaleDateString("ru-RU")}
                   </div>
 

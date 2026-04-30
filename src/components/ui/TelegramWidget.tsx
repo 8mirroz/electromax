@@ -14,7 +14,7 @@ export function TelegramWidget() {
 
   return (
     <a
-      href="https://t.me/electromax_support"
+      href="https://t.me/onedim_support"
       target="_blank"
       rel="noopener noreferrer"
       className={cn(

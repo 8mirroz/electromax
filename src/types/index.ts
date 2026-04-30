@@ -122,7 +122,7 @@ export interface ProcessRoadmapStep {
   id: string;
   title: string;
   clientAction: string;
-  electromaxAction: string;
+  oneDimAction: string;
   artifact: string;
   durationText: string;
 }

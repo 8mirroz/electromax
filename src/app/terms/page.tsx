@@ -11,12 +11,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Пользовательское соглашение",
     description:
-      "Пользовательское соглашение Electromax: условия использования сайта и размещённой информации.",
+      "Пользовательское соглашение OneDim: условия использования сайта и размещённой информации.",
     alternates: url ? { canonical: url } : undefined,
     openGraph: {
-      title: "Пользовательское соглашение | Electromax",
+      title: "Пользовательское соглашение | OneDim",
       description:
-        "Пользовательское соглашение Electromax: условия использования сайта и размещённой информации.",
+        "Пользовательское соглашение OneDim: условия использования сайта и размещённой информации.",
       type: "article",
       locale: "ru_RU",
       url,
@@ -24,9 +24,9 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Пользовательское соглашение | Electromax",
+      title: "Пользовательское соглашение | OneDim",
       description:
-        "Пользовательское соглашение Electromax: условия использования сайта и размещённой информации.",
+        "Пользовательское соглашение OneDim: условия использования сайта и размещённой информации.",
       images: [defaultOgImage],
     },
   };
@@ -56,7 +56,7 @@ export default function TermsPage() {
             <div className="space-y-3">
               <h2 className="text-xl font-bold">1. Термины и стороны</h2>
               <p>
-                Сайт принадлежит ООО «Электромакс» (далее — «Компания»). Пользователь — любое лицо,
+                Сайт принадлежит ООО «УАНДИМ» (далее — «Компания»). Пользователь — любое лицо,
                 посещающее сайт и/или отправляющее запрос через формы.
               </p>
             </div>
@@ -108,7 +108,7 @@ export default function TermsPage() {
                 Запросы и претензии направляйте на
                 <Link href="mailto:info@electromax.ru" className="text-primary font-semibold">
                   {" "}
-                  info@electromax.ru
+                  info@onedim.ru
                 </Link>{" "}
                 или по телефону +7 (495) 123-45-67.
               </p>

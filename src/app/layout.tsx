@@ -34,14 +34,14 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Electromax | Инженерная интеграция систем безопасности",
-    template: "%s | Electromax",
+    default: "OneDim | Инженерная интеграция систем безопасности",
+    template: "%s | OneDim",
   },
   description:
     "Проектирование и монтаж систем безопасности, видеонаблюдения и электроснабжения в Москве. Комплексные инженерные решения для бизнеса.",
   metadataBase: new URL(getSiteUrl() || "http://localhost:3000"),
   openGraph: {
-    siteName: "Electromax",
+    siteName: "OneDim",
     images: [defaultOgImage],
     type: "website",
     locale: "ru_RU",
@@ -61,7 +61,7 @@ export default function RootLayout({
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness"],
-    name: "Electromax",
+    name: "OneDim",
     url: siteUrl || undefined,
     logo: siteUrl ? `${siteUrl}/logo.png` : undefined,
     contactPoint: [
@@ -99,7 +99,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="alternate" type="application/rss+xml" title="Electromax — База знаний" href="/feed.xml" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="OneDim — База знаний"
+          href="/feed.xml"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

@@ -8,7 +8,20 @@ import { Navbar } from "@/components/layout/Navbar";
 import { PROJECT_TYPES, getProjectsByType } from "@/data/projects";
 import { SERVICES_DB } from "@/data/services";
 import { cn } from "@/lib/utils";
-import { Briefcase } from "lucide-react";
+import {
+  Briefcase,
+  Calendar,
+  Maximize,
+  Clock,
+  Banknote,
+  Info,
+  Layers,
+  CheckCircle2,
+  Settings,
+  ArrowRight,
+  FolderOpen,
+  Phone,
+} from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 
 export default function ProjectsPage() {
@@ -108,7 +121,6 @@ export default function ProjectsPage() {
                     : "bg-muted text-muted-foreground hover:bg-muted/80",
                 )}
               >
-                <span className="material-icons-outlined text-base">{type.icon}</span>
                 {type.label}
               </button>
             ))}
@@ -170,21 +182,21 @@ export default function ProjectsPage() {
                     </h3>
                     <p className="text-gray-300 text-sm mb-4">{project.location}</p>
                     <div className="flex flex-wrap gap-4 text-white text-sm font-bold">
-                      <span className="flex items-center gap-1">
-                        <span className="material-icons-outlined text-base">calendar_month</span>
+                      <span className="flex items-center gap-1.5">
+                        <Calendar className="w-4 h-4 text-primary" />
                         {project.year}
                       </span>
-                      <span className="flex items-center gap-1">
-                        <span className="material-icons-outlined text-base">square_foot</span>
+                      <span className="flex items-center gap-1.5">
+                        <Maximize className="w-4 h-4 text-primary" />
                         {project.area.toLocaleString()} м²
                       </span>
-                      <span className="flex items-center gap-1">
-                        <span className="material-icons-outlined text-base">schedule</span>
+                      <span className="flex items-center gap-1.5">
+                        <Clock className="w-4 h-4 text-primary" />
                         {project.duration}
                       </span>
                       {project.budget && (
-                        <span className="flex items-center gap-1">
-                          <span className="material-icons-outlined text-base">attach_money</span>
+                        <span className="flex items-center gap-1.5">
+                          <Banknote className="w-4 h-4 text-primary" />
                           {(project.budget / 1000000).toFixed(1)} млн ₽
                         </span>
                       )}
@@ -196,7 +208,7 @@ export default function ProjectsPage() {
                 <div className={cn("space-y-8", idx % 2 === 1 ? "lg:order-1" : "")}>
                   <div>
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="material-icons-outlined text-primary text-xl">info</span>
+                      <Info className="w-5 h-5 text-primary" />
                       <span className="text-[10px] font-bold lowercase first-letter:uppercase tracking-tight text-muted-foreground">
                         О проекте
                       </span>
@@ -208,7 +220,7 @@ export default function ProjectsPage() {
 
                   <div>
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="material-icons-outlined text-primary text-xl">category</span>
+                      <Layers className="w-5 h-5 text-primary" />
                       <span className="text-[10px] font-bold lowercase first-letter:uppercase tracking-tight text-muted-foreground">
                         Выполненные работы
                       </span>
@@ -216,9 +228,7 @@ export default function ProjectsPage() {
                     <ul className="space-y-3">
                       {project.features.slice(0, 4).map((feature, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <span className="material-icons-outlined text-primary text-xl mt-0.5">
-                            check_circle
-                          </span>
+                          <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                           <span className="text-foreground font-medium">{feature}</span>
                         </li>
                       ))}
@@ -227,7 +237,7 @@ export default function ProjectsPage() {
 
                   <div>
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="material-icons-outlined text-primary text-xl">settings</span>
+                      <Settings className="w-5 h-5 text-primary" />
                       <span className="text-[10px] font-bold lowercase first-letter:uppercase tracking-tight text-muted-foreground">
                         Системы
                       </span>
@@ -258,9 +268,7 @@ export default function ProjectsPage() {
                         className="inline-flex items-center gap-2 text-primary font-black hover:text-blue-700 transition group"
                       >
                         Обсудить похожий проект
-                        <span className="material-icons-outlined transition-transform group-hover:translate-x-1">
-                          arrow_forward
-                        </span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                       </Link>
                     </div>
                   </div>
@@ -271,9 +279,7 @@ export default function ProjectsPage() {
 
           {projects.length === 0 && (
             <div className="text-center py-24">
-              <span className="material-icons-outlined text-muted-foreground text-6xl mb-4">
-                folder_open
-              </span>
+              <FolderOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
               <p className="text-muted-foreground text-lg">Проекты не найдены</p>
             </div>
           )}
@@ -281,8 +287,9 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-primary">
-        <div className="container mx-auto max-w-7xl text-center">
+      <section className="py-16 md:py-24 bg-primary overflow-hidden relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-90" />
+        <div className="container relative z-10 mx-auto max-w-7xl text-center">
           <h2 className="text-3xl md:text-5xl font-display font-black text-white mb-6">
             Хотите так же?
           </h2>
@@ -291,9 +298,9 @@ export default function ProjectsPage() {
           </p>
           <Link
             href="/contacts"
-            className="inline-flex items-center gap-3 px-8 py-4 h-14 rounded-full bg-white text-primary font-bold text-base hover:bg-gray-100 transition shadow-xl"
+            className="relative inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-600 font-bold uppercase tracking-wider text-sm rounded-2xl shadow-xl hover:bg-slate-50 transition-all duration-300"
           >
-            <span className="material-icons-outlined">phone</span>
+            <Phone className="w-4 h-4" />
             Оставить заявку
           </Link>
         </div>
