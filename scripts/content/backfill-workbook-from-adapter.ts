@@ -151,7 +151,7 @@ for (const slug of getServicePageSlugs()) {
       stepId: step.id,
       title: step.title,
       clientAction: step.clientAction,
-      contractorAction: step.electromaxAction,
+      contractorAction: step.oneDimAction,
       artifact: step.artifact,
       leadTime: step.durationText,
     });
